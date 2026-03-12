@@ -61,7 +61,7 @@ a{
   margin:0 auto;
   padding:36px 22px 26px;
   display:grid;
-  grid-template-columns: minmax(0,1.3fr) minmax(320px,.7fr);
+  grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);
   gap:22px;
   align-items:stretch;
 }
@@ -197,6 +197,10 @@ a{
   border-color:rgba(43,213,118,.28);
 }
 
+.live-card{
+  border-color:rgba(43,213,118,.30);
+}
+
 .card-top{
   display:flex;
   justify-content:space-between;
@@ -245,6 +249,28 @@ a{
   background:rgba(255,255,255,.06);
   color:#d7e2fb;
   border:1px solid var(--line);
+}
+
+.status-live{
+  background:rgba(43,213,118,.16);
+  color:#bff6d5;
+  border:1px solid rgba(43,213,118,.34);
+  box-shadow:0 0 0 1px rgba(43,213,118,.08) inset;
+}
+
+.big-block-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 11px;
+  margin:0 0 10px;
+  border-radius:999px;
+  background:rgba(142,240,200,.10);
+  color:#cffff0;
+  border:1px solid rgba(142,240,200,.24);
+  font-size:.8rem;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
 }
 
 .hub-card h3{
