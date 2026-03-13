@@ -1,0 +1,1918 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wednesday Big Block — Imperialism to 1920s Review</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#111a2f;
+      --panel2:#0f1730;
+      --text:#e7eefc;
+      --muted:#a8b4cf;
+      --line:rgba(255,255,255,.12);
+      --line-strong:rgba(255,255,255,.22);
+      --good:#2bd576;
+      --bad:#ff5c7a;
+      --warn:#ffd166;
+      --accent:#7aa2ff;
+      --accent2:#8ef0c8;
+      --shadow:0 18px 55px rgba(0,0,0,.40);
+      --radius:18px;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+      background:
+        radial-gradient(circle at top left, rgba(122,162,255,.10), transparent 26%),
+        radial-gradient(circle at top right, rgba(142,240,200,.08), transparent 22%),
+        linear-gradient(180deg,#0b1220,#09101c);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    }
+
+    .wrap{
+      max-width:1180px;
+      margin:0 auto;
+      padding:18px 14px 40px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .eyebrow{
+      color:var(--accent2);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .brand h1{
+      margin:0;
+      font-size:1.28rem;
+      letter-spacing:-.02em;
+    }
+
+    .brand .sub{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .hud{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(110px,1fr));
+      gap:10px;
+      width:min(100%,740px);
+    }
+
+    .hud-card{
+      min-height:66px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      padding:10px 12px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .hud-label{
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:.7rem;
+      font-weight:900;
+      margin-bottom:4px;
+    }
+
+    .hud-value{
+      font-weight:900;
+      font-size:.97rem;
+      line-height:1.2;
+      word-break:break-word;
+    }
+
+    .screen{display:none}
+    .screen.active{display:block}
+
+    .panel{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .panel-head{
+      padding:20px 20px 12px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .panel-head h2{
+      margin:0 0 8px;
+      font-size:1.42rem;
+      letter-spacing:-.02em;
+    }
+
+    .panel-head p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .panel-body{padding:20px}
+
+    .start-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      padding:16px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:1rem;
+    }
+
+    .card ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .field{
+      margin-bottom:14px;
+    }
+
+    label{
+      display:block;
+      margin-bottom:6px;
+      font-weight:800;
+    }
+
+    input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:#0d1528;
+      color:var(--text);
+      outline:none;
+      font-size:1rem;
+    }
+
+    input:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(122,162,255,.18);
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    button, .linkbtn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      border-radius:12px;
+      min-height:44px;
+      padding:11px 16px;
+      font-weight:900;
+      font-size:.95rem;
+      transition:transform .12s ease, opacity .12s ease, background .12s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    button:hover, .linkbtn:hover{transform:translateY(-1px)}
+    button:active, .linkbtn:active{transform:translateY(0)}
+
+    .btn-primary{
+      background:linear-gradient(180deg,#7aa2ff,#628fff);
+      color:#08101e;
+      box-shadow:0 12px 24px rgba(122,162,255,.22);
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .btn-good{
+      background:linear-gradient(180deg,#2bd576,#25ba66);
+      color:#08140d;
+      box-shadow:0 12px 24px rgba(43,213,118,.2);
+    }
+
+    .btn-bad{
+      background:linear-gradient(180deg,#ff7993,#ff5c7a);
+      color:#210913;
+      box-shadow:0 12px 24px rgba(255,92,122,.2);
+    }
+
+    .meta-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:14px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:.86rem;
+      font-weight:800;
+    }
+
+    .progress{
+      width:100%;
+      height:12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      overflow:hidden;
+      margin-bottom:18px;
+    }
+
+    .progress-bar{
+      width:0%;
+      height:100%;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transition:width .22s ease;
+    }
+
+    .question-card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      padding:18px;
+    }
+
+    .q-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+
+    .q-num, .q-type{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 11px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:.82rem;
+      letter-spacing:.04em;
+    }
+
+    .q-num{
+      background:rgba(122,162,255,.14);
+      border:1px solid rgba(122,162,255,.28);
+      color:#dce6ff;
+    }
+
+    .q-type{
+      background:rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      color:var(--muted);
+      text-transform:uppercase;
+    }
+
+    .question-text{
+      font-size:1.06rem;
+      line-height:1.58;
+      font-weight:800;
+      margin-bottom:14px;
+    }
+
+    .small-inst{
+      margin:-4px 0 12px;
+      color:var(--warn);
+      font-size:.92rem;
+      font-weight:800;
+    }
+
+    .passage{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#0c1427;
+      padding:14px;
+      margin-bottom:14px;
+      line-height:1.65;
+      color:#d7e3fb;
+    }
+
+    .passage-title{
+      color:var(--accent2);
+      font-size:.82rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:8px;
+    }
+
+    .options{
+      display:grid;
+      gap:10px;
+    }
+
+    .option{
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      padding:12px 13px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      cursor:pointer;
+      transition:border-color .14s ease, background .14s ease;
+    }
+
+    .option:hover{
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.05);
+    }
+
+    .option input{
+      width:auto;
+      margin:3px 0 0;
+      box-shadow:none;
+      accent-color:#7aa2ff;
+    }
+
+    .option-letter{
+      min-width:26px;
+      height:26px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(122,162,255,.14);
+      color:#dce6ff;
+      font-weight:900;
+      font-size:.84rem;
+    }
+
+    .option-text{
+      flex:1;
+      line-height:1.5;
+    }
+
+    .feedback{
+      display:none;
+      margin-top:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      line-height:1.55;
+    }
+
+    .feedback.show{display:block}
+    .feedback.good{
+      border-color:rgba(43,213,118,.35);
+      background:rgba(43,213,118,.10);
+      color:#d7ffe4;
+    }
+    .feedback.bad{
+      border-color:rgba(255,92,122,.35);
+      background:rgba(255,92,122,.10);
+      color:#ffdbe3;
+    }
+
+    .part-block{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.02);
+      padding:14px;
+      margin-bottom:12px;
+    }
+
+    .part-label{
+      color:var(--warn);
+      font-size:.8rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:8px;
+    }
+
+    .dropdown-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      line-height:1.7;
+      font-size:1rem;
+      margin-bottom:14px;
+    }
+
+    select{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid var(--line);
+      background:#0d1528;
+      color:var(--text);
+      font-size:.98rem;
+      outline:none;
+    }
+
+    .drag-list, .dropzone-list{
+      display:grid;
+      gap:10px;
+      margin-bottom:14px;
+    }
+
+    .drag-item{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      padding:12px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      cursor:grab;
+      user-select:none;
+    }
+
+    .drag-item .handle{
+      color:var(--muted);
+      font-family:var(--mono);
+      font-size:.86rem;
+      letter-spacing:.04em;
+    }
+
+    .dropzone{
+      border:1px dashed var(--line-strong);
+      border-radius:14px;
+      padding:12px 14px;
+      min-height:52px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .dropzone strong{
+      display:block;
+      margin-bottom:6px;
+      color:#dce6ff;
+    }
+
+    .drop-slot{
+      min-height:24px;
+      color:var(--muted);
+    }
+
+    .ticket{
+      border:1px solid rgba(43,213,118,.35);
+      border-radius:18px;
+      background:rgba(43,213,118,.09);
+      padding:18px;
+      margin-top:16px;
+    }
+
+    .ticket h3{
+      margin:0 0 12px;
+      color:#d7ffe4;
+    }
+
+    .ticket-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .ticket-item{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background:rgba(0,0,0,.14);
+      padding:12px;
+    }
+
+    .ticket-label{
+      color:var(--muted);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .ticket-value{
+      font-size:1rem;
+      font-weight:900;
+      line-height:1.3;
+    }
+
+    .summary-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin:18px 0;
+    }
+
+    .summary-card{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      padding:14px;
+    }
+
+    .summary-card .label{
+      color:var(--muted);
+      font-size:.76rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .summary-card .value{
+      font-size:1.2rem;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .review-box{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
+      padding:16px;
+      margin-top:12px;
+    }
+
+    .review-box h3{
+      margin:0 0 10px;
+      font-size:1rem;
+    }
+
+    .review-box ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .hidden{display:none !important}
+
+    @media (max-width: 980px){
+      .hud{grid-template-columns:repeat(2,minmax(140px,1fr))}
+      .start-grid{grid-template-columns:1fr}
+      .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .ticket-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 640px){
+      .wrap{padding:12px 10px 28px}
+      .panel-head,.panel-body{padding:14px}
+      .summary-grid{grid-template-columns:1fr}
+      .hud{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="eyebrow">American Studies Big Block OST Review</div>
+        <h1>Wednesday Big Block — Imperialism to 1920s Review</h1>
+        <div class="sub">Mastery game review • 100% no-miss ticket required</div>
+      </div>
+
+      <div class="hud">
+        <div class="hud-card">
+          <div class="hud-label">Student</div>
+          <div class="hud-value" id="hudStudent">—</div>
+        </div>
+        <div class="hud-card">
+          <div class="hud-label">Progress</div>
+          <div class="hud-value" id="hudProgress">0 / 0</div>
+        </div>
+        <div class="hud-card">
+          <div class="hud-label">Accuracy</div>
+          <div class="hud-value" id="hudAccuracy">100%</div>
+        </div>
+        <div class="hud-card">
+          <div class="hud-label">Timer</div>
+          <div class="hud-value" id="hudTimer">00:00</div>
+        </div>
+        <div class="hud-card">
+          <div class="hud-label">Started</div>
+          <div class="hud-value" id="hudStarted">—</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="startScreen" class="screen active">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Wednesday Big Block Mastery Review</h2>
+          <p>
+            Review for imperialism, emergence as a world power, isolationism after World War I, Red Scare, 1920s culture, Harlem Renaissance, women’s suffrage, and Prohibition from CS 14–18. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+        <div class="panel-body">
+          <div class="start-grid">
+            <div class="card">
+              <h3>How this mastery game works</h3>
+              <ul>
+                <li>Mixed review types: MCQ, select multiple, dropdowns, Part A / Part B, passages, and drag-and-drop</li>
+                <li>Question order shuffles every run</li>
+                <li>Answer choices shuffle where appropriate</li>
+                <li>If you miss even one, the run is not mastery</li>
+                <li>Only a perfect run earns the full submit ticket</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <div class="field">
+                <label for="studentName">Student Name</label>
+                <input id="studentName" type="text" placeholder="Enter student name" />
+              </div>
+              <div class="field">
+                <label for="studentClass">Class / Period</label>
+                <input id="studentClass" type="text" placeholder="Enter class or period" />
+              </div>
+              <div class="actions">
+                <button id="startBtn" class="btn-primary">Start Mastery Review</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="panel">
+        <div class="panel-head">
+          <div class="meta-row">
+            <div class="pill" id="topicPill">Topic</div>
+            <div class="pill" id="typePill">Question Type</div>
+          </div>
+          <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+
+        <div class="panel-body">
+          <div class="question-card">
+            <div class="q-top">
+              <div class="q-num" id="qNumber">Question 1</div>
+              <div class="q-type" id="qTypeTag">MCQ</div>
+            </div>
+
+            <div id="passageWrap" class="hidden"></div>
+            <div id="questionWrap"></div>
+
+            <div id="feedbackBox" class="feedback"></div>
+
+            <div class="actions">
+              <button id="submitBtn" class="btn-primary hidden">Submit Answer</button>
+              <button id="nextBtn" class="btn-secondary hidden">Next Question</button>
+              <button id="restartRunBtn" class="btn-bad">Restart Run</button>
+              <a class="linkbtn btn-secondary" href="../index.html">Back to Hub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resultsScreen" class="screen">
+      <div class="panel">
+        <div class="panel-head">
+          <h2 id="resultsTitle">Run Complete</h2>
+          <p id="resultsLine">Results summary.</p>
+        </div>
+
+        <div class="panel-body">
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="label">Student</div>
+              <div class="value" id="resultStudent">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Score</div>
+              <div class="value" id="resultScore">0 / 0</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Accuracy</div>
+              <div class="value" id="resultAccuracy">0%</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Time</div>
+              <div class="value" id="resultTime">00:00</div>
+            </div>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-card">
+              <div class="label">Class / Period</div>
+              <div class="value" id="resultClass">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Started</div>
+              <div class="value" id="resultStarted">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Completed</div>
+              <div class="value" id="resultCompleted">—</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">Mastery Status</div>
+              <div class="value" id="resultMastery">Retry</div>
+            </div>
+          </div>
+
+          <div id="reviewBox" class="review-box">
+            <h3>Review Targets</h3>
+            <ul id="reviewList"></ul>
+          </div>
+
+          <div id="ticketBox" class="ticket hidden">
+            <h3>Full Submit Ticket — Perfect Run</h3>
+            <div class="ticket-grid">
+              <div class="ticket-item">
+                <div class="ticket-label">Student</div>
+                <div class="ticket-value" id="ticketStudent">—</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Class / Period</div>
+                <div class="ticket-value" id="ticketClass">—</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Game</div>
+                <div class="ticket-value">Wednesday Big Block — Imperialism to 1920s Review</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Accuracy</div>
+                <div class="ticket-value">100%</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Started</div>
+                <div class="ticket-value" id="ticketStarted">—</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Completed</div>
+                <div class="ticket-value" id="ticketCompleted">—</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Run Time</div>
+                <div class="ticket-value" id="ticketTime">00:00</div>
+              </div>
+              <div class="ticket-item">
+                <div class="ticket-label">Completion Code</div>
+                <div class="ticket-value" id="ticketCode">—</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="playAgainBtn" class="btn-primary">Play Again</button>
+            <a class="linkbtn btn-secondary" href="../index.html">Back to Hub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+    function shuffle(array){
+      const arr = array.slice();
+      for(let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function formatTime(seconds){
+      const m = Math.floor(seconds / 60).toString().padStart(2,"0");
+      const s = (seconds % 60).toString().padStart(2,"0");
+      return `${m}:${s}`;
+    }
+
+    function formatDateTime(d){
+      return new Intl.DateTimeFormat("en-US",{
+        year:"numeric",
+        month:"short",
+        day:"numeric",
+        hour:"numeric",
+        minute:"2-digit"
+      }).format(d);
+    }
+
+    function slugify(str){
+      return String(str).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+    }
+
+    const bank = [
+      {
+        topic:"Imperialism & World Power",
+        type:"mcq",
+        prompt:"Which development most directly helped the United States emerge as a world power in the early 1900s?",
+        options:[
+          "overseas expansion and victory in the Spanish-American War",
+          "return to the Articles of Confederation",
+          "withdrawal from world trade",
+          "the end of industrialization"
+        ],
+        correct:0,
+        explanation:"Overseas expansion, the Spanish-American War, and later involvement in World War I helped elevate the United States as a world power."
+      },
+      {
+        topic:"Imperialism & World Power",
+        type:"multi",
+        prompt:"Select all actions that reflected growing U.S. imperialism.",
+        instruction:"Select all that apply.",
+        options:[
+          "annexation of Hawaii",
+          "Spanish-American War",
+          "Big Stick Diplomacy",
+          "withdrawal from all overseas activity"
+        ],
+        correct:[0,1,2],
+        explanation:"These actions all reflected U.S. expansion and greater global involvement."
+      },
+      {
+        topic:"Imperialism & World Power",
+        type:"dropdown",
+        prompt:"Complete the sentence using the best terms.",
+        sentenceParts:[
+          "Following western settlement, the United States looked outward for ",
+          " and prestige, which helped encourage ",
+          " expansion."
+        ],
+        blanks:[
+          {
+            options:["markets","monasteries","colonies-only"],
+            correct:"markets"
+          },
+          {
+            options:["overseas","medieval","agricultural"],
+            correct:"overseas"
+          }
+        ],
+        explanation:"Competition for markets and prestige helped push the United States toward overseas expansion."
+      },
+      {
+        topic:"Imperialism & World Power",
+        type:"passage-mcq",
+        passageTitle:"Passage",
+        passage:"Some American leaders argued that a stronger navy, overseas bases, and control of key territories would improve trade and project American influence abroad.",
+        prompt:"What broader policy direction is described in the passage?",
+        options:[
+          "imperial expansion",
+          "strict neutrality",
+          "agrarian isolation",
+          "civil service reform"
+        ],
+        correct:0,
+        explanation:"The passage reflects arguments in favor of imperialism and global influence."
+      },
+      {
+        topic:"Imperialism & World Power",
+        type:"partAB",
+        partA:{
+          prompt:"Part A: Why did World War I help the United States emerge as a world power?",
+          options:[
+            "European nations were focused on rebuilding after the war",
+            "the United States lost all international influence",
+            "the war ended industrial production",
+            "it caused the U.S. to abandon global trade"
+          ],
+          correct:0
+        },
+        partB:{
+          prompt:"Part B: Which evidence best supports the answer to Part A?",
+          options:[
+            "The U.S. mobilized a large army and navy to help the Allies win.",
+            "The U.S. rejected all naval expansion during the war.",
+            "Congress eliminated military spending in 1917.",
+            "The war closed all American factories."
+          ],
+          correct:0
+        },
+        explanation:"U.S. military mobilization and Europe’s postwar rebuilding strengthened American global standing."
+      },
+      {
+        topic:"Post-WWI Isolationism",
+        type:"mcq",
+        prompt:"Why did the United States move toward isolationism after World War I?",
+        options:[
+          "many Americans wanted to avoid future foreign entanglements",
+          "the U.S. economy collapsed immediately after the war",
+          "Congress banned all treaties forever",
+          "Europe became part of the United States"
+        ],
+        correct:0,
+        explanation:"Debate over the Treaty of Versailles and fear of foreign entanglements pushed the nation toward isolationism."
+      },
+      {
+        topic:"Post-WWI Isolationism",
+        type:"passage-mcq",
+        passageTitle:"Passage",
+        passage:"Although President Wilson supported international cooperation after the war, many senators feared that joining a global organization would drag the United States into future conflicts without congressional approval.",
+        prompt:"Which organization is the passage describing?",
+        options:[
+          "League of Nations",
+          "Federal Reserve",
+          "NAACP",
+          "WPA"
+        ],
+        correct:0,
+        explanation:"The Senate debate centered on whether the U.S. should join the League of Nations."
+      },
+      {
+        topic:"Post-WWI Isolationism",
+        type:"multi",
+        prompt:"Select all efforts the United States supported as part of trying to maintain peace after World War I.",
+        instruction:"Select all that apply.",
+        options:[
+          "arms limitation treaties",
+          "Kellogg-Briand Pact",
+          "debate over the Treaty of Versailles",
+          "annexation of all European territory"
+        ],
+        correct:[0,1,2],
+        explanation:"These were all connected to postwar peace efforts and debates about international involvement."
+      },
+      {
+        topic:"Post-WWI Isolationism",
+        type:"drag-sequence",
+        prompt:"Put these developments in a logical postwar sequence.",
+        items:[
+          "World War I ends",
+          "debate over Treaty of Versailles",
+          "U.S. rejects League of Nations",
+          "isolationist attitudes deepen"
+        ],
+        correctOrder:[
+          "World War I ends",
+          "debate over Treaty of Versailles",
+          "U.S. rejects League of Nations",
+          "isolationist attitudes deepen"
+        ],
+        explanation:"This sequence shows how the postwar peace debate helped move the U.S. toward isolationism."
+      },
+      {
+        topic:"Post-WWI Isolationism",
+        type:"dropdown",
+        prompt:"Complete the sentence using the correct term.",
+        sentenceParts:[
+          "In 1928, the United States signed the ",
+          " in an effort to outlaw war as an instrument of national policy."
+        ],
+        blanks:[
+          {
+            options:["Kellogg-Briand Pact","Clayton Antitrust Act","Dawes Plan"],
+            correct:"Kellogg-Briand Pact"
+          }
+        ],
+        explanation:"The Kellogg-Briand Pact was an effort to renounce war as a policy tool."
+      },
+      {
+        topic:"Red Scare & Nativism",
+        type:"mcq",
+        prompt:"The Red Scare of 1919–1920 was largely caused by fears of",
+        options:[
+          "communist revolution and radical unrest",
+          "western settlement",
+          "reconstruction governments",
+          "civil service exams"
+        ],
+        correct:0,
+        explanation:"The Red Scare grew from fears of communism, revolution, labor unrest, and political violence."
+      },
+      {
+        topic:"Red Scare & Nativism",
+        type:"multi",
+        prompt:"Select all factors that contributed to post-World War I social unrest.",
+        instruction:"Select all that apply.",
+        options:[
+          "racial intolerance",
+          "anti-immigrant attitudes",
+          "fear of communism",
+          "universal social harmony"
+        ],
+        correct:[0,1,2],
+        explanation:"Racial violence, nativism, and fear of communism all contributed to unrest after World War I."
+      },
+      {
+        topic:"Red Scare & Nativism",
+        type:"passage-mcq",
+        passageTitle:"Passage",
+        passage:"A newspaper warned that immigrants, labor radicals, and supporters of communism were threatening American society. Federal officials responded by arresting and deporting many suspected radicals.",
+        prompt:"Which era is best described by the passage?",
+        options:[
+          "the First Red Scare",
+          "the Progressive Era before industrialization",
+          "the Reconstruction era",
+          "the Civil Rights era"
+        ],
+        correct:0,
+        explanation:"The arrests and deportations described are associated with the Red Scare after World War I."
+      },
+      {
+        topic:"Red Scare & Nativism",
+        type:"partAB",
+        partA:{
+          prompt:"Part A: How did anti-immigrant attitudes affect U.S. policy after World War I?",
+          options:[
+            "they encouraged immigration quotas",
+            "they opened all borders to migration",
+            "they ended all concerns about race and religion",
+            "they abolished citizenship laws"
+          ],
+          correct:0
+        },
+        partB:{
+          prompt:"Part B: Which evidence best supports the answer to Part A?",
+          options:[
+            "Nativism helped produce laws limiting immigration from certain regions.",
+            "Congress required immigration from Europe to increase every year.",
+            "The 19th Amendment expanded immigration rights.",
+            "The Supreme Court outlawed all quotas in 1920."
+          ],
+          correct:0
+        },
+        explanation:"Nativism was reflected in quota laws and hostility toward immigrants, Catholics, and Jews."
+      },
+      {
+        topic:"1920s Technology & Cultural Change",
+        type:"mcq",
+        prompt:"Which innovation most directly helped spread popular culture quickly across the nation in the 1920s?",
+        options:[
+          "commercial radio broadcasts",
+          "frontier forts",
+          "sharecropping contracts",
+          "temperance lectures only"
+        ],
+        correct:0,
+        explanation:"Radio spread entertainment, news, and advertising nationwide."
+      },
+      {
+        topic:"1920s Technology & Cultural Change",
+        type:"multi",
+        prompt:"Select all technological innovations associated with 1920s change.",
+        instruction:"Select all that apply.",
+        options:[
+          "automobile",
+          "talking motion pictures",
+          "commercial radio",
+          "telegraph replacing all newer media"
+        ],
+        correct:[0,1,2],
+        explanation:"Automobiles, movies with sound, and radio all shaped 1920s culture."
+      },
+      {
+        topic:"1920s Technology & Cultural Change",
+        type:"dropdown",
+        prompt:"Complete the sentence using the best terms.",
+        sentenceParts:[
+          "An improved standard of living and new technologies in communication and transportation helped create major ",
+          " and cultural ",
+          " in the 1920s."
+        ],
+        blanks:[
+          {
+            options:["social changes","feudal codes","colonial boundaries"],
+            correct:"social changes"
+          },
+          {
+            options:["tensions","silences","vacuums"],
+            correct:"tensions"
+          }
+        ],
+        explanation:"The 1920s brought both social changes and cultural tensions."
+      },
+      {
+        topic:"1920s Technology & Cultural Change",
+        type:"passage-mcq",
+        passageTitle:"Passage",
+        passage:"Families could listen to the same broadcast in multiple states on the same evening, helping create shared entertainment and faster access to news and advertising.",
+        prompt:"Which technology made this possible?",
+        options:[
+          "radio",
+          "canal boats",
+          "muckraking magazines only",
+          "battlefield telegraphs from the Civil War"
+        ],
+        correct:0,
+        explanation:"Radio created shared national experiences in music, entertainment, and news."
+      },
+      {
+        topic:"Harlem Renaissance & Social Change",
+        type:"mcq",
+        prompt:"The Harlem Renaissance is best described as",
+        options:[
+          "a celebration of African American culture, art, literature, and music",
+          "a federal banking reform program",
+          "a western farming movement",
+          "a labor strike in Chicago"
+        ],
+        correct:0,
+        explanation:"The Harlem Renaissance was a major flowering of African American culture."
+      },
+      {
+        topic:"Harlem Renaissance & Social Change",
+        type:"multi",
+        prompt:"Select all effects of the Harlem Renaissance.",
+        instruction:"Select all that apply.",
+        options:[
+          "greater pride in African American culture",
+          "increased awareness of injustice and intolerance",
+          "growth of jazz as an American genre",
+          "the immediate end of all segregation"
+        ],
+        correct:[0,1,2],
+        explanation:"The Harlem Renaissance boosted cultural pride, awareness, and the influence of jazz."
+      },
+      {
+        topic:"Harlem Renaissance & Social Change",
+        type:"partAB",
+        partA:{
+          prompt:"Part A: Why did the Great Migration help fuel the Harlem Renaissance?",
+          options:[
+            "African Americans moved into northern cities that became cultural centers",
+            "it ended all migration into cities",
+            "it forced artists onto western reservations",
+            "it eliminated industrial jobs"
+          ],
+          correct:0
+        },
+        partB:{
+          prompt:"Part B: Which evidence best supports the answer to Part A?",
+          options:[
+            "Northern urban neighborhoods became centers of African American art, music, and literature.",
+            "The South invested equally in integrated arts institutions everywhere.",
+            "The League of Nations funded jazz performances in Harlem.",
+            "The federal government required all writers to move to rural farms."
+          ],
+          correct:0
+        },
+        explanation:"The Great Migration helped create urban communities where African American cultural life flourished."
+      },
+      {
+        topic:"Women’s Suffrage & Prohibition",
+        type:"mcq",
+        prompt:"Which amendment granted women the right to vote?",
+        options:[
+          "19th Amendment",
+          "18th Amendment",
+          "16th Amendment",
+          "21st Amendment"
+        ],
+        correct:0,
+        explanation:"The 19th Amendment secured women’s suffrage."
+      },
+      {
+        topic:"Women’s Suffrage & Prohibition",
+        type:"mcq",
+        prompt:"Which amendment created Prohibition?",
+        options:[
+          "18th Amendment",
+          "19th Amendment",
+          "21st Amendment",
+          "17th Amendment"
+        ],
+        correct:0,
+        explanation:"The 18th Amendment established Prohibition."
+      },
+      {
+        topic:"Women’s Suffrage & Prohibition",
+        type:"mcq",
+        prompt:"Which amendment repealed Prohibition?",
+        options:[
+          "21st Amendment",
+          "20th Amendment",
+          "15th Amendment",
+          "17th Amendment"
+        ],
+        correct:0,
+        explanation:"The 21st Amendment repealed the 18th Amendment."
+      },
+      {
+        topic:"Women’s Suffrage & Prohibition",
+        type:"multi",
+        prompt:"Select all outcomes associated with Prohibition.",
+        instruction:"Select all that apply.",
+        options:[
+          "speakeasies",
+          "growth of organized crime",
+          "difficult and expensive enforcement",
+          "universal popular support"
+        ],
+        correct:[0,1,2],
+        explanation:"Prohibition helped fuel illegal drinking, organized crime, and enforcement problems."
+      },
+      {
+        topic:"Women’s Suffrage & Prohibition",
+        type:"drag-match",
+        prompt:"Match each amendment or movement to its result.",
+        pairs:[
+          {left:"19th Amendment", right:"granted women the right to vote"},
+          {left:"18th Amendment", right:"created Prohibition"},
+          {left:"21st Amendment", right:"repealed Prohibition"}
+        ],
+        explanation:"These amendments are central to 1920s social and political change."
+      },
+      {
+        topic:"Women’s Suffrage & Prohibition",
+        type:"passage-mcq",
+        passageTitle:"Passage",
+        passage:"A city nightclub secretly sold alcohol despite federal law. Criminal groups profited by smuggling liquor and bribing officials to ignore violations.",
+        prompt:"Which broader development is best illustrated by the passage?",
+        options:[
+          "the unintended effects of Prohibition",
+          "successful elimination of all alcohol use",
+          "the growth of isolationism after World War I",
+          "the decline of urban culture"
+        ],
+        correct:0,
+        explanation:"Prohibition often led to illegal drinking, corruption, and organized crime rather than full compliance."
+      }
+    ];
+
+    const startScreen = document.getElementById("startScreen");
+    const gameScreen = document.getElementById("gameScreen");
+    const resultsScreen = document.getElementById("resultsScreen");
+
+    const studentNameInput = document.getElementById("studentName");
+    const studentClassInput = document.getElementById("studentClass");
+    const startBtn = document.getElementById("startBtn");
+
+    const hudStudent = document.getElementById("hudStudent");
+    const hudProgress = document.getElementById("hudProgress");
+    const hudAccuracy = document.getElementById("hudAccuracy");
+    const hudTimer = document.getElementById("hudTimer");
+    const hudStarted = document.getElementById("hudStarted");
+
+    const topicPill = document.getElementById("topicPill");
+    const typePill = document.getElementById("typePill");
+    const progressBar = document.getElementById("progressBar");
+    const qNumber = document.getElementById("qNumber");
+    const qTypeTag = document.getElementById("qTypeTag");
+    const passageWrap = document.getElementById("passageWrap");
+    const questionWrap = document.getElementById("questionWrap");
+    const feedbackBox = document.getElementById("feedbackBox");
+
+    const submitBtn = document.getElementById("submitBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const restartRunBtn = document.getElementById("restartRunBtn");
+
+    const resultsTitle = document.getElementById("resultsTitle");
+    const resultsLine = document.getElementById("resultsLine");
+    const resultStudent = document.getElementById("resultStudent");
+    const resultScore = document.getElementById("resultScore");
+    const resultAccuracy = document.getElementById("resultAccuracy");
+    const resultTime = document.getElementById("resultTime");
+    const resultClass = document.getElementById("resultClass");
+    const resultStarted = document.getElementById("resultStarted");
+    const resultCompleted = document.getElementById("resultCompleted");
+    const resultMastery = document.getElementById("resultMastery");
+    const reviewList = document.getElementById("reviewList");
+    const ticketBox = document.getElementById("ticketBox");
+    const ticketStudent = document.getElementById("ticketStudent");
+    const ticketClass = document.getElementById("ticketClass");
+    const ticketStarted = document.getElementById("ticketStarted");
+    const ticketCompleted = document.getElementById("ticketCompleted");
+    const ticketTime = document.getElementById("ticketTime");
+    const ticketCode = document.getElementById("ticketCode");
+    const playAgainBtn = document.getElementById("playAgainBtn");
+
+    let questions = [];
+    let currentIndex = 0;
+    let correctCount = 0;
+    let answeredCount = 0;
+    let missCount = 0;
+    let missesByTopic = {};
+    let submittedCurrent = false;
+    let timerSeconds = 0;
+    let timerInterval = null;
+    let startedAt = null;
+    let completedAt = null;
+    let studentName = "";
+    let studentClass = "";
+
+    function cloneDeep(obj){
+      return JSON.parse(JSON.stringify(obj));
+    }
+
+    function shuffleChoicesForMcq(q){
+      const correctText = q.options[q.correct];
+      q.options = shuffle(q.options);
+      q.correct = q.options.indexOf(correctText);
+      return q;
+    }
+
+    function shuffleChoicesForMulti(q){
+      const correctTexts = q.correct.map(i => q.options[i]);
+      q.options = shuffle(q.options);
+      q.correct = correctTexts.map(text => q.options.indexOf(text)).sort((a,b)=>a-b);
+      return q;
+    }
+
+    function shuffleChoicesForPartAB(q){
+      const aCorrectText = q.partA.options[q.partA.correct];
+      q.partA.options = shuffle(q.partA.options);
+      q.partA.correct = q.partA.options.indexOf(aCorrectText);
+
+      const bCorrectText = q.partB.options[q.partB.correct];
+      q.partB.options = shuffle(q.partB.options);
+      q.partB.correct = q.partB.options.indexOf(bCorrectText);
+      return q;
+    }
+
+    function buildRun(){
+      const built = bank.map(q => {
+        const c = cloneDeep(q);
+        if(c.type === "mcq" || c.type === "passage-mcq") return shuffleChoicesForMcq(c);
+        if(c.type === "multi") return shuffleChoicesForMulti(c);
+        if(c.type === "partAB") return shuffleChoicesForPartAB(c);
+        if(c.type === "dropdown"){
+          c.blanks = c.blanks.map(b => ({...b, options: shuffle(b.options)}));
+          return c;
+        }
+        if(c.type === "drag-sequence"){
+          c.items = shuffle(c.items);
+          return c;
+        }
+        if(c.type === "drag-match"){
+          c.leftItems = shuffle(c.pairs.map(p => p.left));
+          c.rightItems = shuffle(c.pairs.map(p => p.right));
+          return c;
+        }
+        return c;
+      });
+      return shuffle(built);
+    }
+
+    function readableType(type){
+      const map = {
+        mcq:"Multiple Choice",
+        multi:"Select Multiple",
+        dropdown:"Dropdown",
+        partAB:"Part A / Part B",
+        "passage-mcq":"Passage-Based",
+        "drag-sequence":"Drag Sequence",
+        "drag-match":"Drag Match"
+      };
+      return map[type] || type;
+    }
+
+    function updateHud(){
+      hudProgress.textContent = `${answeredCount} / ${questions.length}`;
+      const acc = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 100;
+      hudAccuracy.textContent = `${acc}%`;
+      hudTimer.textContent = formatTime(timerSeconds);
+      progressBar.style.width = questions.length ? `${(answeredCount / questions.length) * 100}%` : "0%";
+    }
+
+    function startRun(){
+      studentName = studentNameInput.value.trim() || "Student";
+      studentClass = studentClassInput.value.trim() || "—";
+      questions = buildRun();
+      currentIndex = 0;
+      correctCount = 0;
+      answeredCount = 0;
+      missCount = 0;
+      missesByTopic = {};
+      submittedCurrent = false;
+      startedAt = new Date();
+      timerSeconds = 0;
+
+      hudStudent.textContent = studentName;
+      hudStarted.textContent = formatDateTime(startedAt);
+      updateHud();
+
+      if(timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timerSeconds++;
+        hudTimer.textContent = formatTime(timerSeconds);
+      }, 1000);
+
+      startScreen.classList.remove("active");
+      resultsScreen.classList.remove("active");
+      gameScreen.classList.add("active");
+
+      renderQuestion();
+    }
+
+    function setFeedback(message, type){
+      feedbackBox.className = `feedback show ${type}`;
+      feedbackBox.innerHTML = message;
+    }
+
+    function clearFeedback(){
+      feedbackBox.className = "feedback";
+      feedbackBox.textContent = "";
+    }
+
+    function renderPassage(q){
+      passageWrap.innerHTML = "";
+      if(q.passage){
+        passageWrap.classList.remove("hidden");
+        passageWrap.innerHTML = `
+          <div class="passage">
+            <div class="passage-title">${q.passageTitle || "Passage"}</div>
+            <div>${q.passage}</div>
+          </div>
+        `;
+      } else {
+        passageWrap.classList.add("hidden");
+      }
+    }
+
+    function renderOptions(options, mode, name){
+      return `<div class="options">` + options.map((opt,i)=>`
+        <label class="option">
+          <input type="${mode === "single" ? "radio" : "checkbox"}" name="${name}" value="${i}">
+          <span class="option-letter">${LETTERS[i]}</span>
+          <span class="option-text">${opt}</span>
+        </label>
+      `).join("") + `</div>`;
+    }
+
+    function renderDropdownQuestion(q){
+      let html = `<div class="question-text">${q.prompt}</div>`;
+      html += `<div class="dropdown-row">`;
+      q.sentenceParts.forEach((part, idx) => {
+        html += `<span>${part}</span>`;
+        if(idx < q.blanks.length){
+          html += `<select data-blank-index="${idx}">` +
+            `<option value="">Select...</option>` +
+            q.blanks[idx].options.map(opt => `<option value="${opt}">${opt}</option>`).join("") +
+            `</select>`;
+        }
+      });
+      html += `</div>`;
+      return html;
+    }
+
+    function renderPartAB(q){
+      return `
+        <div class="part-block">
+          <div class="part-label">Part A</div>
+          <div class="question-text" style="font-size:1rem;margin-bottom:10px;">${q.partA.prompt}</div>
+          ${renderOptions(q.partA.options, "single", "partA")}
+        </div>
+        <div class="part-block">
+          <div class="part-label">Part B</div>
+          <div class="question-text" style="font-size:1rem;margin-bottom:10px;">${q.partB.prompt}</div>
+          ${renderOptions(q.partB.options, "single", "partB")}
+        </div>
+      `;
+    }
+
+    function renderDragSequence(q){
+      const itemsHtml = q.items.map(item => `
+        <div class="drag-item" draggable="true" data-value="${item}">
+          <span>${item}</span>
+          <span class="handle">drag</span>
+        </div>
+      `).join("");
+
+      return `
+        <div class="question-text">${q.prompt}</div>
+        <div class="small-inst">Drag the items into the correct order. Then click Submit Answer.</div>
+        <div id="sequenceList" class="drag-list">${itemsHtml}</div>
+      `;
+    }
+
+    function renderDragMatch(q){
+      const leftHtml = q.leftItems.map(item => `
+        <div class="drag-item" draggable="true" data-value="${item}">
+          <span>${item}</span>
+          <span class="handle">drag</span>
+        </div>
+      `).join("");
+
+      const dropHtml = q.rightItems.map((right, idx) => `
+        <div class="dropzone" data-right="${right}">
+          <strong>${right}</strong>
+          <div class="drop-slot" data-slot="${idx}">Drop match here</div>
+        </div>
+      `).join("");
+
+      return `
+        <div class="question-text">${q.prompt}</div>
+        <div class="small-inst">Drag each left-side item to the correct description. Then click Submit Answer.</div>
+        <div class="drag-list" id="matchLeft">${leftHtml}</div>
+        <div class="dropzone-list" id="matchDrops">${dropHtml}</div>
+      `;
+    }
+
+    function renderQuestion(){
+      submittedCurrent = false;
+      clearFeedback();
+      submitBtn.classList.add("hidden");
+      nextBtn.classList.add("hidden");
+
+      const q = questions[currentIndex];
+      qNumber.textContent = `Question ${currentIndex + 1} of ${questions.length}`;
+      qTypeTag.textContent = readableType(q.type);
+      topicPill.textContent = q.topic;
+      typePill.textContent = readableType(q.type);
+
+      renderPassage(q);
+
+      let html = "";
+
+      if(q.type === "mcq" || q.type === "passage-mcq"){
+        html = `
+          <div class="question-text">${q.prompt}</div>
+          ${renderOptions(q.options, "single", "qOption")}
+        `;
+      }
+
+      if(q.type === "multi"){
+        html = `
+          <div class="question-text">${q.prompt}</div>
+          <div class="small-inst">${q.instruction || "Select all that apply."}</div>
+          ${renderOptions(q.options, "multi", "qOption")}
+        `;
+      }
+
+      if(q.type === "dropdown"){
+        html = renderDropdownQuestion(q);
+      }
+
+      if(q.type === "partAB"){
+        html = renderPartAB(q);
+      }
+
+      if(q.type === "drag-sequence"){
+        html = renderDragSequence(q);
+      }
+
+      if(q.type === "drag-match"){
+        html = renderDragMatch(q);
+      }
+
+      questionWrap.innerHTML = html;
+      wireQuestionBehavior(q);
+      updateHud();
+    }
+
+    function wireQuestionBehavior(q){
+      if(q.type === "mcq" || q.type === "passage-mcq"){
+        document.querySelectorAll('input[name="qOption"]').forEach(el => {
+          el.addEventListener("change", () => autoSubmit());
+        });
+      }
+
+      if(q.type === "multi" || q.type === "dropdown" || q.type === "partAB" || q.type === "drag-sequence" || q.type === "drag-match"){
+        submitBtn.classList.remove("hidden");
+      }
+
+      if(q.type === "drag-sequence"){
+        enableSequenceDnD();
+      }
+
+      if(q.type === "drag-match"){
+        enableMatchDnD();
+      }
+    }
+
+    function getSelectedSingle(name){
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      return checked ? Number(checked.value) : null;
+    }
+
+    function getSelectedMulti(name){
+      return [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+        .map(el => Number(el.value))
+        .sort((a,b)=>a-b);
+    }
+
+    function arraysEqual(a,b){
+      return a.length === b.length && a.every((v,i)=>v===b[i]);
+    }
+
+    function registerMiss(topic){
+      missCount++;
+      missesByTopic[topic] = (missesByTopic[topic] || 0) + 1;
+    }
+
+    function submitCurrent(auto = false){
+      if(submittedCurrent) return;
+
+      const q = questions[currentIndex];
+      let isCorrect = false;
+      let message = "";
+
+      if(q.type === "mcq" || q.type === "passage-mcq"){
+        const selected = getSelectedSingle("qOption");
+        if(selected === null){
+          if(!auto) setFeedback("Choose one answer before submitting.", "bad");
+          return;
+        }
+        isCorrect = selected === q.correct;
+        const correctText = q.options[q.correct];
+        message = isCorrect
+          ? `Correct. ${q.explanation}`
+          : `Incorrect. The correct answer is <strong>${correctText}</strong>. ${q.explanation}`;
+      }
+
+      if(q.type === "multi"){
+        const selected = getSelectedMulti("qOption");
+        if(selected.length === 0){
+          setFeedback("Select the required answer(s) before submitting.", "bad");
+          return;
+        }
+        isCorrect = arraysEqual(selected, q.correct);
+        const correctText = q.correct.map(i => q.options[i]).join("; ");
+        message = isCorrect
+          ? `Correct. ${q.explanation}`
+          : `Incorrect. The correct answer(s): <strong>${correctText}</strong>. ${q.explanation}`;
+      }
+
+      if(q.type === "dropdown"){
+        const selecteds = [...questionWrap.querySelectorAll("select")].map(s => s.value);
+        if(selecteds.some(v => !v)){
+          setFeedback("Complete all dropdown blanks before submitting.", "bad");
+          return;
+        }
+        const corrects = q.blanks.map(b => b.correct);
+        isCorrect = arraysEqual(selecteds, corrects);
+        message = isCorrect
+          ? `Correct. ${q.explanation}`
+          : `Incorrect. Correct terms: <strong>${corrects.join(" / ")}</strong>. ${q.explanation}`;
+      }
+
+      if(q.type === "partAB"){
+        const aSel = getSelectedSingle("partA");
+        const bSel = getSelectedSingle("partB");
+        if(aSel === null || bSel === null){
+          setFeedback("Answer both Part A and Part B before submitting.", "bad");
+          return;
+        }
+        isCorrect = aSel === q.partA.correct && bSel === q.partB.correct;
+        const correctA = q.partA.options[q.partA.correct];
+        const correctB = q.partB.options[q.partB.correct];
+        message = isCorrect
+          ? `Correct. ${q.explanation}`
+          : `Incorrect. <strong>Part A:</strong> ${correctA}<br><strong>Part B:</strong> ${correctB}<br>${q.explanation}`;
+      }
+
+      if(q.type === "drag-sequence"){
+        const currentOrder = [...document.querySelectorAll("#sequenceList .drag-item")].map(el => el.dataset.value);
+        isCorrect = arraysEqual(currentOrder, q.correctOrder);
+        message = isCorrect
+          ? `Correct. ${q.explanation}`
+          : `Incorrect. Correct order: <strong>${q.correctOrder.join(" → ")}</strong>. ${q.explanation}`;
+      }
+
+      if(q.type === "drag-match"){
+        const zones = [...document.querySelectorAll(".dropzone")];
+        const chosenPairs = zones.map(z => {
+          const left = z.querySelector(".drag-item")?.dataset.value || "";
+          const right = z.dataset.right;
+          return {left, right};
+        });
+        if(chosenPairs.some(p => !p.left)){
+          setFeedback("Place a match in every drop zone before submitting.", "bad");
+          return;
+        }
+        isCorrect = chosenPairs.every(pair => q.pairs.some(p => p.left === pair.left && p.right === pair.right));
+        const correctText = q.pairs.map(p => `${p.left} → ${p.right}`).join("<br>");
+        message = isCorrect
+          ? `Correct. ${q.explanation}`
+          : `Incorrect. Correct matches:<br><strong>${correctText}</strong><br>${q.explanation}`;
+      }
+
+      submittedCurrent = true;
+      answeredCount++;
+
+      if(isCorrect){
+        correctCount++;
+        setFeedback(message, "good");
+      } else {
+        registerMiss(q.topic);
+        setFeedback(message, "bad");
+      }
+
+      if(auto && isCorrect){
+        updateHud();
+        setTimeout(() => {
+          goNextOrFinish();
+        }, 700);
+        return;
+      }
+
+      nextBtn.classList.remove("hidden");
+      submitBtn.classList.add("hidden");
+      updateHud();
+    }
+
+    function autoSubmit(){
+      submitCurrent(true);
+    }
+
+    function goNextOrFinish(){
+      if(currentIndex === questions.length - 1){
+        finishRun();
+      } else {
+        currentIndex++;
+        renderQuestion();
+      }
+    }
+
+    function finishRun(){
+      completedAt = new Date();
+      if(timerInterval) clearInterval(timerInterval);
+
+      gameScreen.classList.remove("active");
+      resultsScreen.classList.add("active");
+
+      const accuracy = answeredCount ? Math.round((correctCount / answeredCount) * 100) : 0;
+      const perfect = missCount === 0 && correctCount === questions.length;
+
+      resultsTitle.textContent = perfect ? "Mastery Achieved" : "Run Complete — Mastery Not Yet Reached";
+      resultsLine.textContent = perfect
+        ? `${studentName} completed a perfect mastery run on the Wednesday Big Block review.`
+        : `${studentName} completed the run, but mastery requires a 100% no-miss score.`;
+
+      resultStudent.textContent = studentName;
+      resultScore.textContent = `${correctCount} / ${questions.length}`;
+      resultAccuracy.textContent = `${accuracy}%`;
+      resultTime.textContent = formatTime(timerSeconds);
+      resultClass.textContent = studentClass;
+      resultStarted.textContent = formatDateTime(startedAt);
+      resultCompleted.textContent = formatDateTime(completedAt);
+      resultMastery.textContent = perfect ? "PASS" : "RETRY";
+
+      reviewList.innerHTML = "";
+      const entries = Object.entries(missesByTopic).sort((a,b)=>b[1]-a[1]);
+
+      if(entries.length === 0){
+        reviewList.innerHTML = `<li>No review targets — perfect run across all Wednesday Big Block content.</li>`;
+      } else {
+        entries.forEach(([topic,count]) => {
+          const li = document.createElement("li");
+          li.textContent = `${topic} — ${count} miss${count === 1 ? "" : "es"}`;
+          reviewList.appendChild(li);
+        });
+      }
+
+      if(perfect){
+        ticketBox.classList.remove("hidden");
+        ticketStudent.textContent = studentName;
+        ticketClass.textContent = studentClass;
+        ticketStarted.textContent = formatDateTime(startedAt);
+        ticketCompleted.textContent = formatDateTime(completedAt);
+        ticketTime.textContent = formatTime(timerSeconds);
+        ticketCode.textContent = buildTicketCode();
+      } else {
+        ticketBox.classList.add("hidden");
+      }
+    }
+
+    function buildTicketCode(){
+      const datePart = new Intl.DateTimeFormat("en-US",{month:"2-digit", day:"2-digit", year:"2-digit"}).format(completedAt).replaceAll("/","");
+      const namePart = slugify(studentName).slice(0,8).toUpperCase() || "STUDENT";
+      return `BB-WED-${namePart}-${datePart}-${timerSeconds}`;
+    }
+
+    function resetToStart(){
+      if(timerInterval) clearInterval(timerInterval);
+      hudStudent.textContent = "—";
+      hudProgress.textContent = "0 / 0";
+      hudAccuracy.textContent = "100%";
+      hudTimer.textContent = "00:00";
+      hudStarted.textContent = "—";
+      progressBar.style.width = "0%";
+
+      startScreen.classList.add("active");
+      gameScreen.classList.remove("active");
+      resultsScreen.classList.remove("active");
+    }
+
+    function enableSequenceDnD(){
+      const list = document.getElementById("sequenceList");
+      if(!list) return;
+
+      let dragging = null;
+
+      list.querySelectorAll(".drag-item").forEach(item => {
+        item.addEventListener("dragstart", () => {
+          dragging = item;
+          item.style.opacity = ".5";
+        });
+        item.addEventListener("dragend", () => {
+          item.style.opacity = "1";
+          dragging = null;
+        });
+        item.addEventListener("dragover", e => {
+          e.preventDefault();
+        });
+        item.addEventListener("drop", e => {
+          e.preventDefault();
+          if(!dragging || dragging === item) return;
+          const items = [...list.children];
+          const draggingIndex = items.indexOf(dragging);
+          const targetIndex = items.indexOf(item);
+          if(draggingIndex < targetIndex){
+            list.insertBefore(dragging, item.nextSibling);
+          } else {
+            list.insertBefore(dragging, item);
+          }
+        });
+      });
+    }
+
+    function enableMatchDnD(){
+      const draggables = document.querySelectorAll("#matchLeft .drag-item, .dropzone .drag-item");
+      let dragged = null;
+
+      draggables.forEach(item => {
+        item.addEventListener("dragstart", () => {
+          dragged = item;
+          item.style.opacity = ".5";
+        });
+        item.addEventListener("dragend", () => {
+          item.style.opacity = "1";
+          dragged = null;
+        });
+      });
+
+      document.querySelectorAll(".dropzone, #matchLeft").forEach(zone => {
+        zone.addEventListener("dragover", e => e.preventDefault());
+        zone.addEventListener("drop", e => {
+          e.preventDefault();
+          if(!dragged) return;
+
+          if(zone.id === "matchLeft"){
+            zone.appendChild(dragged);
+            return;
+          }
+
+          const existing = zone.querySelector(".drag-item");
+          if(existing){
+            document.getElementById("matchLeft").appendChild(existing);
+          }
+          zone.appendChild(dragged);
+        });
+      });
+    }
+
+    startBtn.addEventListener("click", startRun);
+    submitBtn.addEventListener("click", () => submitCurrent(false));
+    nextBtn.addEventListener("click", goNextOrFinish);
+    restartRunBtn.addEventListener("click", resetToStart);
+    playAgainBtn.addEventListener("click", resetToStart);
+
+    studentNameInput.addEventListener("keydown", e => {
+      if(e.key === "Enter") startBtn.click();
+    });
+    studentClassInput.addEventListener("keydown", e => {
+      if(e.key === "Enter") startBtn.click();
+    });
+  </script>
+</body>
+</html>
