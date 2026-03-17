@@ -8,619 +8,1013 @@
 <link rel="stylesheet" href="../styles.css">
 
 <style>
+  :root{
+    --bg:#0b1220;
+    --panel:#111a2f;
+    --panel2:#0f1730;
+    --text:#e7eefc;
+    --muted:#a8b4cf;
+    --line:rgba(255,255,255,.12);
+    --good:#2bd576;
+    --bad:#ff5c7a;
+    --warn:#ffd166;
+    --accent:#7aa2ff;
+    --shadow:0 18px 55px rgba(0,0,0,.40);
+    --radius:18px;
+  }
 
-.game-wrap{max-width:920px;margin:auto;padding:28px}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(122,162,255,.16), transparent 45%),
+      radial-gradient(900px 500px at 100% 0%, rgba(43,213,118,.08), transparent 40%),
+      linear-gradient(180deg,#09111f 0%, #08101d 100%);
+    color:var(--text);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
 
-.panel{
-background:var(--panel);
-border-radius:16px;
-padding:22px;
-margin-bottom:20px;
-border:1px solid var(--line)
-}
+  .game-shell{
+    width:min(1200px,94vw);
+    margin:22px auto;
+  }
 
-.hud{
-display:flex;
-gap:18px;
-flex-wrap:wrap;
-margin-bottom:20px;
-font-weight:700
-}
+  .hero{
+    background:linear-gradient(180deg, rgba(17,26,47,.98), rgba(12,21,39,.98));
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    padding:14px 18px 18px;
+    margin-bottom:18px;
+  }
 
-.progress{
-height:10px;
-background:#222;
-border-radius:6px;
-overflow:hidden;
-margin-bottom:20px
-}
+  .eyebrow{
+    font-size:.78rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#86efac;
+    font-weight:800;
+    margin-bottom:8px;
+  }
 
-.progress-bar{
-height:100%;
-background:var(--good);
-width:0%
-}
+  .hero h1{
+    margin:0 0 4px 0;
+    font-size:clamp(1.3rem,2vw,2rem);
+    line-height:1.2;
+  }
 
-.answers{display:grid;gap:10px}
+  .hero-sub{
+    color:var(--muted);
+    margin:0 0 14px 0;
+    font-size:.98rem;
+  }
 
-.answer{
-padding:12px;
-border-radius:8px;
-border:1px solid var(--line);
-cursor:pointer
-}
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(120px,1fr));
+    gap:10px;
+  }
 
-.answer:hover{background:#1a2740}
+  .stat{
+    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:10px 12px;
+    min-height:68px;
+  }
 
-.correct{background:rgba(43,213,118,.25)}
-.incorrect{background:rgba(255,92,122,.25)}
+  .stat-label{
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-size:.72rem;
+    font-weight:800;
+    margin-bottom:6px;
+  }
 
-button{
-padding:10px 16px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-font-weight:700
-}
+  .stat-value{
+    font-size:1.2rem;
+    font-weight:900;
+    line-height:1.1;
+  }
 
-.start-btn{background:var(--accent)}
-.restart-btn{background:var(--warn)}
+  .panel{
+    background:linear-gradient(180deg, rgba(17,26,47,.98), rgba(12,21,39,.98));
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
 
-.ticket{
-background:#08121f;
-border:2px solid var(--good);
-padding:20px;
-border-radius:12px
-}
+  .panel-head{
+    padding:16px 18px 12px;
+    border-bottom:1px solid var(--line);
+  }
 
+  .panel-head h2{
+    margin:0 0 6px 0;
+    font-size:1.05rem;
+  }
+
+  .panel-head p{
+    margin:0;
+    color:var(--muted);
+    line-height:1.45;
+  }
+
+  .panel-body{
+    padding:16px 18px 18px;
+  }
+
+  .start-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:18px;
+  }
+
+  .info-card,
+  .entry-card,
+  .question-card{
+    background:linear-gradient(180deg, rgba(10,18,34,.7), rgba(11,19,36,.94));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:16px;
+  }
+
+  .info-card h3,
+  .entry-card h3,
+  .question-card h3{
+    margin:0 0 12px 0;
+    font-size:1rem;
+  }
+
+  .info-card ul{
+    margin:0;
+    padding-left:18px;
+    color:var(--muted);
+    line-height:1.55;
+  }
+
+  .field{
+    margin-bottom:14px;
+  }
+
+  .field label{
+    display:block;
+    font-size:.85rem;
+    font-weight:800;
+    color:var(--muted);
+    margin-bottom:7px;
+  }
+
+  .field input{
+    width:100%;
+    height:44px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:#08152d;
+    color:var(--text);
+    padding:0 14px;
+    outline:none;
+    font-size:.98rem;
+  }
+
+  .field input:focus{
+    border-color:rgba(122,162,255,.7);
+    box-shadow:0 0 0 3px rgba(122,162,255,.12);
+  }
+
+  .btn{
+    appearance:none;
+    border:none;
+    border-radius:12px;
+    padding:12px 18px;
+    font-weight:900;
+    cursor:pointer;
+    transition:transform .06s ease, opacity .15s ease, filter .15s ease;
+  }
+
+  .btn:hover{filter:brightness(1.06)}
+  .btn:active{transform:translateY(1px)}
+
+  .btn-primary{
+    background:linear-gradient(180deg,#8db0ff,#6f98ff);
+    color:#09111f;
+  }
+
+  .btn-warn{
+    background:linear-gradient(180deg,#ffd978,#f7c948);
+    color:#231700;
+  }
+
+  .game-area{
+    display:none;
+  }
+
+  .hud-wrap{
+    margin-bottom:14px;
+  }
+
+  .progress-track{
+    width:100%;
+    height:10px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:999px;
+    overflow:hidden;
+    margin:0 0 16px 0;
+  }
+
+  .progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#7aa2ff,#2bd576);
+    transition:width .25s ease;
+  }
+
+  .question-card h3{
+    font-size:1.28rem;
+    line-height:1.35;
+    margin-bottom:14px;
+  }
+
+  .answers{
+    display:grid;
+    gap:10px;
+  }
+
+  .answer{
+    width:100%;
+    text-align:left;
+    background:#0b1831;
+    color:var(--text);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 14px;
+    cursor:pointer;
+    font-size:1rem;
+    line-height:1.35;
+    transition:background .15s ease, border-color .15s ease, transform .05s ease;
+  }
+
+  .answer:hover{
+    background:#132343;
+    border-color:rgba(122,162,255,.45);
+  }
+
+  .answer:active{
+    transform:translateY(1px);
+  }
+
+  .answer.correct{
+    background:rgba(43,213,118,.18);
+    border-color:rgba(43,213,118,.7);
+  }
+
+  .answer.incorrect{
+    background:rgba(255,92,122,.18);
+    border-color:rgba(255,92,122,.7);
+  }
+
+  .answer:disabled{
+    cursor:default;
+    opacity:1;
+  }
+
+  .hint{
+    min-height:24px;
+    margin:14px 0 0 0;
+    color:var(--warn);
+    font-weight:700;
+  }
+
+  .game-actions{
+    margin-top:14px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
+  .ticket-panel{
+    display:none;
+  }
+
+  .ticket{
+    background:linear-gradient(180deg,#07111f,#0a1628);
+    border:2px solid rgba(43,213,118,.55);
+    border-radius:18px;
+    padding:18px;
+  }
+
+  .ticket h2{
+    margin:0 0 12px 0;
+  }
+
+  .ticket p{
+    margin:8px 0;
+    line-height:1.55;
+  }
+
+  @media (max-width: 900px){
+    .hero-stats{
+      grid-template-columns:repeat(2,minmax(140px,1fr));
+    }
+    .start-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  @media (max-width: 640px){
+    .hero-stats{
+      grid-template-columns:1fr 1fr;
+    }
+    .stat:last-child{
+      grid-column:1 / -1;
+    }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="game-wrap">
+<div class="game-shell">
 
-<div class="panel" id="startPanel">
+  <section class="hero">
+    <div class="eyebrow">American Studies Big Block OST Review</div>
+    <h1>Wednesday Big Block — Imperialism to 1920s Review</h1>
+    <p class="hero-sub">Mastery game review • 100% no-miss ticket required</p>
 
-<h2>Wednesday Big Block Review</h2>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-label">Student</div>
+        <div class="stat-value" id="heroStudent">—</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Progress</div>
+        <div class="stat-value" id="heroProgress">0 / 0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Accuracy</div>
+        <div class="stat-value" id="heroAccuracy">100%</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Timer</div>
+        <div class="stat-value" id="heroTimer">00:00</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Started</div>
+        <div class="stat-value" id="heroStarted">—</div>
+      </div>
+    </div>
+  </section>
 
-<p><b>Topic:</b> Imperialism → 1920s Social Change</p>
+  <section class="panel" id="startPanel">
+    <div class="panel-head">
+      <h2>Wednesday Big Block Mastery Review</h2>
+      <p>Review for imperialism, isolationism, Red Scare, nativism, Harlem Renaissance, women’s suffrage, Prohibition, and 1920s technological and social change.</p>
+    </div>
 
-<label>Student Name</label>
-<input id="studentName" style="width:100%;padding:10px;margin-top:8px;margin-bottom:16px">
+    <div class="panel-body">
+      <div class="start-grid">
+        <div class="info-card">
+          <h3>How this mastery game works</h3>
+          <ul>
+            <li>30 questions total for strong OST-style content coverage</li>
+            <li>Question order is shuffled each run</li>
+            <li>Answer choices are shuffled each question</li>
+            <li>If you miss one, the run is not mastery</li>
+            <li>Only a perfect run earns the completion ticket</li>
+          </ul>
+        </div>
 
-<button class="start-btn" onclick="startGame()">Start Game</button>
+        <div class="entry-card">
+          <h3>Student Entry</h3>
+
+          <div class="field">
+            <label for="studentName">Student Name</label>
+            <input id="studentName" type="text" placeholder="Enter student name">
+          </div>
+
+          <div class="field">
+            <label for="classPeriod">Class / Period</label>
+            <input id="classPeriod" type="text" placeholder="Enter class or period">
+          </div>
+
+          <button class="btn btn-primary" id="startBtn">Start Mastery Review</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="game-area" id="gameArea">
+    <div class="hud-wrap">
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div class="panel-body">
+        <div class="question-card">
+          <h3 id="questionText">Question loads here</h3>
+          <div class="answers" id="answers"></div>
+          <p class="hint" id="hint"></p>
+        </div>
+
+        <div class="game-actions">
+          <button class="btn btn-warn" id="restartBtn">Restart</button>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="ticket-panel" id="ticketPanel">
+    <section class="panel">
+      <div class="panel-body">
+        <div class="ticket">
+          <h2>Completion Ticket</h2>
+          <div id="ticketText"></div>
+        </div>
+      </div>
+    </section>
+  </section>
 
 </div>
-
-
-<div id="gamePanel" style="display:none">
-
-<div class="hud">
-<div>Student: <span id="studentDisplay"></span></div>
-<div>Progress: <span id="progressText"></span></div>
-<div>Accuracy: <span id="accuracyText">100%</span></div>
-<div>Timer: <span id="timer">0</span>s</div>
-<div>Started: <span id="startTime"></span></div>
-</div>
-
-<div class="progress">
-<div class="progress-bar" id="progressBar"></div>
-</div>
-
-<div class="panel">
-
-<h3 id="questionText"></h3>
-
-<div class="answers" id="answers"></div>
-
-<p id="hint" style="color:var(--warn)"></p>
-
-</div>
-
-<button class="restart-btn" onclick="restart()">Restart</button>
-
-</div>
-
-
-<div id="ticketPanel" style="display:none">
-
-<div class="ticket">
-<h2>Completion Ticket</h2>
-<p id="ticketText"></p>
-</div>
-
-</div>
-
-</div>
-
 
 <script>
-
-const questions=[
-
-{
-q:"What goal motivated much of U.S. imperial expansion in the late 1800s?",
-answers:[
-"access to foreign markets and resources",
-"elimination of industrial production",
-"ending all trade relationships",
-"reducing military strength"
-],
-correct:0,
-hint:"Industrial nations wanted markets and resources."
-},
-
-{
-q:"Which conflict marked the United States becoming a global military power?",
-answers:[
-"Spanish-American War",
-"Civil War",
-"War of 1812",
-"Mexican War"
-],
-correct:0,
-hint:"The war that brought control of overseas territories."
-},
-
-{
-q:"Which territory became a U.S. possession after the Spanish-American War?",
-answers:[
-"Puerto Rico",
-"Canada",
-"France",
-"Brazil"
-],
-correct:0,
-hint:"Still a U.S. territory today."
-},
-
-{
-q:"Big Stick diplomacy relied primarily on",
-answers:[
-"strong military presence",
-"economic isolation",
-"eliminating naval forces",
-"reducing foreign trade"
-],
-correct:0,
-hint:"“Speak softly and carry a big stick.”"
-},
-
-{
-q:"Why did many Americans oppose joining the League of Nations?",
-answers:[
-"fear of being drawn into foreign wars",
-"desire to increase imperial control",
-"support for European monarchies",
-"opposition to diplomacy"
-],
-correct:0,
-hint:"Isolationist concerns."
-},
-
-{
-q:"Which agreement attempted to prevent war between nations?",
-answers:[
-"Kellogg-Briand Pact",
-"Treaty of Paris",
-"Dawes Act",
-"Lend-Lease Act"
-],
-correct:0,
-hint:"Attempted to outlaw war."
-},
-
-{
-q:"Isolationism after World War I meant that the United States",
-answers:[
-"avoided political and military alliances",
-"expanded colonial territories",
-"increased European involvement",
-"ended foreign trade"
-],
-correct:0,
-hint:"Limited international commitments."
-},
-
-{
-q:"The Red Scare was caused largely by fear of",
-answers:[
-"communism",
-"industrialization",
-"women voting",
-"western expansion"
-],
-correct:0,
-hint:"Russian Revolution triggered this fear."
-},
-
-{
-q:"Which development increased nativism during the 1920s?",
-answers:[
-"immigration quotas",
-"settlement houses",
-"Harlem Renaissance",
-"Progressive reforms"
-],
-correct:0,
-hint:"Laws limiting immigration."
-},
-
-{
-q:"Which organization promoted white supremacy during the 1920s?",
-answers:[
-"Ku Klux Klan",
-"NAACP",
-"Federal Reserve",
-"Hull House"
-],
-correct:0,
-hint:"Expanded significantly during the decade."
-},
-
-{
-q:"Which invention helped spread news and entertainment nationwide?",
-answers:[
-"radio",
-"cotton gin",
-"canal boat",
-"plow"
-],
-correct:0,
-hint:"Families gathered around it in the evenings."
-},
-
-{
-q:"Which technology revolutionized transportation in the 1920s?",
-answers:[
-"automobile",
-"telegraph",
-"steam engine",
-"plow"
-],
-correct:0,
-hint:"Henry Ford made it affordable."
-},
-
-{
-q:"Talking motion pictures changed entertainment by",
-answers:[
-"adding sound to films",
-"eliminating theaters",
-"reducing movie attendance",
-"ending radio broadcasting"
-],
-correct:0,
-hint:"Movies gained synchronized sound."
-},
-
-{
-q:"The Harlem Renaissance celebrated",
-answers:[
-"African American culture and arts",
-"western farming traditions",
-"industrial labor unions",
-"political machines"
-],
-correct:0,
-hint:"Centered in Harlem, New York."
-},
-
-{
-q:"Jazz music became significant during this movement because it",
-answers:[
-"became a defining American music style",
-"ended all racial discrimination",
-"replaced classical music",
-"stopped urban migration"
-],
-correct:0,
-hint:"Artists like Louis Armstrong popularized it."
-},
-
-{
-q:"Which amendment gave women the right to vote?",
-answers:[
-"19th Amendment",
-"18th Amendment",
-"17th Amendment",
-"16th Amendment"
-],
-correct:0,
-hint:"Ratified in 1920."
-},
-
-{
-q:"The 18th Amendment established",
-answers:[
-"Prohibition",
-"women's suffrage",
-"income tax",
-"direct election of senators"
-],
-correct:0,
-hint:"Banned alcohol."
-},
-
-{
-q:"Which problem increased during Prohibition?",
-answers:[
-"organized crime",
-"industrial production",
-"agricultural exports",
-"labor unions"
-],
-correct:0,
-hint:"Bootlegging and speakeasies."
-},
-
-{
-q:"The 21st Amendment is important because it",
-answers:[
-"repealed Prohibition",
-"created Prohibition",
-"established income tax",
-"ended segregation"
-],
-correct:0,
-hint:"Ended the alcohol ban."
-},
-
-{
-q:"Which factor helped create a national culture in the 1920s?",
-answers:[
-"mass media communication",
-"declining population",
-"reduced immigration",
-"less technology"
-],
-correct:0,
-hint:"Radio and movies."
-},
-
-{
-q:"What effect did World War I have on U.S. global influence?",
-answers:[
-"increased international power",
-"reduced industrial capacity",
-"eliminated military power",
-"ended foreign policy"
-],
-correct:0,
-hint:"The U.S. helped the Allies win."
-},
-
-{
-q:"Which development shows social tension in the 1920s?",
-answers:[
-"nativism and racial conflict",
-"increased agricultural production",
-"decline of cities",
-"expansion of farmland"
-],
-correct:0,
-hint:"Examples include Red Scare and KKK."
-},
-
-{
-q:"Which event most demonstrates fear of radical political ideas?",
-answers:[
-"Red Scare",
-"Harlem Renaissance",
-"Spanish-American War",
-"New Deal"
-],
-correct:0,
-hint:"Associated with communist fears."
-},
-
-{
-q:"Immigration restrictions in the 1920s were largely driven by",
-answers:[
-"nativism",
-"industrial growth",
-"civil rights movements",
-"Progressive reforms"
-],
-correct:0,
-hint:"Fear of foreigners."
-},
-
-{
-q:"The Harlem Renaissance helped",
-answers:[
-"spread African American artistic achievements",
-"eliminate immigration",
-"end industrialization",
-"reduce urban culture"
-],
-correct:0,
-hint:"Literature, music, and art flourished."
-},
-
-{
-q:"Which factor encouraged consumer culture in the 1920s?",
-answers:[
-"higher incomes and new technologies",
-"reduced wages",
-"declining communication",
-"less advertising"
-],
-correct:0,
-hint:"More people could afford goods."
-},
-
-{
-q:"Which innovation helped people receive news quickly across the country?",
-answers:[
-"radio broadcasting",
-"canal systems",
-"horse travel",
-"hand printing"
-],
-correct:0,
-hint:"Mass communication device."
-},
-
-{
-q:"What social effect did automobiles create?",
-answers:[
-"greater mobility and suburban growth",
-"reduced travel",
-"less urban expansion",
-"end of highways"
-],
-correct:0,
-hint:"People could travel farther."
-},
-
-{
-q:"Which movement encouraged pride in African American identity?",
-answers:[
-"Harlem Renaissance",
-"Populist Movement",
-"Know-Nothing Party",
-"Federal Reserve"
-],
-correct:0,
-hint:"Centered in Harlem."
-},
-
-{
-q:"Which statement best describes the 1920s?",
-answers:[
-"rapid technological change created cultural transformation",
-"industrialization ended completely",
-"cities declined in population",
-"foreign policy dominated all politics"
-],
-correct:0,
-hint:"Major innovations shaped society."
-}
-
-]
-
-let qIndex=0
-let correct=0
-let total=questions.length
-let startTime
-let timerInterval
-
-function startGame(){
-
-const name=document.getElementById("studentName").value
-
-if(!name){alert("Enter name");return}
-
-document.getElementById("studentDisplay").innerText=name
-document.getElementById("startPanel").style.display="none"
-document.getElementById("gamePanel").style.display="block"
-
-startTime=new Date()
-document.getElementById("startTime").innerText=startTime.toLocaleTimeString()
-
-timerInterval=setInterval(()=>{
-document.getElementById("timer").innerText++
-},1000)
-
-loadQuestion()
-
-}
-
-function loadQuestion(){
-
-const q=questions[qIndex]
-
-document.getElementById("questionText").innerText=q.q
-document.getElementById("hint").innerText=""
-
-const answersDiv=document.getElementById("answers")
-answersDiv.innerHTML=""
-
-q.answers.forEach((a,i)=>{
-
-const div=document.createElement("div")
-div.className="answer"
-div.innerText=a
-
-div.onclick=()=>submitAnswer(i,div)
-
-answersDiv.appendChild(div)
-
-})
-
-updateHUD()
-
-}
-
-function submitAnswer(i,div){
-
-const q=questions[qIndex]
-
-if(i===q.correct){
-
-div.classList.add("correct")
-correct++
-
-setTimeout(()=>{
-qIndex++
-
-if(qIndex>=total){
-finish()
-}else{
-loadQuestion()
-}
-
-},500)
-
-}else{
-
-div.classList.add("incorrect")
-document.getElementById("hint").innerText=q.hint
-
-}
-
-}
-
-function updateHUD(){
-
-document.getElementById("progressText").innerText=(qIndex+1)+" / "+total
-
-document.getElementById("accuracyText").innerText=
-Math.round((correct/(qIndex||1))*100)+"%"
-
-document.getElementById("progressBar").style.width=
-((qIndex)/total*100)+"%"
-
-}
-
-function finish(){
-
-clearInterval(timerInterval)
-
-if(correct!==total){
-alert("100% accuracy required. Restart the run.")
-restart()
-return
-}
-
-document.getElementById("gamePanel").style.display="none"
-
-const end=new Date()
-
-document.getElementById("ticketPanel").style.display="block"
-
-document.getElementById("ticketText").innerHTML=
-"Student: "+document.getElementById("studentDisplay").innerText+"<br>"+
-"Game: Wednesday Big Block Review<br>"+
-"Accuracy: 100%<br>"+
-"Completed: "+end.toLocaleString()
-
-}
-
-function restart(){location.reload()}
-
+  const baseQuestions = [
+    {
+      q:"What goal motivated much of U.S. imperial expansion in the late 1800s?",
+      answers:[
+        "access to foreign markets and resources",
+        "elimination of industrial production",
+        "ending all trade relationships",
+        "reducing military strength"
+      ],
+      correct:0,
+      hint:"Think about why industrial nations wanted overseas markets and raw materials."
+    },
+    {
+      q:"Which conflict marked the United States becoming a global military power?",
+      answers:[
+        "Spanish-American War",
+        "Civil War",
+        "War of 1812",
+        "Mexican War"
+      ],
+      correct:0,
+      hint:"This war led to U.S. control of overseas territories."
+    },
+    {
+      q:"Which territory became a U.S. possession after the Spanish-American War?",
+      answers:[
+        "Puerto Rico",
+        "Canada",
+        "France",
+        "Brazil"
+      ],
+      correct:0,
+      hint:"It remains a U.S. territory today."
+    },
+    {
+      q:"Big Stick diplomacy relied primarily on",
+      answers:[
+        "strong military presence",
+        "economic isolation",
+        "eliminating naval forces",
+        "reducing foreign trade"
+      ],
+      correct:0,
+      hint:"Think Theodore Roosevelt: speak softly, but back diplomacy with force."
+    },
+    {
+      q:"Why did many Americans oppose joining the League of Nations?",
+      answers:[
+        "fear of being drawn into foreign wars",
+        "desire to increase imperial control",
+        "support for European monarchies",
+        "opposition to diplomacy"
+      ],
+      correct:0,
+      hint:"The concern was about international commitments after World War I."
+    },
+    {
+      q:"Which agreement attempted to prevent war between nations?",
+      answers:[
+        "Kellogg-Briand Pact",
+        "Treaty of Paris",
+        "Dawes Act",
+        "Lend-Lease Act"
+      ],
+      correct:0,
+      hint:"This agreement tried to outlaw war itself."
+    },
+    {
+      q:"Isolationism after World War I meant that the United States",
+      answers:[
+        "avoided political and military alliances",
+        "expanded colonial territories",
+        "increased European involvement",
+        "ended foreign trade"
+      ],
+      correct:0,
+      hint:"The key idea was staying out of foreign entanglements."
+    },
+    {
+      q:"The Red Scare was caused largely by fear of",
+      answers:[
+        "communism",
+        "industrialization",
+        "women voting",
+        "western expansion"
+      ],
+      correct:0,
+      hint:"The Russian Revolution increased fear of this ideology."
+    },
+    {
+      q:"Which development increased nativism during the 1920s?",
+      answers:[
+        "immigration quotas",
+        "settlement houses",
+        "Harlem Renaissance",
+        "Progressive reforms"
+      ],
+      correct:0,
+      hint:"Think laws that restricted who could enter the country."
+    },
+    {
+      q:"Which organization promoted white supremacy during the 1920s?",
+      answers:[
+        "Ku Klux Klan",
+        "NAACP",
+        "Federal Reserve",
+        "Hull House"
+      ],
+      correct:0,
+      hint:"This group expanded significantly in the 1920s."
+    },
+    {
+      q:"Which invention helped spread news and entertainment nationwide?",
+      answers:[
+        "radio",
+        "cotton gin",
+        "canal boat",
+        "plow"
+      ],
+      correct:0,
+      hint:"Families gathered around it at home."
+    },
+    {
+      q:"Which technology revolutionized transportation in the 1920s?",
+      answers:[
+        "automobile",
+        "telegraph",
+        "steam engine",
+        "plow"
+      ],
+      correct:0,
+      hint:"Henry Ford helped make it affordable."
+    },
+    {
+      q:"Talking motion pictures changed entertainment by",
+      answers:[
+        "adding sound to films",
+        "eliminating theaters",
+        "reducing movie attendance",
+        "ending radio broadcasting"
+      ],
+      correct:0,
+      hint:"The major change was synchronized dialogue and sound."
+    },
+    {
+      q:"The Harlem Renaissance celebrated",
+      answers:[
+        "African American culture and arts",
+        "western farming traditions",
+        "industrial labor unions",
+        "political machines"
+      ],
+      correct:0,
+      hint:"This movement centered on Black literature, music, and art."
+    },
+    {
+      q:"Jazz music became significant during this movement because it",
+      answers:[
+        "became a defining American music style",
+        "ended all racial discrimination",
+        "replaced classical music",
+        "stopped urban migration"
+      ],
+      correct:0,
+      hint:"Think about its cultural influence, not total social change."
+    },
+    {
+      q:"Which amendment gave women the right to vote?",
+      answers:[
+        "19th Amendment",
+        "18th Amendment",
+        "17th Amendment",
+        "16th Amendment"
+      ],
+      correct:0,
+      hint:"It was ratified in 1920."
+    },
+    {
+      q:"The 18th Amendment established",
+      answers:[
+        "Prohibition",
+        "women's suffrage",
+        "income tax",
+        "direct election of senators"
+      ],
+      correct:0,
+      hint:"This amendment banned alcohol."
+    },
+    {
+      q:"Which problem increased during Prohibition?",
+      answers:[
+        "organized crime",
+        "industrial production",
+        "agricultural exports",
+        "labor unions"
+      ],
+      correct:0,
+      hint:"Bootlegging and speakeasies point to the answer."
+    },
+    {
+      q:"The 21st Amendment is important because it",
+      answers:[
+        "repealed Prohibition",
+        "created Prohibition",
+        "established income tax",
+        "ended segregation"
+      ],
+      correct:0,
+      hint:"It reversed an earlier amendment."
+    },
+    {
+      q:"Which factor helped create a national culture in the 1920s?",
+      answers:[
+        "mass media communication",
+        "declining population",
+        "reduced immigration",
+        "less technology"
+      ],
+      correct:0,
+      hint:"Think radio, movies, magazines, and shared entertainment."
+    },
+    {
+      q:"What effect did World War I have on U.S. global influence?",
+      answers:[
+        "increased international power",
+        "reduced industrial capacity",
+        "eliminated military power",
+        "ended foreign policy"
+      ],
+      correct:0,
+      hint:"The war elevated the United States on the world stage."
+    },
+    {
+      q:"Which development shows social tension in the 1920s?",
+      answers:[
+        "nativism and racial conflict",
+        "increased agricultural production",
+        "decline of cities",
+        "expansion of farmland"
+      ],
+      correct:0,
+      hint:"Think fear, intolerance, and backlash."
+    },
+    {
+      q:"Which event most demonstrates fear of radical political ideas?",
+      answers:[
+        "Red Scare",
+        "Harlem Renaissance",
+        "Spanish-American War",
+        "New Deal"
+      ],
+      correct:0,
+      hint:"This event centered on fear of communists and radicals."
+    },
+    {
+      q:"Immigration restrictions in the 1920s were largely driven by",
+      answers:[
+        "nativism",
+        "industrial growth",
+        "civil rights movements",
+        "Progressive reforms"
+      ],
+      correct:0,
+      hint:"The driving force was fear of foreigners and outsiders."
+    },
+    {
+      q:"The Harlem Renaissance helped",
+      answers:[
+        "spread African American artistic achievements",
+        "eliminate immigration",
+        "end industrialization",
+        "reduce urban culture"
+      ],
+      correct:0,
+      hint:"Think cultural expression and recognition."
+    },
+    {
+      q:"Which factor encouraged consumer culture in the 1920s?",
+      answers:[
+        "higher incomes and new technologies",
+        "reduced wages",
+        "declining communication",
+        "less advertising"
+      ],
+      correct:0,
+      hint:"Consumers had more access to goods and new products."
+    },
+    {
+      q:"Which innovation helped people receive news quickly across the country?",
+      answers:[
+        "radio broadcasting",
+        "canal systems",
+        "horse travel",
+        "hand printing"
+      ],
+      correct:0,
+      hint:"This was the fastest mass communication method of the era."
+    },
+    {
+      q:"What social effect did automobiles create?",
+      answers:[
+        "greater mobility and suburban growth",
+        "reduced travel",
+        "less urban expansion",
+        "end of highways"
+      ],
+      correct:0,
+      hint:"Cars changed where people could live and travel."
+    },
+    {
+      q:"Which movement encouraged pride in African American identity?",
+      answers:[
+        "Harlem Renaissance",
+        "Populist Movement",
+        "Know-Nothing Party",
+        "Federal Reserve"
+      ],
+      correct:0,
+      hint:"It was centered in Harlem, New York."
+    },
+    {
+      q:"Which statement best describes the 1920s?",
+      answers:[
+        "rapid technological change created cultural transformation",
+        "industrialization ended completely",
+        "cities declined in population",
+        "foreign policy dominated all politics"
+      ],
+      correct:0,
+      hint:"Think broad social and cultural transformation through new technology."
+    }
+  ];
+
+  let questions = [];
+  let qIndex = 0;
+  let correctCount = 0;
+  let attempts = 0;
+  let timerInterval = null;
+  let elapsedSeconds = 0;
+  let startedAt = null;
+  let locked = false;
+
+  const startPanel = document.getElementById("startPanel");
+  const gameArea = document.getElementById("gameArea");
+  const ticketPanel = document.getElementById("ticketPanel");
+
+  const studentNameInput = document.getElementById("studentName");
+  const classPeriodInput = document.getElementById("classPeriod");
+
+  const heroStudent = document.getElementById("heroStudent");
+  const heroProgress = document.getElementById("heroProgress");
+  const heroAccuracy = document.getElementById("heroAccuracy");
+  const heroTimer = document.getElementById("heroTimer");
+  const heroStarted = document.getElementById("heroStarted");
+
+  const questionText = document.getElementById("questionText");
+  const answersEl = document.getElementById("answers");
+  const hintEl = document.getElementById("hint");
+  const progressBar = document.getElementById("progressBar");
+  const ticketText = document.getElementById("ticketText");
+
+  document.getElementById("startBtn").addEventListener("click", startGame);
+  document.getElementById("restartBtn").addEventListener("click", restartGame);
+
+  function shuffleArray(arr){
+    const copy = [...arr];
+    for(let i = copy.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function prepareQuestions(){
+    const prepared = baseQuestions.map(item => {
+      const answerObjects = item.answers.map((text, index) => ({
+        text,
+        isCorrect: index === item.correct
+      }));
+
+      const shuffledAnswers = shuffleArray(answerObjects);
+
+      return {
+        q: item.q,
+        answers: shuffledAnswers,
+        hint: item.hint
+      };
+    });
+
+    return shuffleArray(prepared);
+  }
+
+  function formatTime(totalSeconds){
+    const mins = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
+    const secs = (totalSeconds % 60).toString().padStart(2, "0");
+    return `${mins}:${secs}`;
+  }
+
+  function updateHUD(){
+    const total = questions.length;
+    const progressDisplay = `${Math.min(qIndex + 1, total)} / ${total}`;
+    const accuracy = attempts === 0 ? 100 : Math.round((correctCount / attempts) * 100);
+    const progressPct = total === 0 ? 0 : (qIndex / total) * 100;
+
+    heroProgress.textContent = progressDisplay;
+    heroAccuracy.textContent = `${accuracy}%`;
+    progressBar.style.width = `${progressPct}%`;
+  }
+
+  function startGame(){
+    const studentName = studentNameInput.value.trim();
+    const classPeriod = classPeriodInput.value.trim();
+
+    if(!studentName){
+      alert("Enter student name.");
+      studentNameInput.focus();
+      return;
+    }
+
+    if(!classPeriod){
+      alert("Enter class / period.");
+      classPeriodInput.focus();
+      return;
+    }
+
+    questions = prepareQuestions();
+    qIndex = 0;
+    correctCount = 0;
+    attempts = 0;
+    elapsedSeconds = 0;
+    locked = false;
+
+    startedAt = new Date();
+
+    heroStudent.textContent = studentName;
+    heroStarted.textContent = startedAt.toLocaleTimeString();
+    heroTimer.textContent = "00:00";
+
+    startPanel.style.display = "none";
+    ticketPanel.style.display = "none";
+    gameArea.style.display = "block";
+
+    if(timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      elapsedSeconds++;
+      heroTimer.textContent = formatTime(elapsedSeconds);
+    }, 1000);
+
+    updateHUD();
+    loadQuestion();
+  }
+
+  function loadQuestion(){
+    locked = false;
+    hintEl.textContent = "";
+
+    const current = questions[qIndex];
+    questionText.textContent = current.q;
+    answersEl.innerHTML = "";
+
+    current.answers.forEach(answer => {
+      const btn = document.createElement("button");
+      btn.className = "answer";
+      btn.type = "button";
+      btn.textContent = answer.text;
+
+      btn.addEventListener("click", () => handleAnswer(answer, btn));
+      answersEl.appendChild(btn);
+    });
+
+    updateHUD();
+  }
+
+  function handleAnswer(answerObj, selectedBtn){
+    if(locked) return;
+
+    locked = true;
+    attempts++;
+
+    const answerButtons = [...answersEl.querySelectorAll(".answer")];
+    answerButtons.forEach(btn => btn.disabled = true);
+
+    if(answerObj.isCorrect){
+      correctCount++;
+      selectedBtn.classList.add("correct");
+      hintEl.textContent = "Correct.";
+
+      setTimeout(() => {
+        qIndex++;
+        if(qIndex >= questions.length){
+          finishGame();
+        } else {
+          loadQuestion();
+        }
+      }, 850);
+    } else {
+      selectedBtn.classList.add("incorrect");
+
+      const current = questions[qIndex];
+      const correctBtn = answerButtons.find((btn, index) => current.answers[index].isCorrect);
+      if(correctBtn) correctBtn.classList.add("correct");
+
+      hintEl.textContent = current.hint;
+
+      setTimeout(() => {
+        alert("100% accuracy required. Restart the run.");
+        restartGame();
+      }, 900);
+    }
+
+    updateHUD();
+  }
+
+  function finishGame(){
+    clearInterval(timerInterval);
+    timerInterval = null;
+
+    gameArea.style.display = "none";
+    ticketPanel.style.display = "block";
+    progressBar.style.width = "100%";
+
+    const completedAt = new Date();
+
+    ticketText.innerHTML = `
+      <p><strong>Student:</strong> ${escapeHtml(heroStudent.textContent)}</p>
+      <p><strong>Class / Period:</strong> ${escapeHtml(classPeriodInput.value.trim())}</p>
+      <p><strong>Game:</strong> Wednesday Big Block — Imperialism to 1920s Review</p>
+      <p><strong>Score:</strong> ${questions.length} / ${questions.length}</p>
+      <p><strong>Accuracy:</strong> 100%</p>
+      <p><strong>Started:</strong> ${escapeHtml(heroStarted.textContent)}</p>
+      <p><strong>Completed:</strong> ${escapeHtml(completedAt.toLocaleString())}</p>
+      <p><strong>Time:</strong> ${escapeHtml(formatTime(elapsedSeconds))}</p>
+    `;
+
+    heroProgress.textContent = `${questions.length} / ${questions.length}`;
+    heroAccuracy.textContent = "100%";
+  }
+
+  function restartGame(){
+    if(timerInterval){
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    questions = [];
+    qIndex = 0;
+    correctCount = 0;
+    attempts = 0;
+    elapsedSeconds = 0;
+    locked = false;
+
+    heroProgress.textContent = "0 / 0";
+    heroAccuracy.textContent = "100%";
+    heroTimer.textContent = "00:00";
+    heroStarted.textContent = "—";
+    progressBar.style.width = "0%";
+
+    questionText.textContent = "Question loads here";
+    answersEl.innerHTML = "";
+    hintEl.textContent = "";
+
+    gameArea.style.display = "none";
+    ticketPanel.style.display = "none";
+    startPanel.style.display = "block";
+  }
+
+  function escapeHtml(str){
+    return str
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
 </script>
 
 </body>
