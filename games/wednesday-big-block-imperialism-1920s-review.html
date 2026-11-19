@@ -1,1021 +1,819 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Wednesday Big Block — Imperialism to 1920s Review</title>
-
-<link rel="stylesheet" href="../styles.css">
-
-<style>
-  :root{
-    --bg:#0b1220;
-    --panel:#111a2f;
-    --panel2:#0f1730;
-    --text:#e7eefc;
-    --muted:#a8b4cf;
-    --line:rgba(255,255,255,.12);
-    --good:#2bd576;
-    --bad:#ff5c7a;
-    --warn:#ffd166;
-    --accent:#7aa2ff;
-    --shadow:0 18px 55px rgba(0,0,0,.40);
-    --radius:18px;
-  }
-
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{
-    background:
-      radial-gradient(1200px 600px at 15% -10%, rgba(122,162,255,.16), transparent 45%),
-      radial-gradient(900px 500px at 100% 0%, rgba(43,213,118,.08), transparent 40%),
-      linear-gradient(180deg,#09111f 0%, #08101d 100%);
-    color:var(--text);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  }
-
-  .game-shell{
-    width:min(1200px,94vw);
-    margin:22px auto;
-  }
-
-  .hero{
-    background:linear-gradient(180deg, rgba(17,26,47,.98), rgba(12,21,39,.98));
-    border:1px solid var(--line);
-    border-radius:20px;
-    box-shadow:var(--shadow);
-    padding:14px 18px 18px;
-    margin-bottom:18px;
-  }
-
-  .eyebrow{
-    font-size:.78rem;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#86efac;
-    font-weight:800;
-    margin-bottom:8px;
-  }
-
-  .hero h1{
-    margin:0 0 4px 0;
-    font-size:clamp(1.3rem,2vw,2rem);
-    line-height:1.2;
-  }
-
-  .hero-sub{
-    color:var(--muted);
-    margin:0 0 14px 0;
-    font-size:.98rem;
-  }
-
-  .hero-stats{
-    display:grid;
-    grid-template-columns:repeat(5,minmax(120px,1fr));
-    gap:10px;
-  }
-
-  .stat{
-    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:10px 12px;
-    min-height:68px;
-  }
-
-  .stat-label{
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:.08em;
-    font-size:.72rem;
-    font-weight:800;
-    margin-bottom:6px;
-  }
-
-  .stat-value{
-    font-size:1.2rem;
-    font-weight:900;
-    line-height:1.1;
-  }
-
-  .panel{
-    background:linear-gradient(180deg, rgba(17,26,47,.98), rgba(12,21,39,.98));
-    border:1px solid var(--line);
-    border-radius:20px;
-    box-shadow:var(--shadow);
-    overflow:hidden;
-  }
-
-  .panel-head{
-    padding:16px 18px 12px;
-    border-bottom:1px solid var(--line);
-  }
-
-  .panel-head h2{
-    margin:0 0 6px 0;
-    font-size:1.05rem;
-  }
-
-  .panel-head p{
-    margin:0;
-    color:var(--muted);
-    line-height:1.45;
-  }
-
-  .panel-body{
-    padding:16px 18px 18px;
-  }
-
-  .start-grid{
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:18px;
-  }
-
-  .info-card,
-  .entry-card,
-  .question-card{
-    background:linear-gradient(180deg, rgba(10,18,34,.7), rgba(11,19,36,.94));
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:16px;
-  }
-
-  .info-card h3,
-  .entry-card h3,
-  .question-card h3{
-    margin:0 0 12px 0;
-    font-size:1rem;
-  }
-
-  .info-card ul{
-    margin:0;
-    padding-left:18px;
-    color:var(--muted);
-    line-height:1.55;
-  }
-
-  .field{
-    margin-bottom:14px;
-  }
-
-  .field label{
-    display:block;
-    font-size:.85rem;
-    font-weight:800;
-    color:var(--muted);
-    margin-bottom:7px;
-  }
-
-  .field input{
-    width:100%;
-    height:44px;
-    border-radius:12px;
-    border:1px solid var(--line);
-    background:#08152d;
-    color:var(--text);
-    padding:0 14px;
-    outline:none;
-    font-size:.98rem;
-  }
-
-  .field input:focus{
-    border-color:rgba(122,162,255,.7);
-    box-shadow:0 0 0 3px rgba(122,162,255,.12);
-  }
-
-  .btn{
-    appearance:none;
-    border:none;
-    border-radius:12px;
-    padding:12px 18px;
-    font-weight:900;
-    cursor:pointer;
-    transition:transform .06s ease, opacity .15s ease, filter .15s ease;
-  }
-
-  .btn:hover{filter:brightness(1.06)}
-  .btn:active{transform:translateY(1px)}
-
-  .btn-primary{
-    background:linear-gradient(180deg,#8db0ff,#6f98ff);
-    color:#09111f;
-  }
-
-  .btn-warn{
-    background:linear-gradient(180deg,#ffd978,#f7c948);
-    color:#231700;
-  }
-
-  .game-area{
-    display:none;
-  }
-
-  .hud-wrap{
-    margin-bottom:14px;
-  }
-
-  .progress-track{
-    width:100%;
-    height:10px;
-    background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:999px;
-    overflow:hidden;
-    margin:0 0 16px 0;
-  }
-
-  .progress-bar{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#7aa2ff,#2bd576);
-    transition:width .25s ease;
-  }
-
-  .question-card h3{
-    font-size:1.28rem;
-    line-height:1.35;
-    margin-bottom:14px;
-  }
-
-  .answers{
-    display:grid;
-    gap:10px;
-  }
-
-  .answer{
-    width:100%;
-    text-align:left;
-    background:#0b1831;
-    color:var(--text);
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:14px 14px;
-    cursor:pointer;
-    font-size:1rem;
-    line-height:1.35;
-    transition:background .15s ease, border-color .15s ease, transform .05s ease;
-  }
-
-  .answer:hover{
-    background:#132343;
-    border-color:rgba(122,162,255,.45);
-  }
-
-  .answer:active{
-    transform:translateY(1px);
-  }
-
-  .answer.correct{
-    background:rgba(43,213,118,.18);
-    border-color:rgba(43,213,118,.7);
-  }
-
-  .answer.incorrect{
-    background:rgba(255,92,122,.18);
-    border-color:rgba(255,92,122,.7);
-  }
-
-  .answer:disabled{
-    cursor:default;
-    opacity:1;
-  }
-
-  .hint{
-    min-height:24px;
-    margin:14px 0 0 0;
-    color:var(--warn);
-    font-weight:700;
-  }
-
-  .game-actions{
-    margin-top:14px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-
-  .ticket-panel{
-    display:none;
-  }
-
-  .ticket{
-    background:linear-gradient(180deg,#07111f,#0a1628);
-    border:2px solid rgba(43,213,118,.55);
-    border-radius:18px;
-    padding:18px;
-  }
-
-  .ticket h2{
-    margin:0 0 12px 0;
-  }
-
-  .ticket p{
-    margin:8px 0;
-    line-height:1.55;
-  }
-
-  @media (max-width: 900px){
-    .hero-stats{
-      grid-template-columns:repeat(2,minmax(140px,1fr));
-    }
-    .start-grid{
-      grid-template-columns:1fr;
-    }
-  }
-
-  @media (max-width: 640px){
-    .hero-stats{
-      grid-template-columns:1fr 1fr;
-    }
-    .stat:last-child{
-      grid-column:1 / -1;
-    }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wednesday Big Block Review — Imperialism to the 1920s</title>
+  <link rel="stylesheet" href="ost-game.css?v=as-big-block-1">
 </head>
 <body>
-
-<div class="game-shell">
-
-  <section class="hero">
-    <div class="eyebrow">American Studies Big Block OST Review</div>
-    <h1>Wednesday Big Block — Imperialism to 1920s Review</h1>
-    <p class="hero-sub">Mastery game review • 100% no-miss ticket required</p>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-label">Student</div>
-        <div class="stat-value" id="heroStudent">—</div>
+  <main class="shell">
+    <a class="back" href="../index.html">← American Studies Big Block Review Hub</a>
+    <header class="hero game-intro">
+      <div class="game-title">
+        <div class="eyebrow">Wednesday · CS 14–18</div>
+        <h1>Imperialism to the 1920s</h1>
       </div>
-      <div class="stat">
-        <div class="stat-label">Progress</div>
-        <div class="stat-value" id="heroProgress">0 / 0</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Accuracy</div>
-        <div class="stat-value" id="heroAccuracy">100%</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Timer</div>
-        <div class="stat-value" id="heroTimer">00:00</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">Started</div>
-        <div class="stat-value" id="heroStarted">—</div>
-      </div>
-    </div>
-  </section>
+      <p class="game-description">America’s emergence as a world power, postwar diplomacy, nativism, mass culture, and social change.</p>
+      <aside class="game-details" aria-label="Game details">
+        <ul>
+          <li>30 questions</li>
+          <li>Hints after a miss</li>
+          <li>Certificate for a 30/30 first-attempt score</li>
+        </ul>
+      </aside>
+    </header>
+    <section class="student-panel" id="startScreen">
+      <h2>Student Information</h2>
+      <form id="identity">
+      <div class="fields">
+      <label>Student Name<input id="studentName" autocomplete="name" required></label>
+      <label>Class Period<select id="sheetPeriod" required><option value="">Choose period</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+      <label>School Email<input id="sheetEmail" type="email" autocomplete="email" required></label></div>
+      <div class="actions">
+      <button type="submit">Start Game</button>
+      <button type="button" class="secondary" id="load">Load Saved Work</button></div>
+      <p id="startStatus" role="status"></p></form></section>
+      <section class="question-panel" id="gameArea" hidden>
+      <div class="question-toolbar">
+      <p id="progress"></p>
+      <button type="button" class="secondary" id="restart">Restart Game</button></div>
+      <p id="btbCloudStatus" role="status"></p>
+      <div id="question"></div>
+      <p id="feedback" class="feedback" role="status"></p></section>
+      <section class="completion" id="results" hidden>
+      <h2>Game Results</h2>
+      <p id="resultMessage"></p>
+      <p id="runSummary"></p>
+      <section id="certificate" class="source-box" hidden>
+      <h2>100% Perfect Run</h2>
+      <p id="certName" class="ticket-name"></p>
+      <h3>Wednesday Big Block Review — Imperialism to the 1920s</h3>
+      <p id="certAttempts" class="ticket-attempts"></p>
+      <p id="certStart"></p>
+      <p id="certEnd"></p></section>
+      <p id="finalStatus" role="status"></p>
+      <div id="missedReview" hidden></div>
+      <div class="actions">
+      <button type="button" id="print" hidden>Print Certificate</button>
+      <button type="button" class="secondary" id="replay">Restart Game</button></div></section>
 
-  <section class="panel" id="startPanel">
-    <div class="panel-head">
-      <h2>Wednesday Big Block Mastery Review</h2>
-      <p>Review for imperialism, isolationism, Red Scare, nativism, Harlem Renaissance, women’s suffrage, Prohibition, and 1920s technological and social change.</p>
-    </div>
-
-    <div class="panel-body">
-      <div class="start-grid">
-        <div class="info-card">
-          <h3>How this mastery game works</h3>
-          <ul>
-            <li>30 questions total for strong OST-style content coverage</li>
-            <li>Question order is shuffled each run</li>
-            <li>Answer choices are shuffled each question</li>
-            <li>If you miss one, the run is not mastery</li>
-            <li>Only a perfect run earns the completion ticket</li>
-          </ul>
-        </div>
-
-        <div class="entry-card">
-          <h3>Student Entry</h3>
-
-          <div class="field">
-            <label for="studentName">Student Name</label>
-            <input id="studentName" type="text" placeholder="Enter student name">
-          </div>
-
-          <div class="field">
-            <label for="classPeriod">Class / Period</label>
-            <input id="classPeriod" type="text" placeholder="Enter class or period">
-          </div>
-
-          <button class="btn btn-primary" id="startBtn">Start Mastery Review</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="game-area" id="gameArea">
-    <div class="hud-wrap">
-      <div class="progress-track">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-    </div>
-
-    <section class="panel">
-      <div class="panel-body">
-        <div class="question-card">
-          <h3 id="questionText">Question loads here</h3>
-          <div class="answers" id="answers"></div>
-          <p class="hint" id="hint"></p>
-        </div>
-
-        <div class="game-actions">
-          <button class="btn btn-warn" id="restartBtn">Restart</button>
-        </div>
-      </div>
-    </section>
-  </section>
-
-  <section class="ticket-panel" id="ticketPanel">
-    <section class="panel">
-      <div class="panel-body">
-        <div class="ticket">
-          <h2>Completion Ticket</h2>
-          <div id="ticketText"></div>
-        </div>
-      </div>
-    </section>
-  </section>
-
-</div>
-
-<script>
-  const baseQuestions = [
-    {
-      q:"What goal motivated much of U.S. imperial expansion in the late 1800s?",
-      answers:[
-        "access to foreign markets and resources",
-        "elimination of industrial production",
-        "ending all trade relationships",
-        "reducing military strength"
-      ],
-      correct:0,
-      hint:"Think about why industrial nations wanted overseas markets and raw materials."
-    },
-    {
-      q:"Which conflict marked the United States becoming a global military power?",
-      answers:[
-        "Spanish-American War",
-        "Civil War",
-        "War of 1812",
-        "Mexican War"
-      ],
-      correct:0,
-      hint:"This war led to U.S. control of overseas territories."
-    },
-    {
-      q:"Which territory became a U.S. possession after the Spanish-American War?",
-      answers:[
-        "Puerto Rico",
-        "Canada",
-        "France",
-        "Brazil"
-      ],
-      correct:0,
-      hint:"It remains a U.S. territory today."
-    },
-    {
-      q:"Big Stick diplomacy relied primarily on",
-      answers:[
-        "strong military presence",
-        "economic isolation",
-        "eliminating naval forces",
-        "reducing foreign trade"
-      ],
-      correct:0,
-      hint:"Think Theodore Roosevelt: speak softly, but back diplomacy with force."
-    },
-    {
-      q:"Why did many Americans oppose joining the League of Nations?",
-      answers:[
-        "fear of being drawn into foreign wars",
-        "desire to increase imperial control",
-        "support for European monarchies",
-        "opposition to diplomacy"
-      ],
-      correct:0,
-      hint:"The concern was about international commitments after World War I."
-    },
-    {
-      q:"Which agreement attempted to prevent war between nations?",
-      answers:[
-        "Kellogg-Briand Pact",
-        "Treaty of Paris",
-        "Dawes Act",
-        "Lend-Lease Act"
-      ],
-      correct:0,
-      hint:"This agreement tried to outlaw war itself."
-    },
-    {
-      q:"Isolationism after World War I meant that the United States",
-      answers:[
-        "avoided political and military alliances",
-        "expanded colonial territories",
-        "increased European involvement",
-        "ended foreign trade"
-      ],
-      correct:0,
-      hint:"The key idea was staying out of foreign entanglements."
-    },
-    {
-      q:"The Red Scare was caused largely by fear of",
-      answers:[
-        "communism",
-        "industrialization",
-        "women voting",
-        "western expansion"
-      ],
-      correct:0,
-      hint:"The Russian Revolution increased fear of this ideology."
-    },
-    {
-      q:"Which development increased nativism during the 1920s?",
-      answers:[
-        "immigration quotas",
-        "settlement houses",
-        "Harlem Renaissance",
-        "Progressive reforms"
-      ],
-      correct:0,
-      hint:"Think laws that restricted who could enter the country."
-    },
-    {
-      q:"Which organization promoted white supremacy during the 1920s?",
-      answers:[
-        "Ku Klux Klan",
-        "NAACP",
-        "Federal Reserve",
-        "Hull House"
-      ],
-      correct:0,
-      hint:"This group expanded significantly in the 1920s."
-    },
-    {
-      q:"Which invention helped spread news and entertainment nationwide?",
-      answers:[
-        "radio",
-        "cotton gin",
-        "canal boat",
-        "plow"
-      ],
-      correct:0,
-      hint:"Families gathered around it at home."
-    },
-    {
-      q:"Which technology revolutionized transportation in the 1920s?",
-      answers:[
-        "automobile",
-        "telegraph",
-        "steam engine",
-        "plow"
-      ],
-      correct:0,
-      hint:"Henry Ford helped make it affordable."
-    },
-    {
-      q:"Talking motion pictures changed entertainment by",
-      answers:[
-        "adding sound to films",
-        "eliminating theaters",
-        "reducing movie attendance",
-        "ending radio broadcasting"
-      ],
-      correct:0,
-      hint:"The major change was synchronized dialogue and sound."
-    },
-    {
-      q:"The Harlem Renaissance celebrated",
-      answers:[
-        "African American culture and arts",
-        "western farming traditions",
-        "industrial labor unions",
-        "political machines"
-      ],
-      correct:0,
-      hint:"This movement centered on Black literature, music, and art."
-    },
-    {
-      q:"Jazz music became significant during this movement because it",
-      answers:[
-        "became a defining American music style",
-        "ended all racial discrimination",
-        "replaced classical music",
-        "stopped urban migration"
-      ],
-      correct:0,
-      hint:"Think about its cultural influence, not total social change."
-    },
-    {
-      q:"Which amendment gave women the right to vote?",
-      answers:[
-        "19th Amendment",
-        "18th Amendment",
-        "17th Amendment",
-        "16th Amendment"
-      ],
-      correct:0,
-      hint:"It was ratified in 1920."
-    },
-    {
-      q:"The 18th Amendment established",
-      answers:[
-        "Prohibition",
-        "women's suffrage",
-        "income tax",
-        "direct election of senators"
-      ],
-      correct:0,
-      hint:"This amendment banned alcohol."
-    },
-    {
-      q:"Which problem increased during Prohibition?",
-      answers:[
-        "organized crime",
-        "industrial production",
-        "agricultural exports",
-        "labor unions"
-      ],
-      correct:0,
-      hint:"Bootlegging and speakeasies point to the answer."
-    },
-    {
-      q:"The 21st Amendment is important because it",
-      answers:[
-        "repealed Prohibition",
-        "created Prohibition",
-        "established income tax",
-        "ended segregation"
-      ],
-      correct:0,
-      hint:"It reversed an earlier amendment."
-    },
-    {
-      q:"Which factor helped create a national culture in the 1920s?",
-      answers:[
-        "mass media communication",
-        "declining population",
-        "reduced immigration",
-        "less technology"
-      ],
-      correct:0,
-      hint:"Think radio, movies, magazines, and shared entertainment."
-    },
-    {
-      q:"What effect did World War I have on U.S. global influence?",
-      answers:[
-        "increased international power",
-        "reduced industrial capacity",
-        "eliminated military power",
-        "ended foreign policy"
-      ],
-      correct:0,
-      hint:"The war elevated the United States on the world stage."
-    },
-    {
-      q:"Which development shows social tension in the 1920s?",
-      answers:[
-        "nativism and racial conflict",
-        "increased agricultural production",
-        "decline of cities",
-        "expansion of farmland"
-      ],
-      correct:0,
-      hint:"Think fear, intolerance, and backlash."
-    },
-    {
-      q:"Which event most demonstrates fear of radical political ideas?",
-      answers:[
-        "Red Scare",
-        "Harlem Renaissance",
-        "Spanish-American War",
-        "New Deal"
-      ],
-      correct:0,
-      hint:"This event centered on fear of communists and radicals."
-    },
-    {
-      q:"Immigration restrictions in the 1920s were largely driven by",
-      answers:[
-        "nativism",
-        "industrial growth",
-        "civil rights movements",
-        "Progressive reforms"
-      ],
-      correct:0,
-      hint:"The driving force was fear of foreigners and outsiders."
-    },
-    {
-      q:"The Harlem Renaissance helped",
-      answers:[
-        "spread African American artistic achievements",
-        "eliminate immigration",
-        "end industrialization",
-        "reduce urban culture"
-      ],
-      correct:0,
-      hint:"Think cultural expression and recognition."
-    },
-    {
-      q:"Which factor encouraged consumer culture in the 1920s?",
-      answers:[
-        "higher incomes and new technologies",
-        "reduced wages",
-        "declining communication",
-        "less advertising"
-      ],
-      correct:0,
-      hint:"Consumers had more access to goods and new products."
-    },
-    {
-      q:"Which innovation helped people receive news quickly across the country?",
-      answers:[
-        "radio broadcasting",
-        "canal systems",
-        "horse travel",
-        "hand printing"
-      ],
-      correct:0,
-      hint:"This was the fastest mass communication method of the era."
-    },
-    {
-      q:"What social effect did automobiles create?",
-      answers:[
-        "greater mobility and suburban growth",
-        "reduced travel",
-        "less urban expansion",
-        "end of highways"
-      ],
-      correct:0,
-      hint:"Cars changed where people could live and travel."
-    },
-    {
-      q:"Which movement encouraged pride in African American identity?",
-      answers:[
-        "Harlem Renaissance",
-        "Populist Movement",
-        "Know-Nothing Party",
-        "Federal Reserve"
-      ],
-      correct:0,
-      hint:"It was centered in Harlem, New York."
-    },
-    {
-      q:"Which statement best describes the 1920s?",
-      answers:[
-        "rapid technological change created cultural transformation",
-        "industrialization ended completely",
-        "cities declined in population",
-        "foreign policy dominated all politics"
-      ],
-      correct:0,
-      hint:"Think broad social and cultural transformation through new technology."
-    }
-  ];
-
-  let questions = [];
-  let qIndex = 0;
-  let correctCount = 0;
-  let attempts = 0;
-  let timerInterval = null;
-  let elapsedSeconds = 0;
-  let startedAt = null;
-  let locked = false;
-
-  const startPanel = document.getElementById("startPanel");
-  const gameArea = document.getElementById("gameArea");
-  const ticketPanel = document.getElementById("ticketPanel");
-
-  const studentNameInput = document.getElementById("studentName");
-  const classPeriodInput = document.getElementById("classPeriod");
-
-  const heroStudent = document.getElementById("heroStudent");
-  const heroProgress = document.getElementById("heroProgress");
-  const heroAccuracy = document.getElementById("heroAccuracy");
-  const heroTimer = document.getElementById("heroTimer");
-  const heroStarted = document.getElementById("heroStarted");
-
-  const questionText = document.getElementById("questionText");
-  const answersEl = document.getElementById("answers");
-  const hintEl = document.getElementById("hint");
-  const progressBar = document.getElementById("progressBar");
-  const ticketText = document.getElementById("ticketText");
-
-  document.getElementById("startBtn").addEventListener("click", startGame);
-  document.getElementById("restartBtn").addEventListener("click", restartGame);
-
-  function shuffleArray(arr){
-    const copy = [...arr];
-    for(let i = copy.length - 1; i > 0; i--){
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy;
+  </main>
+  <script src="basics-audit.js?v=as-big-block-1"></script>
+  <script id="deck" type="application/json">
+[
+  {
+    "id": "q01",
+    "topic": "CS 14 · Emergence as a world power",
+    "prompt": "A late-1800s manufacturer argues that American factories produce more than domestic buyers can purchase. Which policy would most directly serve the manufacturer’s goal?",
+    "parts": [
+      {
+        "choices": [
+          "Negotiate wider access to overseas markets.",
+          "Extend protective tariffs on all competing imports.",
+          "Reserve western farmland for homesteaders.",
+          "Standardize wages across American industries."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for a way to reach more customers abroad.",
+    "explanation": "Industrial expansion encouraged interest in foreign markets and raw materials.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 14. In Content Elaboration, look for emergence as a world power."
+  },
+  {
+    "id": "q02",
+    "topic": "CS 14 · Emergence as a world power",
+    "prompt": "After the 1898 war with Spain, the United States acquired Puerto Rico, Guam, and the Philippines. What do these acquisitions best demonstrate?",
+    "parts": [
+      {
+        "choices": [
+          "The United States gained strategic positions beyond North America.",
+          "The United States relied on treaties to avoid governing overseas territory.",
+          "U.S. expansion was confined to the settlement of continental lands.",
+          "U.S. policy shifted from naval expansion to continental defense."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Locate the acquisitions in the Caribbean and Pacific.",
+    "explanation": "The acquisitions increased the United States’ overseas presence and strategic reach.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 14. In Content Elaboration, look for emergence as a world power."
+  },
+  {
+    "id": "q03",
+    "topic": "CS 14 · Emergence as a world power",
+    "prompt": "Which change best explains the connection between World War I and the emergence of the United States as a world power?",
+    "parts": [
+      {
+        "choices": [
+          "U.S. military mobilization and financial resources increased its leverage.",
+          "European wartime mobilization reduced demand for American credit and goods.",
+          "U.S. participation made American trade depend more heavily on Germany.",
+          "European reconstruction shifted diplomatic influence away from Washington."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider the effect of war participation and Europe’s rebuilding needs.",
+    "explanation": "Military participation and economic strength increased American power while European countries devoted resources to recovery.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 14. In Content Elaboration, look for emergence as a world power."
+  },
+  {
+    "id": "q04",
+    "topic": "CS 14 · Emergence as a world power",
+    "prompt": "The United States acquired overseas territories and later backed construction of the Panama Canal. What common strategic purpose did these actions serve?",
+    "parts": [
+      {
+        "choices": [
+          "They improved U.S. access to shipping routes and naval bases.",
+          "They placed major trade routes under European control.",
+          "They reduced the need for American naval power in foreign waters.",
+          "They gave U.S. territories an immediate path to equal statehood."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider how bases and a canal affect the movement of ships.",
+    "explanation": "Overseas bases and the canal helped the United States project commercial and naval power.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 14. In Content Elaboration, look for emergence as a world power."
+  },
+  {
+    "id": "q05",
+    "topic": "CS 14 · Emergence as a world power",
+    "prompt": "Which policy demonstrates an effort to secure commercial access in China without taking direct control of Chinese territory?",
+    "parts": [
+      {
+        "choices": [
+          "The Open Door policy requesting equal trading access",
+          "The Roosevelt Corollary asserting a right to intervene",
+          "The Teller Amendment addressing control of Cuba",
+          "The agreement transferring Guam to the United States"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Distinguish trading access from the acquisition of territory.",
+    "explanation": "The Open Door notes sought equal commercial opportunity in China.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 14. In Content Elaboration, look for emergence as a world power."
+  },
+  {
+    "id": "q06",
+    "topic": "CS 14 · Emergence as a world power",
+    "prompt": "In 1904, the president argued that the United States might intervene in neighboring countries to prevent European intervention. Which description fits this policy?",
+    "parts": [
+      {
+        "choices": [
+          "It asserted a U.S. right to intervene to protect its regional influence.",
+          "It gave European lenders authority to require U.S. military action.",
+          "It required Congress to submit Caribbean disputes to the League.",
+          "It pledged to withdraw American forces from the Western Hemisphere."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Identify who asserted the power to intervene and where.",
+    "explanation": "The Roosevelt Corollary extended the Monroe Doctrine by asserting a U.S. policing role in the hemisphere.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 14. In Content Elaboration, look for emergence as a world power."
+  },
+  {
+    "id": "q07",
+    "topic": "CS 15 · Postwar peace efforts and isolationism",
+    "prompt": "A senator fears that League of Nations membership could commit the United States to defend another country without an independent decision by Congress. Which concern is at the center of the objection?",
+    "parts": [
+      {
+        "choices": [
+          "Preserving U.S. control over decisions to enter conflicts",
+          "Protecting the Treasury’s right to collect tariffs on imports",
+          "Preserving executive authority over treaty negotiations",
+          "Protecting the right of states to recognize foreign governments"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Focus on who could influence future U.S. military commitments.",
+    "explanation": "Opponents feared that League obligations could draw the United States into conflicts abroad.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 15. In Content Elaboration, look for postwar peace efforts and isolationism."
+  },
+  {
+    "id": "q08",
+    "topic": "CS 15 · Postwar peace efforts and isolationism",
+    "prompt": "Why did the United States fail to join the League of Nations after World War I?",
+    "parts": [
+      {
+        "choices": [
+          "The Senate withheld consent to ratification of the Treaty of Versailles.",
+          "The president withdrew the treaty before senators could debate its terms.",
+          "The Supreme Court struck down membership as a breach of federal law.",
+          "The Allies excluded the United States from treaty negotiations in Paris."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Identify the institution that must consent before treaty ratification.",
+    "explanation": "The Senate did not consent to ratification of the Treaty of Versailles, which included the League covenant.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 15. In Content Elaboration, look for postwar peace efforts and isolationism."
+  },
+  {
+    "id": "q09",
+    "topic": "CS 15 · Postwar peace efforts and isolationism",
+    "prompt": "In the 1920s, the United States stayed out of the League but joined negotiations to limit battleship construction. What does this combination show?",
+    "parts": [
+      {
+        "choices": [
+          "The United States cooperated on arms limits without joining the League.",
+          "The United States used League membership to replace bilateral agreements.",
+          "The United States left international diplomacy to European governments.",
+          "The United States abandoned arms limits whenever an agreement included Japan."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Distinguish selective cooperation from membership in a permanent organization.",
+    "explanation": "The Washington Naval Conference illustrates selective cooperation despite rejection of League membership.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 15. In Content Elaboration, look for postwar peace efforts and isolationism."
+  },
+  {
+    "id": "q10",
+    "topic": "CS 15 · Postwar peace efforts and isolationism",
+    "prompt": "The Kellogg-Briand Pact and the League covenant each sought peace. How did the pact differ in its approach?",
+    "parts": [
+      {
+        "choices": [
+          "It renounced war without creating a standing international organization.",
+          "It gave a permanent military council control of national armed forces.",
+          "It established automatic sanctions under a standing international court.",
+          "It called for member nations to defend a common territorial border."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Compare an agreement’s declaration with the structure of an organization.",
+    "explanation": "The pact renounced war as an instrument of national policy without setting up a new organization to enforce that pledge.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 15. In Content Elaboration, look for postwar peace efforts and isolationism."
+  },
+  {
+    "id": "q11",
+    "topic": "CS 15 · Postwar peace efforts and isolationism",
+    "prompt": "After a war, some lawmakers support lending to foreign countries but oppose a binding collective security commitment. Which position are they taking?",
+    "parts": [
+      {
+        "choices": [
+          "Support economic involvement while limiting military commitments.",
+          "Require military alliances before permitting commercial relations.",
+          "Apply the same restrictions to international trade and diplomacy.",
+          "Replace private investment overseas with permanent defense treaties."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Separate the financial policy from the security policy.",
+    "explanation": "The United States could remain commercially engaged while limiting its security obligations.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 15. In Content Elaboration, look for postwar peace efforts and isolationism."
+  },
+  {
+    "id": "q12",
+    "topic": "CS 16 · First Red Scare and nativism",
+    "prompt": "After World War I, newspaper headlines describe strike waves, revolutionary movements overseas, and government raids on suspected radicals. What best explains the connection among them?",
+    "parts": [
+      {
+        "choices": [
+          "Fear of revolution led officials to associate some unrest with radicalism.",
+          "Foreign competition led officials to focus raids on major manufacturers.",
+          "Battlefield casualties led lawmakers to end immigration from all nations.",
+          "Expanding labor rights led officials to protect political dissent more widely."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Think about how the Bolshevik Revolution shaped reactions to domestic unrest.",
+    "explanation": "The First Red Scare reflected fears of radical politics after revolution and domestic unrest.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 16. In Content Elaboration, look for first red scare and nativism."
+  },
+  {
+    "id": "q13",
+    "topic": "CS 16 · First Red Scare and nativism",
+    "prompt": "Why did the Palmer Raids raise concerns about civil liberties?",
+    "parts": [
+      {
+        "choices": [
+          "Officials detained suspected radicals without adequate due process.",
+          "Judges granted unions broad authority to regulate labor negotiations.",
+          "Officials restricted which parties could nominate candidates.",
+          "Congress required employers to publish workers’ political affiliations."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Focus on government procedures during arrests and detention.",
+    "explanation": "Mass arrests, weak evidence and failures of due process brought criticism of the raids.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 16. In Content Elaboration, look for first red scare and nativism."
+  },
+  {
+    "id": "q14",
+    "topic": "CS 16 · First Red Scare and nativism",
+    "prompt": "A 1920s law assigns immigration quotas by national origin, favoring certain European countries. Which idea most directly shaped this policy?",
+    "parts": [
+      {
+        "choices": [
+          "Nativist pressure to favor certain national origins",
+          "Progressive demands for municipal voting reform",
+          "Internationalist commitments to free movement",
+          "Labor demands for a nationwide minimum wage"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Ask why the law favored certain origins over others.",
+    "explanation": "Nativist ideas influenced quotas that favored immigrants from northern and western Europe.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 16. In Content Elaboration, look for first red scare and nativism."
+  },
+  {
+    "id": "q15",
+    "topic": "CS 16 · First Red Scare and nativism",
+    "prompt": "The Ku Klux Klan expanded beyond the South in the 1920s and targeted Catholics, Jews, immigrants, and Black Americans. Which conclusion is supported?",
+    "parts": [
+      {
+        "choices": [
+          "Racial prejudice and hostility to religious and ethnic minorities overlapped.",
+          "Racial exclusion became less influential as religious membership increased.",
+          "Nativism focused on foreign governments rather than people living in the U.S.",
+          "Organized intolerance declined when it moved into northern communities."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Identify the different grounds on which people were targeted.",
+    "explanation": "The revived Klan combined white supremacy with hostility to immigrants and religious minorities.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 16. In Content Elaboration, look for first red scare and nativism."
+  },
+  {
+    "id": "q16",
+    "topic": "CS 16 · First Red Scare and nativism",
+    "prompt": "Which pair best illustrates different forms of intolerance that intensified after World War I?",
+    "parts": [
+      {
+        "choices": [
+          "Raids on suspected radicals and national-origin quotas",
+          "Women’s suffrage and federal regulation of food safety",
+          "Naval disarmament and the rejection of League membership",
+          "Commercial radio and the spread of installment buying"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for policies targeting political beliefs or perceived foreign origins.",
+    "explanation": "The raids reflected antiradical fear, while quotas reflected nativist attitudes.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 16. In Content Elaboration, look for first red scare and nativism."
+  },
+  {
+    "id": "q17",
+    "topic": "CS 17 · Mass production and consumer culture",
+    "prompt": "A factory divides car assembly into repeatable tasks along a moving line. Which outcome best explains its effect on buyers?",
+    "parts": [
+      {
+        "choices": [
+          "Greater output lowered unit costs and made cars more affordable.",
+          "Greater use of custom work raised prices for the ordinary buyer.",
+          "Lower output let factories increase the variety of handmade models.",
+          "Lower demand allowed firms to sell fewer cars at a higher price."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Connect the speed of assembly with the cost per vehicle.",
+    "explanation": "Mass production lowered manufacturing costs and helped widen car ownership.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 17. In Content Elaboration, look for mass production and consumer culture."
+  },
+  {
+    "id": "q18",
+    "topic": "CS 17 · Mass production and consumer culture",
+    "prompt": "A household buys an appliance with a down payment and then makes monthly payments. How did this practice contribute to 1920s consumer culture?",
+    "parts": [
+      {
+        "choices": [
+          "It let families take home goods before saving the full price.",
+          "It required stores to hold goods until buyers paid in full.",
+          "It shifted most household purchases away from manufactured products.",
+          "It required each buyer to save more before taking goods home."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Compare the timing of the purchase with the timing of payment.",
+    "explanation": "Installment credit widened access to consumer goods while increasing household debt.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 17. In Content Elaboration, look for mass production and consumer culture."
+  },
+  {
+    "id": "q19",
+    "topic": "CS 17 · Mass production and consumer culture",
+    "prompt": "People in distant towns listen to the same news broadcast and hear the same advertising. What change does this illustrate?",
+    "parts": [
+      {
+        "choices": [
+          "Radio helped create shared audiences across local boundaries.",
+          "Radio replaced nationwide audiences with smaller local markets.",
+          "Radio made national advertising depend on printed newspapers.",
+          "Radio reduced the spread of popular music across regions."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider how far one broadcast can reach.",
+    "explanation": "National broadcasting helped spread common news, advertising, and entertainment.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 17. In Content Elaboration, look for mass production and consumer culture."
+  },
+  {
+    "id": "q20",
+    "topic": "CS 17 · Mass production and consumer culture",
+    "prompt": "Which development best illustrates how automobiles changed where people could live and work?",
+    "parts": [
+      {
+        "choices": [
+          "Workers could commute from homes farther from their jobs.",
+          "Workers moved closer to their jobs.",
+          "Employers moved most jobs to places without road connections.",
+          "Employers relied more on streetcars to reach scattered rural areas."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Think about the range of daily travel by car.",
+    "explanation": "Increased travel flexibility made it easier to live farther from work.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 17. In Content Elaboration, look for mass production and consumer culture."
+  },
+  {
+    "id": "q21",
+    "topic": "CS 17 · Mass production and consumer culture",
+    "prompt": "A theater converts from silent films to talking pictures, while broadcasters build national networks. What broader 1920s development do both illustrate?",
+    "parts": [
+      {
+        "choices": [
+          "New technologies changed how Americans experienced mass entertainment.",
+          "New technologies shifted entertainment away from commercial audiences.",
+          "Changes in transportation ended interest in recorded entertainment.",
+          "Changes in advertising narrowed audiences to a single region."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider how technology changed what audiences could hear.",
+    "explanation": "Sound film and broadcasting expanded commercial entertainment and helped spread shared culture.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 17. In Content Elaboration, look for mass production and consumer culture."
+  },
+  {
+    "id": "q22",
+    "topic": "CS 17 · Mass production and consumer culture",
+    "prompt": "An advertiser promotes household appliances nationally while retailers offer credit terms. Why did these practices reinforce each other?",
+    "parts": [
+      {
+        "choices": [
+          "Advertising encouraged demand, while credit made purchases easier.",
+          "Credit limited the number of buyers advertisers could reach.",
+          "Advertising replaced the need to offer a method of payment.",
+          "Credit raised the amount shoppers had to pay before taking goods home."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Separate how shoppers learn about goods from how they pay for them.",
+    "explanation": "Advertising stimulated demand and installment plans reduced the initial cost of purchasing.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 17. In Content Elaboration, look for mass production and consumer culture."
+  },
+  {
+    "id": "q23",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "Which statement best connects the Great Migration to the Harlem Renaissance?",
+    "parts": [
+      {
+        "choices": [
+          "Migration helped build urban Black communities that sustained the work of artists.",
+          "Migration reduced the number of Black artists living in northern cities.",
+          "Migration moved Black newspapers and publishers mainly into rural districts.",
+          "Migration led Congress to establish national schools for Black artists."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider what happens when artists, writers, and audiences live near one another.",
+    "explanation": "The Great Migration helped grow communities and cultural institutions that supported the Renaissance.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q24",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "A Black newspaper in Chicago advertises northern factory jobs to readers in the South. Why did such notices matter to the Great Migration?",
+    "parts": [
+      {
+        "choices": [
+          "They informed readers about opportunities outside the Jim Crow South.",
+          "They announced a national program requiring workers to leave farms.",
+          "They described new laws banning Black workers from northern factories.",
+          "They directed families to restore jobs lost to northern labor unions."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Identify what new information could affect a family’s decision to move.",
+    "explanation": "Job information was a pull factor alongside the push of segregation and racial violence.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q25",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "How did the Nineteenth Amendment change voting rules in states where women had only limited local voting rights?",
+    "parts": [
+      {
+        "choices": [
+          "States could no longer deny voting rights on account of sex.",
+          "States could keep restrictions for statewide elections.",
+          "States had to remove every barrier to voting at the same time.",
+          "States had to lower the minimum voting age in every election."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Focus on the specific ground for exclusion the amendment named.",
+    "explanation": "The amendment prohibited denial or abridgment of voting rights on account of sex.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q26",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "Which evidence best shows a difference between Prohibition’s goal and one of its consequences?",
+    "parts": [
+      {
+        "choices": [
+          "Bans on legal sales helped illegal liquor markets grow.",
+          "Alcohol production grew legally because licensing became easier.",
+          "The amendment ended interstate trade in ordinary consumer goods.",
+          "The ban encouraged all states to adopt identical voting rules."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for an effect that undercut the ban’s purpose.",
+    "explanation": "Prohibition restricted legal sales, and illegal suppliers and distributors responded to continued demand.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q27",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "How did the Twenty-first Amendment change the constitutional policy established by the Eighteenth?",
+    "parts": [
+      {
+        "choices": [
+          "It repealed Prohibition and preserved state alcohol regulation.",
+          "It retained Prohibition but moved enforcement to federal courts.",
+          "It banned state regulation of the sale and distribution of alcohol.",
+          "It replaced the nationwide ban with a requirement for county referendums."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Distinguish repeal of the national ban from state authority to regulate.",
+    "explanation": "The Twenty-first Amendment repealed the Eighteenth and retained a role for state alcohol regulation.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q28",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "Which example best demonstrates the national cultural influence of the Harlem Renaissance?",
+    "parts": [
+      {
+        "choices": [
+          "Black writers and musicians gained audiences beyond their neighborhoods.",
+          "Federal quotas reshaped immigration.",
+          "Federal officials set new rules for voting in cities with large Black populations.",
+          "New transportation systems transferred publishing from cities to rural areas."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for a change in artistic reach and cultural recognition.",
+    "explanation": "Artists associated with the Harlem Renaissance reached national audiences and asserted Black cultural pride.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q29",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "Which statement explains how the women’s suffrage and Prohibition movements both changed American public life?",
+    "parts": [
+      {
+        "choices": [
+          "Organized movements changed national policy through constitutional amendments.",
+          "Both movements won changes through presidential orders that bypassed Congress.",
+          "Each movement relied on a court ruling to repeal a constitutional amendment.",
+          "Both movements transferred control of voting rules to local political machines."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider how campaigners turned their goals into national law.",
+    "explanation": "Activists secured constitutional changes through the Eighteenth and Nineteenth Amendments.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
+  },
+  {
+    "id": "q30",
+    "topic": "CS 18 · Social change in the 1920s",
+    "prompt": "How did the Great Migration change the geography of American life during the early twentieth century?",
+    "parts": [
+      {
+        "choices": [
+          "Northern and midwestern industrial cities gained Black residents.",
+          "It shifted industrial jobs from northern cities to southern plantations.",
+          "Immigrants moved from cities to western reservations.",
+          "It concentrated most new Black urban communities in small farm towns."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Trace the movement from the South to industrial employment centers.",
+    "explanation": "The Great Migration redistributed population and helped expand Black urban communities outside the South.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 18. In Content Elaboration, look for social change in the 1920s."
   }
-
-  function prepareQuestions(){
-    const prepared = baseQuestions.map(item => {
-      const answerObjects = item.answers.map((text, index) => ({
-        text,
-        isCorrect: index === item.correct
-      }));
-
-      const shuffledAnswers = shuffleArray(answerObjects);
-
-      return {
-        q: item.q,
-        answers: shuffledAnswers,
-        hint: item.hint
-      };
-    });
-
-    return shuffleArray(prepared);
-  }
-
-  function formatTime(totalSeconds){
-    const mins = Math.floor(totalSeconds / 60).toString().padStart(2, "0");
-    const secs = (totalSeconds % 60).toString().padStart(2, "0");
-    return `${mins}:${secs}`;
-  }
-
-  function updateHUD(){
-    const total = questions.length;
-    const progressDisplay = `${Math.min(qIndex + 1, total)} / ${total}`;
-    const accuracy = attempts === 0 ? 100 : Math.round((correctCount / attempts) * 100);
-    const progressPct = total === 0 ? 0 : (qIndex / total) * 100;
-
-    heroProgress.textContent = progressDisplay;
-    heroAccuracy.textContent = `${accuracy}%`;
-    progressBar.style.width = `${progressPct}%`;
-  }
-
-  function startGame(){
-    const studentName = studentNameInput.value.trim();
-    const classPeriod = classPeriodInput.value.trim();
-
-    if(!studentName){
-      alert("Enter student name.");
-      studentNameInput.focus();
-      return;
-    }
-
-    if(!classPeriod){
-      alert("Enter class / period.");
-      classPeriodInput.focus();
-      return;
-    }
-
-    questions = prepareQuestions();
-    qIndex = 0;
-    correctCount = 0;
-    attempts = 0;
-    elapsedSeconds = 0;
-    locked = false;
-
-    startedAt = new Date();
-
-    heroStudent.textContent = studentName;
-    heroStarted.textContent = startedAt.toLocaleTimeString();
-    heroTimer.textContent = "00:00";
-
-    startPanel.style.display = "none";
-    ticketPanel.style.display = "none";
-    gameArea.style.display = "block";
-
-    if(timerInterval) clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-      elapsedSeconds++;
-      heroTimer.textContent = formatTime(elapsedSeconds);
-    }, 1000);
-
-    updateHUD();
-    loadQuestion();
-  }
-
-  function loadQuestion(){
-    locked = false;
-    hintEl.textContent = "";
-
-    const current = questions[qIndex];
-    questionText.textContent = current.q;
-    answersEl.innerHTML = "";
-
-    current.answers.forEach(answer => {
-      const btn = document.createElement("button");
-      btn.className = "answer";
-      btn.type = "button";
-      btn.textContent = answer.text;
-
-      btn.addEventListener("click", () => handleAnswer(answer, btn));
-      answersEl.appendChild(btn);
-    });
-
-    updateHUD();
-  }
-
-  function handleAnswer(answerObj, selectedBtn){
-    if(locked) return;
-
-    locked = true;
-    attempts++;
-
-    const answerButtons = [...answersEl.querySelectorAll(".answer")];
-    answerButtons.forEach(btn => btn.disabled = true);
-
-    if(answerObj.isCorrect){
-      correctCount++;
-      selectedBtn.classList.add("correct");
-      hintEl.textContent = "Correct.";
-
-      setTimeout(() => {
-        qIndex++;
-        if(qIndex >= questions.length){
-          finishGame();
-        } else {
-          loadQuestion();
-        }
-      }, 850);
-    } else {
-      selectedBtn.classList.add("incorrect");
-
-      const current = questions[qIndex];
-      const correctBtn = answerButtons.find((btn, index) => current.answers[index].isCorrect);
-      if(correctBtn) correctBtn.classList.add("correct");
-
-      hintEl.textContent = current.hint;
-
-      setTimeout(() => {
-        alert("100% accuracy required. Restart the run.");
-        restartGame();
-      }, 900);
-    }
-
-    updateHUD();
-  }
-
-  function finishGame(){
-    clearInterval(timerInterval);
-    timerInterval = null;
-
-    gameArea.style.display = "none";
-    ticketPanel.style.display = "block";
-    progressBar.style.width = "100%";
-
-    const completedAt = new Date();
-
-    ticketText.innerHTML = `
-      <p><strong>Student:</strong> ${escapeHtml(heroStudent.textContent)}</p>
-      <p><strong>Class / Period:</strong> ${escapeHtml(classPeriodInput.value.trim())}</p>
-      <p><strong>Game:</strong> Wednesday Big Block — Imperialism to 1920s Review</p>
-      <p><strong>Score:</strong> ${questions.length} / ${questions.length}</p>
-      <p><strong>Accuracy:</strong> 100%</p>
-      <p><strong>Started:</strong> ${escapeHtml(heroStarted.textContent)}</p>
-      <p><strong>Completed:</strong> ${escapeHtml(completedAt.toLocaleString())}</p>
-      <p><strong>Time:</strong> ${escapeHtml(formatTime(elapsedSeconds))}</p>
-    `;
-
-    heroProgress.textContent = `${questions.length} / ${questions.length}`;
-    heroAccuracy.textContent = "100%";
-  }
-
-  function restartGame(){
-    if(timerInterval){
-      clearInterval(timerInterval);
-      timerInterval = null;
-    }
-
-    questions = [];
-    qIndex = 0;
-    correctCount = 0;
-    attempts = 0;
-    elapsedSeconds = 0;
-    locked = false;
-
-    heroProgress.textContent = "0 / 0";
-    heroAccuracy.textContent = "100%";
-    heroTimer.textContent = "00:00";
-    heroStarted.textContent = "—";
-    progressBar.style.width = "0%";
-
-    questionText.textContent = "Question loads here";
-    answersEl.innerHTML = "";
-    hintEl.textContent = "";
-
-    gameArea.style.display = "none";
-    ticketPanel.style.display = "none";
-    startPanel.style.display = "block";
-  }
-
-  function escapeHtml(str){
-    return str
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
-  }
-</script>
-
+]
+  </script>
+  <script src="ost-game.js?v=as-big-block-1"></script>
 </body>
 </html>

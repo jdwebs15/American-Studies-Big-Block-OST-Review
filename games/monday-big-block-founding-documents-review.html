@@ -1,1060 +1,819 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Constitutional Foundations Review — CS4-CS7</title>
-<link rel="stylesheet" href="../styles.css"/>
-
-<style>
-:root{
-  --bg:#0b1220;
-  --panel:#111a2f;
-  --panel2:#0f1730;
-  --text:#e7eefc;
-  --muted:#a8b4cf;
-  --line:rgba(255,255,255,.12);
-  --good:#2bd576;
-  --bad:#ff5c7a;
-  --warn:#ffd166;
-  --accent:#7aa2ff;
-  --shadow:0 18px 55px rgba(0,0,0,.40);
-  --radius:18px;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:linear-gradient(180deg,#0b1220,#070b14);
-  color:var(--text);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-}
-
-.wrap{
-  width:min(1000px,92vw);
-  margin:26px auto 40px;
-}
-
-.card{
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:22px;
-}
-
-h1,h2,h3,p{margin-top:0}
-
-.sub{
-  color:var(--muted);
-  margin-bottom:14px;
-}
-
-.start-row{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-
-input{
-  background:#0e1730;
-  color:var(--text);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:12px 14px;
-  font-size:15px;
-  min-width:280px;
-}
-
-button{
-  border:none;
-  border-radius:12px;
-  padding:11px 16px;
-  cursor:pointer;
-  font-weight:700;
-  font-size:14px;
-}
-
-.btn{
-  background:var(--accent);
-  color:#fff;
-}
-
-.btn-secondary{
-  background:#1a2442;
-  color:#fff;
-  border:1px solid var(--line);
-}
-
-.topbar{
-  display:grid;
-  grid-template-columns:repeat(5, minmax(0,1fr));
-  gap:10px;
-  margin-bottom:16px;
-}
-
-.stat{
-  background:var(--panel2);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:10px 12px;
-}
-
-.stat .label{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:4px;
-}
-
-.stat .value{
-  font-size:15px;
-  font-weight:800;
-}
-
-.progress-wrap{
-  margin:6px 0 18px;
-}
-
-.progress-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:8px;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.progress{
-  width:100%;
-  height:14px;
-  background:#0c1430;
-  border:1px solid var(--line);
-  border-radius:999px;
-  overflow:hidden;
-}
-
-.progress-bar{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,var(--accent),#9cb8ff);
-  transition:width .25s ease;
-}
-
-.q-meta{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:10px;
-}
-
-.stem{
-  font-size:24px;
-  line-height:1.25;
-  margin-bottom:16px;
-}
-
-.answers{
-  display:grid;
-  gap:10px;
-}
-
-.answer{
-  width:100%;
-  text-align:left;
-  background:#172347;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.08);
-  padding:14px 16px;
-  border-radius:14px;
-  font-weight:600;
-  line-height:1.35;
-}
-
-.answer:hover{
-  background:#22315f;
-}
-
-.answer.correct{
-  background:rgba(43,213,118,.18);
-  border-color:rgba(43,213,118,.55);
-}
-
-.answer.incorrect{
-  background:rgba(255,92,122,.16);
-  border-color:rgba(255,92,122,.55);
-}
-
-.answer.locked{
-  cursor:default;
-}
-
-.feedback{
-  min-height:24px;
-  margin-top:14px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-.ticket{
-  background:#0e1735;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:18px;
-  line-height:1.7;
-}
-
-.pass{
-  color:var(--good);
-  font-weight:800;
-}
-
-.fail{
-  color:var(--warn);
-  font-weight:800;
-}
-
-.hidden{display:none}
-
-@media (max-width:850px){
-  .topbar{
-    grid-template-columns:1fr 1fr;
-  }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Monday Big Block Review — Founding Documents</title>
+  <link rel="stylesheet" href="ost-game.css?v=as-big-block-1">
 </head>
 <body>
-<div class="wrap">
-
-  <section class="card" id="startCard">
-    <h1>Constitutional Foundations Review</h1>
-    <p class="sub">CS4–CS7 • 52 Questions • Mastery Review • Name required • Auto-submit on click</p>
-
-    <div class="start-row">
-      <input id="studentName" type="text" placeholder="Enter your name" autocomplete="off">
-      <button class="btn" id="startBtn" type="button">Start Game</button>
-    </div>
-
-    <div class="feedback" id="startMsg"></div>
-  </section>
-
-  <section class="card hidden" id="gameCard">
-    <div class="topbar">
-      <div class="stat">
-        <div class="label">Student</div>
-        <div class="value" id="playerDisplay">—</div>
+  <main class="shell">
+    <a class="back" href="../index.html">← American Studies Big Block Review Hub</a>
+    <header class="hero game-intro">
+      <div class="game-title">
+        <div class="eyebrow">Monday · CS 4–7</div>
+        <h1>Founding Documents</h1>
       </div>
-      <div class="stat">
-        <div class="label">Progress</div>
-        <div class="value" id="progressText">1 / 52</div>
-      </div>
-      <div class="stat">
-        <div class="label">Accuracy</div>
-        <div class="value" id="accuracyDisplay">100%</div>
-      </div>
-      <div class="stat">
-        <div class="label">Timer</div>
-        <div class="value" id="timerDisplay">0:00</div>
-      </div>
-      <div class="stat">
-        <div class="label">Started</div>
-        <div class="value" id="startedDisplay">—</div>
-      </div>
-    </div>
+      <p class="game-description">Declaration of Independence, Northwest Ordinance, Constitution, ratification, and the Bill of Rights.</p>
+      <aside class="game-details" aria-label="Game details">
+        <ul>
+          <li>30 questions</li>
+          <li>Hints after a miss</li>
+          <li>Certificate for a 30/30 first-attempt score</li>
+        </ul>
+      </aside>
+    </header>
+    <section class="student-panel" id="startScreen">
+      <h2>Student Information</h2>
+      <form id="identity">
+      <div class="fields">
+      <label>Student Name<input id="studentName" autocomplete="name" required></label>
+      <label>Class Period<select id="sheetPeriod" required><option value="">Choose period</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+      <label>School Email<input id="sheetEmail" type="email" autocomplete="email" required></label></div>
+      <div class="actions">
+      <button type="submit">Start Game</button>
+      <button type="button" class="secondary" id="load">Load Saved Work</button></div>
+      <p id="startStatus" role="status"></p></form></section>
+      <section class="question-panel" id="gameArea" hidden>
+      <div class="question-toolbar">
+      <p id="progress"></p>
+      <button type="button" class="secondary" id="restart">Restart Game</button></div>
+      <p id="btbCloudStatus" role="status"></p>
+      <div id="question"></div>
+      <p id="feedback" class="feedback" role="status"></p></section>
+      <section class="completion" id="results" hidden>
+      <h2>Game Results</h2>
+      <p id="resultMessage"></p>
+      <p id="runSummary"></p>
+      <section id="certificate" class="source-box" hidden>
+      <h2>100% Perfect Run</h2>
+      <p id="certName" class="ticket-name"></p>
+      <h3>Monday Big Block Review — Founding Documents</h3>
+      <p id="certAttempts" class="ticket-attempts"></p>
+      <p id="certStart"></p>
+      <p id="certEnd"></p></section>
+      <p id="finalStatus" role="status"></p>
+      <div id="missedReview" hidden></div>
+      <div class="actions">
+      <button type="button" id="print" hidden>Print Certificate</button>
+      <button type="button" class="secondary" id="replay">Restart Game</button></div></section>
 
-    <div class="progress-wrap">
-      <div class="progress-head">
-        <span>Review Progress</span>
-        <span id="progressPct">0%</span>
-      </div>
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-    </div>
-
-    <div class="q-meta" id="qMeta">Question 1 of 52</div>
-    <div class="stem" id="questionStem">Loading…</div>
-    <div class="answers" id="answers"></div>
-    <div class="feedback" id="feedback"></div>
-
-    <div class="controls">
-      <button class="btn-secondary" id="restartBtn" type="button">Restart Game</button>
-      <button class="btn-secondary" id="hubBtn" type="button">Back to Hub</button>
-    </div>
-  </section>
-
-  <section class="card hidden" id="finishCard">
-    <h2>Mastery Ticket</h2>
-    <div class="ticket" id="ticket"></div>
-
-    <div class="controls">
-      <button class="btn" id="playAgainBtn" type="button">Play Again</button>
-      <button class="btn-secondary" id="finishHubBtn" type="button">Back to Hub</button>
-    </div>
-  </section>
-
-</div>
-
-<script>
-const MASTER_QUESTIONS = [
+  </main>
+  <script src="basics-audit.js?v=as-big-block-1"></script>
+  <script id="deck" type="application/json">
+[
   {
-    stem:"Which idea from Enlightenment philosophy most influenced the Declaration of Independence?",
-    correct:"People possess natural rights that governments must protect.",
-    wrong:[
-      "Kings rule through divine authority alone.",
-      "Citizens must obey government without question.",
-      "Economic success determines political power."
+    "id": "q01",
+    "topic": "CS 4 · Declaration of Independence",
+    "prompt": "Which idea from Enlightenment philosophy most influenced the Declaration of Independence?",
+    "parts": [
+      {
+        "choices": [
+          "People possess inherent natural rights that governments are formed to protect.",
+          "People owe political obedience because rulers inherit authority.",
+          "People gain political rights when lawmakers choose to grant them.",
+          "People should give up basic rights in return for permanent royal protection."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Think John Locke."
+    "hint": "Think John Locke.",
+    "explanation": "The Declaration follows Locke’s natural-rights theory by treating rights as inherent and making their protection a purpose of government.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 4. In Content Elaboration, look for declaration of independence."
   },
   {
-    stem:"Which phrase from the Declaration best reflects equality of rights?",
-    correct:"All people possess the same basic natural rights.",
-    wrong:[
-      "Government grants rights to citizens.",
-      "Rights belong only to property owners.",
-      "Rights depend on military power."
+    "id": "q02",
+    "topic": "CS 4 · Declaration of Independence",
+    "prompt": "Which example best illustrates consent of the governed?",
+    "parts": [
+      {
+        "choices": [
+          "Citizens elect representatives who exercise authority on their behalf.",
+          "Governors appoint administrators to carry out laws already in force.",
+          "Judges review executive decisions under procedures set by Congress.",
+          "Legislatures divide committee assignments according to seniority rules."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Equality refers to natural rights."
+    "hint": "Authority comes from the people.",
+    "explanation": "An elected representative holds authority because voters delegated it. An appointment can occur without that direct act of consent.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 4. In Content Elaboration, look for declaration of independence."
   },
   {
-    stem:"Which example best illustrates consent of the governed?",
-    correct:"Citizens voting in elections to choose leaders",
-    wrong:[
-      "Leaders inheriting power from family",
-      "Military officials appointing legislators",
-      "Courts choosing executive leaders"
+    "id": "q03",
+    "topic": "CS 4 · Declaration of Independence",
+    "prompt": "Why did the colonists list grievances against King George III?",
+    "parts": [
+      {
+        "choices": [
+          "To show that the king repeatedly violated colonial rights",
+          "To propose a permanent system for governing new states",
+          "To explain the economic benefits of British trade controls",
+          "To list the offices needed under a new national constitution"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Authority comes from the people."
+    "hint": "The grievances justified independence.",
+    "explanation": "The grievances are evidence for the Declaration’s claim that repeated abuses justified independence.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 4. In Content Elaboration, look for declaration of independence."
   },
   {
-    stem:"Why did the colonists list grievances against King George III?",
-    correct:"To show the king had violated their rights",
-    wrong:[
-      "To explain colonial trade policies",
-      "To create the Constitution",
-      "To organize the first Congress"
+    "id": "q04",
+    "topic": "CS 4 · Declaration of Independence",
+    "prompt": "Which action best reflects the Declaration’s idea that people may alter government?",
+    "parts": [
+      {
+        "choices": [
+          "Voters amend their state constitution to change how officials are chosen.",
+          "State officials issue procedural guidance under rules already in force.",
+          "Judges apply an existing statute in deciding a dispute between counties.",
+          "Legislators renew an appropriation under existing budget procedures."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"The grievances justified independence."
+    "hint": "People can change government when rights are violated.",
+    "explanation": "Changing a constitution changes the structure of government. The Declaration argues that the people may alter or replace a government that fails to secure their rights.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 4. In Content Elaboration, look for declaration of independence."
   },
   {
-    stem:"Which action best reflects the Declaration’s idea that people may alter government?",
-    correct:"Citizens replacing leaders through elections",
-    wrong:[
-      "Leaders canceling elections",
-      "Government restricting public protest",
-      "Courts eliminating jury trials"
+    "id": "q05",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which statement best describes the purpose of the Northwest Ordinance?",
+    "parts": [
+      {
+        "choices": [
+          "To govern the territory and provide a path to statehood",
+          "To divide the territory among existing state governments",
+          "To establish a permanent military government in the territory",
+          "To set trade rules for states already admitted to the Union"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"People can change government when rights are violated."
+    "hint": "It organized westward expansion.",
+    "explanation": "The ordinance organized a territorial government and established conditions for admission to the Union.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which example demonstrates natural rights in practice?",
-    correct:"Courts protecting freedom of speech",
-    wrong:[
-      "Government restricting peaceful assembly",
-      "Leaders ignoring elections",
-      "Officials ruling without laws"
+    "id": "q06",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which provision of the Northwest Ordinance supported democratic government?",
+    "parts": [
+      {
+        "choices": [
+          "Encouraging schools and public education",
+          "Assigning federal courts authority over trade",
+          "Setting out terms for appointing governors",
+          "Surveying land for sale to private owners"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Natural rights include liberty and due process."
+    "hint": "Education strengthens citizenship.",
+    "explanation": "The ordinance encouraged education as a support for good government and civic life.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which statement best describes the purpose of the Northwest Ordinance?",
-    correct:"To establish a system for governing territories and admitting new states",
-    wrong:[
-      "To end territorial settlement",
-      "To replace the Constitution",
-      "To eliminate federal authority"
+    "id": "q07",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which outcome resulted from the Northwest Ordinance’s territorial system?",
+    "parts": [
+      {
+        "choices": [
+          "New states entered the Union on equal footing with existing states.",
+          "New states remained permanently subordinate to the original states.",
+          "New states joined the Union only as land governed by existing states.",
+          "New states entered without authority to establish their own governments."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"It organized westward expansion."
+    "hint": "The ordinance created equal states.",
+    "explanation": "The ordinance’s statehood process treated admitted states as equals of the original states.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which provision of the Northwest Ordinance supported democratic government?",
-    correct:"Encouraging public education",
-    wrong:[
-      "Ending elections",
-      "Eliminating courts",
-      "Banning representative government"
+    "id": "q08",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which principle divides power between national and state governments?",
+    "parts": [
+      {
+        "choices": [
+          "Federalism",
+          "Judicial review",
+          "Rule of law",
+          "Popular sovereignty"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Education strengthens citizenship."
+    "hint": "Two levels of government share authority.",
+    "explanation": "Federalism divides authority between levels of government. Separation of powers divides authority among branches.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Why was education promoted in the Northwest Territory?",
-    correct:"An informed citizenry supports republican government.",
-    wrong:[
-      "Education replaces elections.",
-      "Education strengthens monarchies.",
-      "Education prevents settlement."
+    "id": "q09",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Congress passes a law and the president vetoes it. What principle is demonstrated?",
+    "parts": [
+      {
+        "choices": [
+          "Checks and balances",
+          "Federalism",
+          "Popular sovereignty",
+          "Reserved powers"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Republics depend on informed voters."
+    "hint": "Branches limit each other.",
+    "explanation": "A veto lets the executive block a bill approved by the legislature, so one branch checks another.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Which outcome resulted from the Northwest Ordinance’s territorial system?",
-    correct:"New states entered the Union on equal footing.",
-    wrong:[
-      "Territories remained colonies permanently.",
-      "States were denied representation.",
-      "Territories became foreign countries."
+    "id": "q10",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Why did the framers separate powers among branches of government?",
+    "parts": [
+      {
+        "choices": [
+          "To keep any one branch from controlling all government functions",
+          "To let each state select which federal laws it would enforce",
+          "To make the executive independent of limits imposed by Congress",
+          "To let federal courts write laws whenever Congress could not act"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"The ordinance created equal states."
+    "hint": "This design prevents tyranny.",
+    "explanation": "Separate legislative, executive, and judicial powers reduce the risk that one institution dominates government.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Which principle divides power between national and state governments?",
-    correct:"Federalism",
-    wrong:[
-      "Judicial review",
-      "Checks and balances",
-      "Popular sovereignty"
+    "id": "q11",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which example best demonstrates popular sovereignty?",
+    "parts": [
+      {
+        "choices": [
+          "Voters choose members of Congress",
+          "Judges appoint members of Congress",
+          "Officers issue rules for military promotion",
+          "Presidents appoint cabinet officials"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Two levels of government share authority."
+    "hint": "Power originates with the people.",
+    "explanation": "Elections demonstrate that government authority comes from the people who choose their representatives.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Congress passes a law and the president vetoes it. What principle is demonstrated?",
-    correct:"Checks and balances",
-    wrong:[
-      "Federalism",
-      "Popular sovereignty",
-      "Reserved powers"
+    "id": "q12",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Why did Anti-Federalists oppose the Constitution initially?",
+    "parts": [
+      {
+        "choices": [
+          "They feared consolidated national power could endanger liberty.",
+          "They feared state legislatures would control the national army.",
+          "They thought the proposed government left Congress unable to tax.",
+          "They thought stronger federal courts would weaken executive power."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Branches limit each other."
+    "hint": "They wanted stronger protections for rights.",
+    "explanation": "Anti-Federalists worried that a more powerful national government would threaten state authority and individual rights.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   },
   {
-    stem:"Why did the framers separate powers among branches of government?",
-    correct:"To prevent concentration of power",
-    wrong:[
-      "To eliminate elections",
-      "To strengthen monarchy",
-      "To remove state governments"
+    "id": "q13",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Which document defended the Constitution during ratification debates?",
+    "parts": [
+      {
+        "choices": [
+          "The Federalist Papers",
+          "The Articles of Confederation",
+          "The Mayflower Compact",
+          "The Virginia Plan"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"This design prevents tyranny."
+    "hint": "Written by Hamilton, Madison, and Jay.",
+    "explanation": "The Federalist essays argued publicly for ratification of the proposed Constitution.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   },
   {
-    stem:"Which Enlightenment thinker influenced the idea of separation of powers?",
-    correct:"Montesquieu",
-    wrong:[
-      "Hobbes",
-      "Locke",
-      "Smith"
+    "id": "q14",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Why was the Bill of Rights added to the Constitution?",
+    "parts": [
+      {
+        "choices": [
+          "To place explicit limits on federal power over individuals",
+          "To specify which goods the national government could tax",
+          "To establish how states would select presidential electors",
+          "To give federal courts authority to write rules for Congress"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"He warned against concentrated authority."
+    "hint": "Anti-Federalists demanded protections.",
+    "explanation": "The first ten amendments explicitly protect liberties and restrain federal authority.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   },
   {
-    stem:"Which example best demonstrates popular sovereignty?",
-    correct:"Citizens electing members of Congress",
-    wrong:[
-      "Judges appointing legislators",
-      "Military leaders making laws",
-      "Presidents ruling for life"
+    "id": "q15",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which clause makes valid federal law controlling when it conflicts with state law?",
+    "parts": [
+      {
+        "choices": [
+          "Supremacy Clause",
+          "Due Process Clause",
+          "Commerce Clause",
+          "Equal Protection Clause"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Power originates with the people."
+    "hint": "Think 'highest law of the land'.",
+    "explanation": "The Supremacy Clause makes valid federal law controlling when it conflicts with state law.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Why did Anti-Federalists oppose the Constitution initially?",
-    correct:"They feared the national government could threaten liberty.",
-    wrong:[
-      "They wanted a monarchy.",
-      "They opposed elections.",
-      "They supported unlimited federal power."
+    "id": "q16",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Which argument would a Federalist most likely support?",
+    "parts": [
+      {
+        "choices": [
+          "A stronger union could address problems states could not solve alone.",
+          "Direct federal taxation would give the national government too much power.",
+          "A standing national army would pose too great a danger to local liberties.",
+          "State legislatures should keep primary responsibility for interstate trade."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"They wanted stronger protections for rights."
+    "hint": "Federalists supported a stronger union.",
+    "explanation": "Federalists argued that shared problems such as defense and trade required more effective national authority.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   },
   {
-    stem:"Which document defended the Constitution during ratification debates?",
-    correct:"The Federalist Papers",
-    wrong:[
-      "The Articles of Confederation",
-      "The Mayflower Compact",
-      "The Virginia Plan"
+    "id": "q17",
+    "topic": "CS 4 · Declaration of Independence",
+    "prompt": "Which example reflects the Declaration’s influence on later civil rights movements?",
+    "parts": [
+      {
+        "choices": [
+          "Reformers use the promise of equality to challenge exclusion.",
+          "Officials cite wartime authority to limit public gatherings.",
+          "Lawmakers cite state powers to revise commercial licensing rules.",
+          "Judges cite legislative precedent to determine committee rules."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Written by Hamilton, Madison, and Jay."
+    "hint": "The Declaration’s ideals inspired reform.",
+    "explanation": "Later reform movements used the Declaration’s equality principle to challenge the gap between stated ideals and public practice.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 4. In Content Elaboration, look for declaration of independence."
   },
   {
-    stem:"Why was the Bill of Rights added to the Constitution?",
-    correct:"To protect individual liberties from government abuse",
-    wrong:[
-      "To strengthen executive power",
-      "To eliminate state governments",
-      "To create federal courts"
+    "id": "q18",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which Northwest Ordinance provision addressed slavery?",
+    "parts": [
+      {
+        "choices": [
+          "The ordinance prohibited slavery in the Northwest Territory.",
+          "Territorial governors could set slavery policy.",
+          "Slavery was allowed until a territory achieved statehood.",
+          "The ordinance required existing states to repeal their slavery laws."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Anti-Federalists demanded protections."
+    "hint": "The ordinance limited slavery.",
+    "explanation": "Article VI generally prohibited slavery and involuntary servitude in the territory, with an exception for criminal punishment.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which clause establishes that national law takes priority over state law?",
-    correct:"Supremacy Clause",
-    wrong:[
-      "Due Process Clause",
-      "Commerce Clause",
-      "Equal Protection Clause"
+    "id": "q19",
+    "topic": "CS 4 · Declaration of Independence",
+    "prompt": "Which phrase summarizes the Declaration’s philosophy?",
+    "parts": [
+      {
+        "choices": [
+          "Government exists to secure natural rights.",
+          "Government grants rights as a reward for obedience.",
+          "Government derives its authority from inherited rank.",
+          "Government can define equality through limits on voting."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Think 'highest law of the land'."
+    "hint": "Government protects rights.",
+    "explanation": "The Declaration treats rights as inherent and identifies their protection as the reason governments are instituted.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 4. In Content Elaboration, look for declaration of independence."
   },
   {
-    stem:"Which argument would a Federalist most likely support?",
-    correct:"A stronger national government is necessary to solve national problems.",
-    wrong:[
-      "States should act as independent countries.",
-      "National taxation should be banned.",
-      "Congress should have no authority."
+    "id": "q20",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which concept allows Congress to make laws necessary to carry out its powers?",
+    "parts": [
+      {
+        "choices": [
+          "Necessary and Proper Clause",
+          "Full Faith and Credit Clause",
+          "Commerce Clause",
+          "Equal Protection Clause"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Federalists supported a stronger union."
+    "hint": "Implied powers.",
+    "explanation": "The Necessary and Proper Clause lets Congress choose means to carry out its enumerated powers.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Which principle limits the power of government?",
-    correct:"Limited government",
-    wrong:[
-      "Absolute monarchy",
-      "Military rule",
-      "Direct democracy"
+    "id": "q21",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which situation most directly illustrates a constitutional limit being enforced?",
+    "parts": [
+      {
+        "choices": [
+          "A court prevents federal officials from exceeding a legal power.",
+          "A state and Congress collect taxes under separate authority.",
+          "An agency enforces a rule within a federally assigned program.",
+          "A legislature fills a vacancy according to its election calendar."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Government must follow the Constitution."
+    "hint": "Government power has limits.",
+    "explanation": "The court enforces a legal boundary that even federal officials must obey.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Which concept ensures that each branch restrains the others?",
-    correct:"Checks and balances",
-    wrong:[
-      "Federalism",
-      "Judicial review",
-      "Popular sovereignty"
+    "id": "q22",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which example shows federalism in practice?",
+    "parts": [
+      {
+        "choices": [
+          "States run public schools while the federal government directs diplomacy.",
+          "Congress writes a law and an executive agency carries out its provisions.",
+          "The House and Senate approve the same bill before sending it to the president.",
+          "Voters select candidates to fill vacancies in the House of Representatives."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Branches limit each other."
+    "hint": "Different levels handle different responsibilities.",
+    "explanation": "The division between state education policy and national diplomacy illustrates authority distributed between levels.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Which statement best explains federalism?",
-    correct:"Power is shared between national and state governments.",
-    wrong:[
-      "The national government controls all policy.",
-      "States control foreign policy.",
-      "Courts control elections."
+    "id": "q23",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which right was protected in the Northwest Territory under the Northwest Ordinance?",
+    "parts": [
+      {
+        "choices": [
+          "The right to a jury trial in territorial courts",
+          "The right to elect the governor of the territory",
+          "The right to vote regardless of property ownership",
+          "The right to send voting representatives to Congress"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Two levels of authority."
+    "hint": "The ordinance included civil-liberty protections.",
+    "explanation": "The ordinance’s Article II protected jury trials and other legal safeguards for territorial residents.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which example reflects the Declaration’s influence on later civil rights movements?",
-    correct:"Activists using equality language to demand expanded rights",
-    wrong:[
-      "Leaders ending elections",
-      "Government banning protests",
-      "Courts limiting speech"
+    "id": "q24",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which example best reflects the Northwest Ordinance’s protection of civil liberties?",
+    "parts": [
+      {
+        "choices": [
+          "A resident worships according to their own beliefs.",
+          "A resident petitions to change municipal tax rates.",
+          "A resident inherits land through a family trust.",
+          "A resident runs for a seat in the state legislature."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"The Declaration’s ideals inspired reform."
+    "hint": "Think about specific freedoms protected in the territory.",
+    "explanation": "Article I protected peaceful exercise of religion, a precedent for protecting religious liberty.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which Northwest Ordinance provision addressed slavery?",
-    correct:"Slavery was prohibited in the Northwest Territory.",
-    wrong:[
-      "Slavery expanded into all territories.",
-      "Slavery was required in territories.",
-      "Slavery was determined by governors."
+    "id": "q25",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which development best demonstrates institution-building encouraged by the Northwest Ordinance?",
+    "parts": [
+      {
+        "choices": [
+          "Establishing schools in newly settled communities",
+          "Appointing governors for neighboring states",
+          "Creating a national army to enforce state laws",
+          "Building forts to house permanent territorial courts"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"The ordinance limited slavery."
+    "hint": "The ordinance encouraged organized community growth.",
+    "explanation": "Article III encouraged schools as part of building stable communities with good government.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which outcome best reflects the Northwest Ordinance’s legacy?",
-    correct:"Orderly westward expansion under federal law",
-    wrong:[
-      "Permanent military rule",
-      "End of territorial governments",
-      "Replacement of the Constitution"
+    "id": "q26",
+    "topic": "CS 5 · Northwest Ordinance",
+    "prompt": "Which effect did the Northwest Ordinance have on the development of new states?",
+    "parts": [
+      {
+        "choices": [
+          "Territories followed a process to become states with republican governments.",
+          "Territories became congressional districts inside the original states.",
+          "Territories chose whether to join the Union or join a foreign nation.",
+          "Territories entered without creating representative state governments."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"The ordinance created structure for expansion."
+    "hint": "It created a path from territory to statehood.",
+    "explanation": "The ordinance linked the admission of new states to a republican form of government.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 5. In Content Elaboration, look for northwest ordinance."
   },
   {
-    stem:"Which action best demonstrates checks and balances?",
-    correct:"Courts declaring a law unconstitutional",
-    wrong:[
-      "Congress ignoring the Constitution",
-      "Presidents ruling indefinitely",
-      "States eliminating elections"
+    "id": "q27",
+    "topic": "CS 6 · U.S. Constitution",
+    "prompt": "Which situation best demonstrates that government must follow laws established in the Constitution?",
+    "parts": [
+      {
+        "choices": [
+          "Officials are barred from acting beyond powers granted by law.",
+          "Officials are allowed to add powers by issuing agency rules.",
+          "Officials may set aside constitutional limits by majority vote.",
+          "Officials may treat their election as authority to expand their powers."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Judicial review limits Congress."
+    "hint": "This is the heart of limited government.",
+    "explanation": "A written constitution limits what officials may do regardless of the office they hold.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 6. In Content Elaboration, look for u.s. constitution."
   },
   {
-    stem:"Which constitutional principle ensures power comes from the people?",
-    correct:"Popular sovereignty",
-    wrong:[
-      "Federal supremacy",
-      "Judicial authority",
-      "Executive privilege"
+    "id": "q28",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Which argument did Anti-Federalists most strongly support during ratification?",
+    "parts": [
+      {
+        "choices": [
+          "Adopt explicit protections against federal violations of liberty.",
+          "Approve national taxes to maintain a permanent federal army.",
+          "Give Congress broader powers before limiting federal authority.",
+          "Treat the separation of powers as sufficient to protect liberty."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Think voting and representation."
+    "hint": "Their biggest concern was protection of individual rights.",
+    "explanation": "Anti-Federalists argued that written guarantees were needed to guard against federal abuses.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   },
   {
-    stem:"Why were many Americans concerned about the Constitution during ratification?",
-    correct:"They feared it lacked explicit protections for individual rights.",
-    wrong:[
-      "They wanted monarchy restored.",
-      "They opposed elections.",
-      "They rejected national defense."
+    "id": "q29",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Why did Federalists favor a stronger national government under the Constitution?",
+    "parts": [
+      {
+        "choices": [
+          "The Articles left Congress too weak to solve shared national problems.",
+          "The Articles gave Congress too much authority over trade and taxation.",
+          "The Articles gave a national executive too great a role in lawmaking.",
+          "The Articles allowed federal courts to reverse too many state decisions."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"This concern led to amendments."
+    "hint": "They thought the Articles were ineffective.",
+    "explanation": "Under the Articles, Congress lacked reliable revenue and broad authority to regulate interstate commerce, among other limits.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   },
   {
-    stem:"Which phrase summarizes the Declaration’s philosophy?",
-    correct:"Government exists to secure natural rights.",
-    wrong:[
-      "Government creates liberty.",
-      "Government replaces citizen authority.",
-      "Government limits equality."
+    "id": "q30",
+    "topic": "CS 7 · Ratification and the Bill of Rights",
+    "prompt": "Which outcome best demonstrates compromise during the ratification debate?",
+    "parts": [
+      {
+        "choices": [
+          "States ratified the Constitution, and Congress later proposed a bill of rights.",
+          "The Convention adopted a bill of rights, and the states rejected the new Constitution.",
+          "The states ratified the Constitution after Congress agreed to dissolve the federal courts.",
+          "The Convention delayed ratification until every state adopted the same bill of rights."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
     ],
-    hint:"Government protects rights."
-  },
-  {
-    stem:"Which Enlightenment thinker most influenced natural rights theory?",
-    correct:"John Locke",
-    wrong:[
-      "Montesquieu",
-      "Rousseau",
-      "Smith"
-    ],
-    hint:"Life, liberty, property."
-  },
-  {
-    stem:"Which event best reflects consent of the governed today?",
-    correct:"Citizens voting in national elections",
-    wrong:[
-      "Leaders inheriting office",
-      "Military appointing presidents",
-      "Courts eliminating elections"
-    ],
-    hint:"Authority comes from voters."
-  },
-  {
-    stem:"Which statement best reflects equality in the Declaration?",
-    correct:"All people possess the same natural rights.",
-    wrong:[
-      "Rights belong only to wealthy citizens.",
-      "Rights depend on military rank.",
-      "Rights are assigned by government."
-    ],
-    hint:"Equality of rights."
-  },
-  {
-    stem:"Which concept allows Congress to make laws necessary to carry out its powers?",
-    correct:"Necessary and Proper Clause",
-    wrong:[
-      "Supremacy Clause",
-      "Commerce Clause",
-      "Equal Protection Clause"
-    ],
-    hint:"Implied powers."
-  },
-  {
-    stem:"Which example best illustrates limited government?",
-    correct:"Government actions constrained by the Constitution",
-    wrong:[
-      "Leaders ruling without laws",
-      "Courts ignoring rights",
-      "Presidents eliminating Congress"
-    ],
-    hint:"Government power has limits."
-  },
-  {
-    stem:"Which principle ensures laws apply equally to leaders and citizens?",
-    correct:"Rule of law",
-    wrong:[
-      "Absolute monarchy",
-      "Military authority",
-      "Executive privilege"
-    ],
-    hint:"No one is above the law."
-  },
-  {
-    stem:"Which result did Federalists expect from ratifying the Constitution?",
-    correct:"A stronger national government able to maintain stability",
-    wrong:[
-      "Weaker federal authority",
-      "End of national taxation",
-      "Elimination of courts"
-    ],
-    hint:"They wanted a more effective government."
-  },
-  {
-    stem:"Which idea links the Declaration and Constitution together?",
-    correct:"Protection of individual rights",
-    wrong:[
-      "Expansion of monarchy",
-      "Elimination of elections",
-      "Military control of government"
-    ],
-    hint:"Liberty is the connecting theme."
-  },
-  {
-    stem:"Which example shows federalism in practice?",
-    correct:"States managing education while the national government manages foreign policy",
-    wrong:[
-      "Congress controlling all policy areas",
-      "States ignoring federal law",
-      "Courts writing legislation"
-    ],
-    hint:"Different levels handle different responsibilities."
-  },
-  {
-    stem:"Which situation best shows the principle of limited government in action?",
-    correct:"A court blocks a government action because it violates constitutional rights.",
-    wrong:[
-      "A leader ignores the Constitution during an emergency.",
-      "A president cancels elections to remain in office.",
-      "A legislature punishes criticism of government officials."
-    ],
-    hint:"Limited government means officials are bound by law."
-  },
-
-  /* Added targeted items to fully sweep the test concepts */
-  {
-    stem:"According to the Declaration of Independence, what is the main purpose of government?",
-    correct:"To secure the natural rights of the people",
-    wrong:[
-      "To increase trade and industry",
-      "To enforce one national religion",
-      "To strengthen military authority over citizens"
-    ],
-    hint:"The Declaration says government is created to protect rights."
-  },
-  {
-    stem:"Which statement best reflects the Declaration’s argument about legitimate government?",
-    correct:"Government is legitimate only when it protects the rights of the people.",
-    wrong:[
-      "Government is legitimate whenever it is the strongest military power.",
-      "Government is legitimate if leaders inherit office.",
-      "Government is legitimate even when it ignores the rights of citizens."
-    ],
-    hint:"Legitimacy comes from protecting rights and the consent of the governed."
-  },
-  {
-    stem:"Which example best shows evidence of the Declaration’s influence on modern government?",
-    correct:"Constitutional amendments expanding voting rights to more citizens",
-    wrong:[
-      "Growth of factory systems during industrialization",
-      "Development of interstate highways",
-      "Increased overseas trade after World War II"
-    ],
-    hint:"Look for later expansion of rights and participation."
-  },
-  {
-    stem:"Which right was protected in the Northwest Territory under the Northwest Ordinance?",
-    correct:"Trial by jury",
-    wrong:[
-      "Government censorship of newspapers",
-      "Unlimited executive rule",
-      "Mandatory state religion"
-    ],
-    hint:"The ordinance included civil-liberty protections."
-  },
-  {
-    stem:"Which example best reflects the Northwest Ordinance’s protection of civil liberties?",
-    correct:"Freedom of religion in the territory",
-    wrong:[
-      "A ban on public participation in government",
-      "Military courts replacing civilian courts",
-      "Governors ruling without written laws"
-    ],
-    hint:"Think about specific freedoms protected in the territory."
-  },
-  {
-    stem:"Which development best demonstrates institution-building encouraged by the Northwest Ordinance?",
-    correct:"Establishing schools and courts in developing communities",
-    wrong:[
-      "Removing all local governments",
-      "Replacing republican government with monarchy",
-      "Ending the statehood process for territories"
-    ],
-    hint:"The ordinance encouraged organized community growth."
-  },
-  {
-    stem:"Which effect did the Northwest Ordinance have on the development of new states?",
-    correct:"Territories could become states with republican governments",
-    wrong:[
-      "Territories had to remain under permanent federal control",
-      "Territories became independent nations",
-      "Territories were governed only by military officials"
-    ],
-    hint:"It created a path from territory to statehood."
-  },
-  {
-    stem:"Which situation best demonstrates that government must follow laws established in the Constitution?",
-    correct:"Officials are prevented from exercising powers not granted to them by law.",
-    wrong:[
-      "Leaders can ignore the Constitution during times of crisis.",
-      "Presidents may rule without limits if elected.",
-      "Government agencies can create any power they choose."
-    ],
-    hint:"This is the heart of limited government."
-  },
-  {
-    stem:"Which group supported ratification of the Constitution?",
-    correct:"Federalists",
-    wrong:[
-      "Anti-Federalists",
-      "Loyalists",
-      "Abolitionists"
-    ],
-    hint:"This group believed the new Constitution should be approved."
-  },
-  {
-    stem:"Which argument did Anti-Federalists most strongly support during ratification?",
-    correct:"The Constitution needed a bill of rights to protect liberty.",
-    wrong:[
-      "The national government needed more unchecked power.",
-      "State governments should be abolished.",
-      "The president should have lifetime authority."
-    ],
-    hint:"Their biggest concern was protection of individual rights."
-  },
-  {
-    stem:"Why did Federalists favor a stronger national government under the Constitution?",
-    correct:"They believed the Articles of Confederation had created a government too weak to solve national problems.",
-    wrong:[
-      "They wanted each state to operate as a separate country.",
-      "They believed Congress should lose the power to tax.",
-      "They wanted to eliminate the executive branch."
-    ],
-    hint:"They thought the Articles were ineffective."
-  },
-  {
-    stem:"Which outcome best demonstrates compromise during the ratification debate?",
-    correct:"The Constitution was ratified with a promise to add the Bill of Rights.",
-    wrong:[
-      "The Constitution was rejected entirely.",
-      "State governments were eliminated from the system.",
-      "The presidency was removed from the Constitution."
-    ],
-    hint:"Think about how Federalist and Anti-Federalist concerns were balanced."
+    "hint": "Think about how Federalist and Anti-Federalist concerns were balanced.",
+    "explanation": "Commitments to consider amendments helped win support for ratification. The first Congress then proposed the amendments that became the Bill of Rights.",
+    "reading": null,
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, Content Statement 7. In Content Elaboration, look for ratification and the bill of rights."
   }
-];
-
-let questions = [];
-let currentIndex = 0;
-let attempts = 0;
-let correctCount = 0;
-let locked = false;
-let timerInterval = null;
-let startedAt = null;
-let finishedAt = null;
-
-function shuffle(array){
-  const arr = [...array];
-  for(let i = arr.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-function formatElapsed(ms){
-  const total = Math.floor(ms / 1000);
-  const m = Math.floor(total / 60);
-  const s = String(total % 60).padStart(2,'0');
-  return `${m}:${s}`;
-}
-
-function formatStamp(date){
-  return date.toLocaleString();
-}
-
-function updateTimer(){
-  if(!startedAt) return;
-  document.getElementById('timerDisplay').textContent = formatElapsed(Date.now() - startedAt.getTime());
-}
-
-function updateAccuracy(){
-  const accuracy = attempts === 0 ? 100 : Math.round((correctCount / attempts) * 100);
-  document.getElementById('accuracyDisplay').textContent = `${accuracy}%`;
-}
-
-function updateProgress(){
-  const total = questions.length;
-  const currentNumber = Math.min(currentIndex + 1, total);
-  const completed = currentIndex;
-  const pct = Math.round((completed / total) * 100);
-
-  document.getElementById('progressText').textContent = `${currentNumber} / ${total}`;
-  document.getElementById('progressPct').textContent = `${pct}%`;
-  document.getElementById('progressBar').style.width = `${pct}%`;
-  document.getElementById('qMeta').textContent = `Question ${currentNumber} of ${total}`;
-}
-
-function buildRun(){
-  const base = shuffle(MASTER_QUESTIONS);
-  return base.map(q => {
-    const options = shuffle([
-      { text:q.correct, isCorrect:true },
-      ...q.wrong.map(w => ({ text:w, isCorrect:false }))
-    ]);
-    return { ...q, options };
-  });
-}
-
-function goToHub(){
-  window.location.href = "../index.html";
-}
-
-function renderQuestion(){
-  if(currentIndex >= questions.length){
-    finishGame();
-    return;
-  }
-
-  locked = false;
-  updateProgress();
-  updateAccuracy();
-
-  const q = questions[currentIndex];
-  document.getElementById('questionStem').textContent = q.stem;
-  document.getElementById('feedback').textContent = '';
-
-  const answers = document.getElementById('answers');
-  answers.innerHTML = '';
-
-  q.options.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.className = 'answer';
-    btn.type = 'button';
-    btn.textContent = opt.text;
-    btn.addEventListener('click', () => handleAnswer(btn, opt.isCorrect, q.hint));
-    answers.appendChild(btn);
-  });
-}
-
-function handleAnswer(button, isCorrect, hint){
-  if(locked) return;
-  locked = true;
-  attempts++;
-
-  const allButtons = [...document.querySelectorAll('.answer')];
-  allButtons.forEach(b => b.classList.add('locked'));
-
-  if(isCorrect){
-    correctCount++;
-    button.classList.add('correct');
-    updateAccuracy();
-    document.getElementById('feedback').textContent = 'Correct. Moving on...';
-    setTimeout(() => {
-      currentIndex++;
-      renderQuestion();
-    }, 550);
-    return;
-  }
-
-  button.classList.add('incorrect');
-  updateAccuracy();
-  document.getElementById('feedback').textContent = `Hint: ${hint}`;
-
-  setTimeout(() => {
-    locked = false;
-    allButtons.forEach(b => b.classList.remove('locked'));
-    button.classList.remove('incorrect');
-  }, 700);
-}
-
-function startGame(){
-  const nameInput = document.getElementById('studentName');
-  const name = nameInput.value.trim();
-
-  if(!name){
-    document.getElementById('startMsg').textContent = 'Please enter your name to begin.';
-    nameInput.focus();
-    return;
-  }
-
-  document.getElementById('startMsg').textContent = '';
-  document.getElementById('playerDisplay').textContent = name;
-
-  questions = buildRun();
-  currentIndex = 0;
-  attempts = 0;
-  correctCount = 0;
-  finishedAt = null;
-  startedAt = new Date();
-
-  document.getElementById('startedDisplay').textContent = formatStamp(startedAt);
-  document.getElementById('timerDisplay').textContent = '0:00';
-  document.getElementById('progressBar').style.width = '0%';
-  document.getElementById('progressPct').textContent = '0%';
-  document.getElementById('progressText').textContent = `1 / ${questions.length}`;
-  document.getElementById('qMeta').textContent = `Question 1 of ${questions.length}`;
-
-  clearInterval(timerInterval);
-  timerInterval = setInterval(updateTimer, 1000);
-
-  document.getElementById('startCard').classList.add('hidden');
-  document.getElementById('finishCard').classList.add('hidden');
-  document.getElementById('gameCard').classList.remove('hidden');
-
-  renderQuestion();
-}
-
-function finishGame(){
-  finishedAt = new Date();
-  clearInterval(timerInterval);
-  timerInterval = null;
-
-  const name = document.getElementById('playerDisplay').textContent;
-  const accuracy = attempts === 0 ? 100 : Math.round((correctCount / attempts) * 100);
-  const elapsed = formatElapsed(finishedAt.getTime() - startedAt.getTime());
-  const passed = accuracy === 100 ? 'YES' : 'NO';
-
-  document.getElementById('gameCard').classList.add('hidden');
-  document.getElementById('finishCard').classList.remove('hidden');
-
-  document.getElementById('ticket').innerHTML = `
-    <div><strong>Student:</strong> ${name}</div>
-    <div><strong>Passed 0-Miss Mastery:</strong> <span class="${passed === 'YES' ? 'pass' : 'fail'}">${passed}</span></div>
-    <div><strong>Accuracy:</strong> ${accuracy}%</div>
-    <div><strong>Questions:</strong> ${questions.length}</div>
-    <div><strong>Total Attempts:</strong> ${attempts}</div>
-    <div><strong>Correct Answers:</strong> ${correctCount}</div>
-    <div><strong>Started:</strong> ${formatStamp(startedAt)}</div>
-    <div><strong>Finished:</strong> ${formatStamp(finishedAt)}</div>
-    <div><strong>Time:</strong> ${elapsed}</div>
-  `;
-}
-
-function restartGame(){
-  clearInterval(timerInterval);
-  timerInterval = null;
-
-  document.getElementById('gameCard').classList.add('hidden');
-  document.getElementById('finishCard').classList.add('hidden');
-  document.getElementById('startCard').classList.remove('hidden');
-
-  document.getElementById('studentName').value = '';
-  document.getElementById('startMsg').textContent = '';
-  document.getElementById('feedback').textContent = '';
-  document.getElementById('answers').innerHTML = '';
-  document.getElementById('questionStem').textContent = 'Loading…';
-  document.getElementById('timerDisplay').textContent = '0:00';
-  document.getElementById('accuracyDisplay').textContent = '100%';
-  document.getElementById('progressText').textContent = `1 / ${MASTER_QUESTIONS.length}`;
-  document.getElementById('progressPct').textContent = '0%';
-  document.getElementById('progressBar').style.width = '0%';
-  document.getElementById('startedDisplay').textContent = '—';
-  document.getElementById('qMeta').textContent = `Question 1 of ${MASTER_QUESTIONS.length}`;
-
-  questions = [];
-  currentIndex = 0;
-  attempts = 0;
-  correctCount = 0;
-  locked = false;
-  startedAt = null;
-  finishedAt = null;
-}
-
-document.getElementById('startBtn').addEventListener('click', startGame);
-document.getElementById('restartBtn').addEventListener('click', restartGame);
-document.getElementById('playAgainBtn').addEventListener('click', restartGame);
-document.getElementById('hubBtn').addEventListener('click', goToHub);
-document.getElementById('finishHubBtn').addEventListener('click', goToHub);
-
-document.getElementById('studentName').addEventListener('keydown', (e) => {
-  if(e.key === 'Enter') startGame();
-});
-</script>
+]
+  </script>
+  <script src="ost-game.js?v=as-big-block-1"></script>
 </body>
 </html>
