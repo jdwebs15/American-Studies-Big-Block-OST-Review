@@ -61,3 +61,11 @@ fieldset.source-box input[type="range"] { writing-mode: vertical-lr; direction: 
 @media print {
   #results #certificate p { color: #111; }
 }
+
+/* Make the scenario and passage text readable alongside the answer choices. */
+#question > .source-box p {
+  color: var(--text);
+  font-size: clamp(1.25rem, 2.2vw, 1.375rem);
+  line-height: 1.55;
+  margin: 0;
+}

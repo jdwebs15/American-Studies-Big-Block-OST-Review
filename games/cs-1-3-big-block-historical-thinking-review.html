@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CS 1–3 Big Block Review</title>
+  <link rel="stylesheet" href="ost-game.css?v=as-scenario-text-1">
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../index.html">← American Studies Big Block Review Hub</a>
+    <header class="hero game-intro">
+      <div class="game-title">
+        <div class="eyebrow">Skills Review · CS 1–3</div>
+        <h1>Historical Thinking Skills</h1>
+      </div>
+      <p class="game-description">Evaluate sources, build and test historical claims, and analyze causes and effects using short scenarios.</p>
+      <aside class="game-details" aria-label="Game details">
+        <ul>
+          <li>30 questions</li>
+          <li>Hints after a miss</li>
+          <li>Certificate for a 30/30 first-attempt score</li>
+        </ul>
+      </aside>
+    </header>
+    <section class="student-panel" id="startScreen">
+      <h2>Student Information</h2>
+      <form id="identity">
+      <div class="fields">
+      <label>Student Name<input id="studentName" autocomplete="name" required></label>
+      <label>Class Period<select id="sheetPeriod" required><option value="">Choose period</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label>
+      <label>School Email<input id="sheetEmail" type="email" autocomplete="email" required></label></div>
+      <div class="actions">
+      <button type="submit">Start Game</button>
+      <button type="button" class="secondary" id="load">Load Saved Work</button></div>
+      <p id="startStatus" role="status"></p></form></section>
+      <section class="question-panel" id="gameArea" hidden>
+      <div class="question-toolbar">
+      <p id="progress"></p>
+      <button type="button" class="secondary" id="restart">Restart Game</button></div>
+      <p id="btbCloudStatus" role="status"></p>
+      <div id="question"></div>
+      <p id="feedback" class="feedback" role="status"></p></section>
+      <section class="completion" id="results" hidden>
+      <h2>Game Results</h2>
+      <p id="resultMessage"></p>
+      <p id="runSummary"></p>
+      <section id="certificate" class="source-box" hidden>
+      <h2>100% Perfect Run</h2>
+      <p id="certName" class="ticket-name"></p>
+      <h3>CS 1–3 Big Block Review</h3>
+      <p id="certAttempts" class="ticket-attempts"></p>
+      <p id="certStart"></p>
+      <p id="certEnd"></p></section>
+      <p id="finalStatus" role="status"></p>
+      <div id="missedReview" hidden></div>
+      <div class="actions">
+      <button type="button" id="print" hidden>Print Certificate</button>
+      <button type="button" class="secondary" id="replay">Restart Game</button></div></section>
+
+  </main>
+  <script src="basics-audit.js?v=as-big-block-1"></script>
+  <script id="deck" type="application/json">
+[
+  {
+    "id": "q01",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A railroad’s 1887 annual report calls a recent strike unpopular. The company president signed the report to reassure investors.",
+    "prompt": "Which source would best independently test the claim about public support?",
+    "parts": [
+      {
+        "choices": [
+          "Local petitions and meeting minutes from towns along the rail strike route",
+          "A second printing of the report distributed to investors in nearby towns",
+          "An advertisement written by company counsel before the annual meeting",
+          "An interview with the president based on his own published report"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for evidence independent of the company.",
+    "explanation": "Local petitions and meetings capture public responses beyond the company’s reports to investors.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q02",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A photograph labeled 1933 Breadline circulates online. The post gives no photographer, location, or original collection.",
+    "prompt": "What first step would best verify the caption?",
+    "parts": [
+      {
+        "choices": [
+          "Compare the digital image with the captions in several reposts of the same file.",
+          "Find the archival image and review its catalog record and original caption.",
+          "Estimate the date solely from the coats and storefronts in the picture.",
+          "Read a history of food relief that uses photographs from other cities."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Trace the photograph back to its original record.",
+    "explanation": "An archival catalog can establish provenance and provide dates, locations, or captions unavailable in a repost.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q03",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A factory worker writes in a private diary that a new shift schedule made work more dangerous. A supervisor reports that injury totals fell that year.",
+    "prompt": "Which comparison would best clarify their disagreement?",
+    "parts": [
+      {
+        "choices": [
+          "Compare how often each person mentions factory equipment over several years.",
+          "Compare the reports with work rules at another factory in a different industry.",
+          "Check whether both sources were preserved in the same archival collection.",
+          "Compare injuries per shift and changes in staffing and reporting practices."
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Check whether the sources measure the same thing.",
+    "explanation": "One worker’s experience and aggregate injury totals can differ. Rates and reporting practices help explain the discrepancy.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q04",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "Two newspapers report an election riot. One reporter names witnesses and distinguishes what she saw from what she was told. The other repeats an unnamed campaign aide’s account.",
+    "prompt": "What makes the first report stronger evidence about the riot?",
+    "parts": [
+      {
+        "choices": [
+          "Its author offers more predictions about the long-term effect on the election.",
+          "Its author states an opinion more consistent with the newspaper’s editorial views.",
+          "Readers can tell which campaign was likely to benefit from the riot.",
+          "Readers can check its named witnesses and separate observation from hearsay."
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for information another historian can verify.",
+    "explanation": "Attribution lets researchers check where claims came from and distinguish direct observation from secondhand accounts.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q05",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A 1960 interview describes a factory walkout that occurred in 1912. The speaker took part in the walkout.",
+    "prompt": "How should a historian use this interview?",
+    "parts": [
+      {
+        "choices": [
+          "Accept dates and crowd counts because the speaker personally witnessed the walkout.",
+          "Treat it as a later summary by an author who had no connection to the event.",
+          "Use the participant’s account and verify details against records from 1912.",
+          "Use it to date every walkout in the city without checking contemporary accounts."
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider both firsthand experience and elapsed time.",
+    "explanation": "The interview provides firsthand recollections, while contemporary records can help verify details recalled decades later.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q06",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "Two textbooks agree about the number of people arrested in a protest. Both cite the same newspaper article, and no other evidence is cited.",
+    "prompt": "Why is this agreement limited as corroboration?",
+    "parts": [
+      {
+        "choices": [
+          "The accounts were published for similar school audiences.",
+          "The accounts cite the same original article as evidence.",
+          "The accounts were written years after the protest.",
+          "The accounts concentrate on arrests during the protest."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Trace each claim back to its source.",
+    "explanation": "Repetition across textbooks does not establish independent agreement when both derive the number from one report.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q07",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A historian studying redlining finds a mortgage map and an article written by a scholar who compared maps with individual loan files.",
+    "prompt": "For a claim about whether residents actually received loans, why might the article be stronger evidence than the map alone?",
+    "parts": [
+      {
+        "choices": [
+          "It reports the scholar’s familiarity with the region’s later housing debates.",
+          "It compares lending decisions with the boundaries the map assigned.",
+          "It treats map boundaries as proof that each application was rejected.",
+          "It describes lending policy in other cities with different maps."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Distinguish an assigned category from an observed outcome.",
+    "explanation": "Loan files show actual decisions. Comparing those files with map classifications tests how the policy operated in practice.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q08",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A campaign leaflet describes immigrants as a uniform voting bloc. A researcher wants to know how immigrants in a particular ward actually participated in politics.",
+    "prompt": "What is the most useful way to handle the leaflet?",
+    "parts": [
+      {
+        "choices": [
+          "Use it to estimate voting rates because it was published during the campaign.",
+          "Treat it as a complete account of the ward because it addresses immigration.",
+          "Use it to classify voters and exclude accounts that describe different behavior.",
+          "Treat it as evidence of campaign rhetoric and test its claim with local records."
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Consider what a campaign leaflet is designed to do.",
+    "explanation": "The leaflet reveals how a campaign portrayed immigrants. Independent local evidence is needed to establish actual patterns of participation.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q09",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A museum label dates a machine to 1910. A collector’s website dates it to 1890. The museum cites a matching serial number and the manufacturer’s ledger.",
+    "prompt": "Which reason most strongly supports the museum date?",
+    "parts": [
+      {
+        "choices": [
+          "A public museum has greater visibility than a collector’s website.",
+          "A later manufacturing date makes the machine less unusual.",
+          "A machine with that appearance could have been built in 1910.",
+          "A traceable record connects the date to that particular machine."
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Identify evidence that connects the claim to the exact artifact.",
+    "explanation": "A serial number ties the artifact to a specific ledger entry, which can be independently checked.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q10",
+    "topic": "CS 1 · Source Credibility",
+    "reading": "A publisher quotes a city inspector saying a housing project was safe. The previous paragraph in the original report limits the statement to one building.",
+    "prompt": "What problem does the quotation create?",
+    "parts": [
+      {
+        "choices": [
+          "It changes the official’s role by naming the inspector’s employer.",
+          "It broadens the inspector’s finding by removing its qualification.",
+          "It confuses the date of publication with the date of construction.",
+          "It treats a later report as an account written before the inspection."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Compare the scope of the quotation with the scope of the report.",
+    "explanation": "Omitting the qualification makes a finding about one building appear to apply to the entire project.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 1, Content Elaboration. Look for perspective, provenance, bias, and agreement with independent sources."
+  },
+  {
+    "id": "q11",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "In a town, minutes show that merchants organized for a paved road, while letters show farmers opposed the proposed property tax. The council eventually funded the road through tolls.",
+    "prompt": "Which thesis best interprets this evidence?",
+    "parts": [
+      {
+        "choices": [
+          "Merchants wanted a paved road, and the council discussed its construction at several meetings.",
+          "The funding compromise reflected conflict over who would pay for road improvements.",
+          "Farmers opposed the new tax because rural residents had no use for local transportation.",
+          "The tolls show that road improvements faced little disagreement over who would pay."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "A thesis should explain the significance of the evidence.",
+    "explanation": "The evidence identifies a conflict about funding and a compromise that altered who would bear the cost.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q12",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A student argues that a city’s streetcar expansion helped workers live farther from downtown factories.",
+    "prompt": "Which evidence would most directly support the thesis?",
+    "parts": [
+      {
+        "choices": [
+          "Workers’ addresses cluster near new routes serving their factories.",
+          "Most downtown factories increased production over the same decade.",
+          "The city purchased new cars after fares rose on several older routes.",
+          "A newspaper compared the speed of streetcars with steam locomotives."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Find evidence linking residential locations with routes to jobs.",
+    "explanation": "Commuter addresses near new routes connect transportation access with where workers chose to live.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q13",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A report argues that a new voting rule affected every precinct in the same way.",
+    "prompt": "Which finding most directly refutes that claim?",
+    "parts": [
+      {
+        "choices": [
+          "Turnout fell in the affected precincts with longer lines but rose in others.",
+          "Several precincts received new voting equipment after the rule was announced.",
+          "The law was printed in a newspaper distributed throughout the city.",
+          "The election office trained staff at all precincts before voting began."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Find evidence that the effect varied by precinct.",
+    "explanation": "Different turnout changes contradict a claim of a uniform effect.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q14",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A researcher claims that newspaper coverage encouraged participation in a boycott. She has circulation figures, articles promoting the boycott, and interviews with participants.",
+    "prompt": "Which interview response would provide the strongest additional support?",
+    "parts": [
+      {
+        "choices": [
+          "Readers recall that the paper covered several other protests that year.",
+          "Readers say local stores advertised in the paper before the boycott.",
+          "Readers explain how coverage influenced their decision to join the boycott.",
+          "Readers remember buying different newspapers after the boycott ended."
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for evidence connecting exposure to coverage with the decision to join.",
+    "explanation": "Participants describing how the coverage influenced their decisions support the proposed mechanism.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q15",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "Payroll records show women filled many industrial jobs during a war. Employment records show some of these workers were laid off when military contracts ended.",
+    "prompt": "Which thesis best accounts for both records?",
+    "parts": [
+      {
+        "choices": [
+          "Wartime production had little impact on women’s participation in industrial employment.",
+          "Military contracts created jobs that women retained across the postwar economy.",
+          "Wartime production opened jobs to women, often for the length of a contract.",
+          "Industrial layoffs occurred before women entered many of the war-production jobs."
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "A thesis must explain both hiring and later layoffs.",
+    "explanation": "The two records support an expansion of opportunity with limits tied to the decline in wartime demand.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q16",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A student writes that relief construction projects brought jobs to rural counties. The student cites blueprints and photographs of the finished bridges.",
+    "prompt": "Which source would best address a weakness in the argument?",
+    "parts": [
+      {
+        "choices": [
+          "New project maps showing the names of rivers and roads beneath or near the finished bridges",
+          "Engineering reports measuring the weight each completed bridge could hold",
+          "Speeches describing a plan to build bridges in other states the next year",
+          "Payroll records listing who was hired, where they worked, and for how long"
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "The existing evidence documents construction. What would document employment?",
+    "explanation": "Payroll records establish who worked, where they worked, and when.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q17",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A historian argues that a factory shutdown caused families to leave town. New records show many departing families had accepted transfers to another plant before the shutdown was announced.",
+    "prompt": "What is the strongest revision of the thesis?",
+    "parts": [
+      {
+        "choices": [
+          "The shutdown still explains every departure because the company owned both plants.",
+          "Some families left because of transfers arranged before the shutdown.",
+          "Transfers only matter after shutdowns, so the earlier records are irrelevant.",
+          "The new evidence proves no one moved because of changes at the original factory."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Revise the claim to fit the timing and the evidence.",
+    "explanation": "The transfers provide a distinct explanation for some moves and limit the original claim.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q18",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A student argues that neighborhood organizations helped newly arrived families settle in a city.",
+    "prompt": "Which pair of sources would best support the claim?",
+    "parts": [
+      {
+        "choices": [
+          "Aid society files and family letters describing help with housing and jobs",
+          "A national population table and photographs of passenger ships at a port",
+          "A railroad timetable and street maps showing where the stations stood",
+          "Newspaper obituaries documenting local business owners and factory payroll records from a different city"
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Look for evidence of what organizations did and what families received.",
+    "explanation": "Case files and letters connect organizations’ services to the needs of particular families.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q19",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "An essay claims that a radio broadcast changed public opinion. Its only evidence is the program transcript and the station’s estimate of how many households could receive it.",
+    "prompt": "What can these sources establish most directly?",
+    "parts": [
+      {
+        "choices": [
+          "How listeners voted after hearing an argument made during the broadcast",
+          "How many households changed opinions because of the message",
+          "What listeners could have heard, but not how their views changed",
+          "That listeners understood the program as the station had intended"
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Distinguish the reach of a message from evidence of its effect.",
+    "explanation": "A transcript establishes content and potential reach only. An opinion shift requires evidence about listeners’ responses.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q20",
+    "topic": "CS 2 · Thesis and Evidence",
+    "reading": "A historian compares two towns with similar populations. Only one issued bonds for water treatment. Records in that town show later declines in waterborne illness.",
+    "prompt": "Which thesis is most defensible from this evidence?",
+    "parts": [
+      {
+        "choices": [
+          "Water treatment must explain every change in public health across both towns.",
+          "Water treatment may explain the decline, although other causes are possible.",
+          "Issuing bonds always reduces illness even before improvements are completed.",
+          "A decline in illness caused the earlier decision to issue bonds for the project."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Choose a claim that fits the comparison without overstating it.",
+    "explanation": "The contrast supports investigating a contribution from water treatment, while leaving room for other influences.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 2, Content Elaboration. Look for using evidence to support, refine, or refute a historical thesis."
+  },
+  {
+    "id": "q21",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "Decades of Jim Crow restrictions shaped choices in the South. Northern factories then recruited more workers during World War I.",
+    "prompt": "Which explanation distinguishes the two causal roles?",
+    "parts": [
+      {
+        "choices": [
+          "Jim Crow and wartime hiring both began when the first migrants moved north.",
+          "Wartime hiring was a long-term push; Jim Crow became a short-term northern pull.",
+          "Jim Crow created a long-term push; wartime hiring provided a more immediate pull.",
+          "Northern recruitment was an effect only; migration itself produced Jim Crow laws."
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Separate a longstanding condition from an immediate opportunity.",
+    "explanation": "Persistent discrimination pushed families away, while wartime demand gave some an immediate reason and opportunity to move.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q22",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A city’s storefront vacancies rose after a streetcar line closed. Mill layoffs began in the same month.",
+    "prompt": "What would best test whether the line closure independently contributed?",
+    "parts": [
+      {
+        "choices": [
+          "Compare vacancy rates on streets with similar layoffs but different streetcar service.",
+          "Count vacancies citywide only after both the layoffs and the closure had taken place.",
+          "Compare the fares charged before closure with wages paid at the mill a decade earlier.",
+          "Ask shopkeepers which event they remember first without checking business records."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Find a comparison that holds the layoffs roughly constant.",
+    "explanation": "Comparable streets with and without service help isolate the possible contribution of transit access.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q23",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A drought reduced farm income. Falling income led households to miss loan payments, and banks tightened local credit.",
+    "prompt": "Which sequence best explains the economic chain?",
+    "parts": [
+      {
+        "choices": [
+          "Tighter lending led to missed payments and then the onset of drought.",
+          "Missed payments caused the drought, which led banks to restrict loans.",
+          "Banks increased lending before drought raised farmers’ harvest earnings.",
+          "Lower harvest earnings led to missed payments and then tighter lending."
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Trace the intermediate event between drought and bank policy.",
+    "explanation": "Crop losses reduced the ability to repay, giving banks reason to tighten credit.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q24",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A state adopted a factory safety law in 1915. Injury rates had already been declining for five years and continued declining at the same rate afterward.",
+    "prompt": "Why is this trend weak evidence that the law caused the decline?",
+    "parts": [
+      {
+        "choices": [
+          "The figures show a decline, which demonstrates that the law had an immediate effect.",
+          "The figures come from the same industry that the law sought to regulate.",
+          "The trend continued for years after the law, so earlier rates are immaterial.",
+          "The injury rate was declining before the law, with no clear break afterward."
+        ],
+        "keys": [
+          3
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Check whether the proposed effect began after the supposed cause.",
+    "explanation": "A preexisting trend without a visible break offers limited evidence that this specific law initiated the decline.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q25",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A coastal port grew over decades because of deep water and rail connections. A nearby port temporarily closed after a hurricane, and more ships arrived the following month.",
+    "prompt": "Which factor best explains the short-term increase?",
+    "parts": [
+      {
+        "choices": [
+          "Cargo and ships were diverted from the closed port.",
+          "Rail connections favored port growth over several decades.",
+          "Deep water made the port accessible to large ships.",
+          "The port’s long-established geography attracted investment."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Focus on what changed just before the increase.",
+    "explanation": "The hurricane closure immediately redirected traffic. Rail access and deep water helped make expansion possible over time.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q26",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "Two neighboring districts introduced evening schools. Attendance rose only in the district that also changed factory shifts so workers could leave earlier.",
+    "prompt": "What causal interpretation is most consistent with the comparison?",
+    "parts": [
+      {
+        "choices": [
+          "Opening schools and freeing workers’ time may both have mattered.",
+          "Opening a school was enough to raise attendance in both districts.",
+          "Changing shifts had to occur after attendance had already risen.",
+          "School attendance caused factories to move work into evening hours."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Identify what was shared and what differed across districts.",
+    "explanation": "The schools created an opportunity, while a schedule change made it more accessible to workers in one district.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q27",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "After a manufacturer adopted an assembly line, output rose and unit labor costs fell. The company then lowered prices and sales increased.",
+    "prompt": "Which link best describes how production affected demand in this example?",
+    "parts": [
+      {
+        "choices": [
+          "Higher sales caused production costs to fall before the line was adopted.",
+          "Lower prices raised labor costs, which reduced the supply of each model.",
+          "Lower unit costs let the company cut prices and encourage additional sales.",
+          "Higher production costs forced sales upward despite unchanged prices."
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Find the step connecting factory methods to buyers’ decisions.",
+    "explanation": "Cheaper production made a price reduction possible, which could attract additional buyers.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q28",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A historian finds that anti-immigrant editorials and support for immigration quotas increased in the same year.",
+    "prompt": "What evidence would best show that the editorials influenced legislators?",
+    "parts": [
+      {
+        "choices": [
+          "Several papers printed editorials after lawmakers passed similar legislation.",
+          "Newspaper circulation rose alongside the number of registered voters.",
+          "Legislators’ correspondence cites the editorials when explaining their votes.",
+          "Two political histories note that editorial pages discussed immigration."
+        ],
+        "keys": [
+          2
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Find a documented link between the articles and the vote.",
+    "explanation": "Letters from lawmakers explaining their decisions provide a possible causal mechanism beyond simultaneous changes.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q29",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A town had depended on one factory for decades. In one year, foreign demand fell and the parent company moved production to another plant.",
+    "prompt": "Which explanation best accounts for the resulting employment shock?",
+    "parts": [
+      {
+        "choices": [
+          "A single employer made the town vulnerable to falling demand and relocation.",
+          "Dependence mattered only after the company decided to move production.",
+          "Falling demand explains the shock, while moving production had little effect.",
+          "The move explains the shock despite a broad, stable local employment base."
+        ],
+        "keys": [
+          0
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Combine background conditions with events close to the outcome.",
+    "explanation": "A narrow economic base increased exposure, while reduced demand and a production move directly affected jobs.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  },
+  {
+    "id": "q30",
+    "topic": "CS 3 · Cause, Effect, Sequence, and Correlation",
+    "reading": "A county’s voting registration rose after a federal law prohibited a screening test. During the same period, civic groups expanded registration drives.",
+    "prompt": "Which claim best accounts for the two developments?",
+    "parts": [
+      {
+        "choices": [
+          "Organizing raised registration by restoring the screening test the law had removed.",
+          "The law removed a barrier, and organizing helped eligible residents register.",
+          "The law increased registration by making the efforts of civic groups illegal.",
+          "Registration rose before either change, so the changes cannot explain the increase."
+        ],
+        "keys": [
+          1
+        ],
+        "mode": "single",
+        "prompt": ""
+      }
+    ],
+    "hint": "Distinguish removing a barrier from helping people use new access.",
+    "explanation": "The law changed the rules while civic groups helped people navigate registration, so both could contribute.",
+    "source": "https://education.ohio.gov/getattachment/Topics/Learning-in-Ohio/Social-Studies/Model-Curriculum-for-Social-Studies/OhiosModelCurriculumSocialStudies.pdf.aspx?lang=en-US",
+    "guide": "American History, CS 3, Content Elaboration. Look for sequence, correlation, and short- and long-term causes."
+  }
+]
+  </script>
+  <script src="ost-game.js?v=as-big-block-1"></script>
+</body>
+</html>
